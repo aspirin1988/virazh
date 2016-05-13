@@ -1,0 +1,1062 @@
+/* ОБЩИЕ СТИЛИ */
+body {
+  font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-image: url(../images/background.jpg);
+}
+
+.orange-text {
+  color: #fb771d;
+}
+
+.white-text {
+   color: white;
+}
+
+.btn-orange,
+.btn-orange:hover,
+.btn-orange:focus {
+  color: white;
+  background-color: #fb771d;
+  font-weight: bold;
+  font-size: 18px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+/* конец ОБЩИЕ СТИЛИ  */
+
+/* Шапка  */
+.upperrow {
+  background: linear-gradient(to bottom, #ffd700 0%,#fecb00 18%,#fda200 62%,#fe9100 100%);
+}
+
+.upperrow .container {
+  position: relative;
+}
+
+.upperrow .container > div {
+  display: inline-block;
+}
+
+.upperrow p {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.upperrow .logo {
+  margin: 20px;
+}
+
+.upperrow .phone_classic_section {
+  font-size: 40px;
+  float: right;
+  margin-top: 30px;
+}
+
+.upperrow .phone_smartphone_section {
+  float: right;
+  margin-top: 15px;
+  margin-left: 35px;
+  font-size: 30px;
+}
+
+@media (max-width: 992px) {
+  .upperrow p {
+    font-size: .7em;
+  }
+
+  .upperrow .container > div {
+    margin: 5px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .upperrow p {
+    font-size: .5em;
+  }
+}
+
+/* конец Шапка */
+
+/* Навигация */
+.navbar {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 25;/*для того, чтобы элемет повлялся над тенью соседнего, а не под */
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    border: none;
+    background-color: white;
+  }
+
+  .navbar-nav {
+    font-size: 15px;
+    color: black;
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .navbar-nav li {
+    float: none;
+    display: inline-block;
+  }
+
+  .navbar-default .navbar-nav>li>a,
+  .navbar-default .navbar-nav>.active>a {
+    color: black;
+  }
+
+  .navbar-default .navbar-nav>li>a:hover,
+  .navbar-default .navbar-nav>.active>a:hover {
+    background-color: #e2dddd;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar-nav {
+    font-size: 16px;
+  }
+}
+
+
+/* toggle для навбара при скролле: */
+.sticky {
+    position:fixed;
+    top:0;
+    left: 0;
+    right: 0;
+}
+
+.content-padding {
+    margin-top:50px;
+}
+/* конец toggle для навбара при скролле: */
+/* конец Навигация */
+
+/* Footer */
+
+footer {
+  padding: 30px 0 25px 0;
+}
+
+footer .container > div > div {
+  margin: 20px;
+  margin-right: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+footer .left-cols {
+  float: left;
+}
+
+footer .right-cols {
+  float: right;
+}
+
+footer .address {
+  text-align: right;
+}
+
+footer .contacts {
+  text-align: right;
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {
+  .left-cols {
+    width: 100%;
+  }
+
+  .left-cols .logo-parallel {
+    float: right;
+  }
+
+  footer .right-cols {
+    float: none;
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  footer .address {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  footer .menu,
+  footer .address {
+    text-align: left;
+    float: left;
+  }
+
+  footer .products-list,
+  footer .contacts {
+    float: right;
+    text-align: right;
+  }
+
+  .left-cols .logo-parallel {
+    margin: 0;
+  }
+
+  footer .left-cols,
+  footer .right-cols {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding-top: 20px;
+  }
+
+  footer .left-cols,
+  footer .right-cols {
+    float: none;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  footer .container .menu,
+  footer .container .address,
+  footer .container .products-list,
+  footer .container .contacts {
+    float: none;
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+  }
+}
+
+footer h4 {
+  color: #ff6d00;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+footer p {
+  margin: 0;
+  color: white;
+  font-size: 12px;
+}
+
+footer span {
+  position: relative;
+  padding-left: 25px;
+}
+
+footer span.email::before {
+  content: url(../images/mail-icon.png);
+  display:block;
+  height: 100%;
+  position:absolute;
+  top: 0; left: 0;
+  text-align: center;
+}
+
+
+footer span.skype::before {
+  content: url(../images/skype-icon.png);
+  display:block;
+  height: 100%;
+  position:absolute;
+  top: 0; left: 0;
+  text-align: center;
+}
+
+
+footer .btn-orange,
+footer .btn-orange:hover,
+footer .btn-orange:focus {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+footer .btn-orange .glyphicon {
+  padding-left: 0;
+}
+
+footer .btn-orange .glyphicon + .glyphicon {
+  margin-left: -5px;
+}
+
+
+/* конец Footer */
+
+/* -------------------------
+    ГЛАВНАЯ страница:
+-------------------------  */
+
+/*  MAIN SECTION  */
+.main-section {
+  background: url(../images/fork_lift_truck.jpg) no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  padding-top: 4%;
+  padding-bottom: 7%;
+  box-shadow: 0px 5px 30px #000;
+  position: relative;
+  z-index: 5;/*для того, чтобы элемет повлялся над соседним элементом и бросал на него тень */
+}
+
+.main-section p {
+  font-size: 40px;
+  display: inline-block;
+  padding: 10px 40px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.main-section p:nth-of-type(odd) {
+  margin-left: 5%;
+}
+
+.main-section button {
+  margin-left: 6%;
+}
+
+@media (max-width: 768px) {
+  .main-section p {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-section p {
+    font-size: 18px;
+  }
+}
+
+/*  конец MAIN SECTION  */
+
+/* VEHICLES LIST (НА ГЛАВНОЙ)  */
+.vehicles-list-on-main {
+  padding: 2% 0;
+}
+
+.vehicles-list-on-main h4 {
+  font-family: 'PT Sans', Arial, sans-serif;
+  color: #ff6d00;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+}
+
+.vehicles-list-on-main .vehicles-list-col {
+  float: left;
+  padding: 15px 50px;
+  height: 320px;
+  width: 33%;
+}
+
+.vehicles-list-on-main .vehicles-list-item {
+  padding: 25px 10px 10px;
+  border: 1px solid #ff6d00;
+  height: 100%;
+  opacity: 0.85;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  transition: all .2s ease;
+}
+
+.vehicles-list-on-main .vehicles-list-item:hover {
+  text-decoration: none;
+  opacity: 1;
+  box-shadow: inset 0px 0px 25px 0px rgba(255,111,0,1);
+}
+
+.vehicles-list-on-main img {
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .vehicles-list-on-main .vehicles-list-col {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vehicles-list-on-main .vehicles-list-col {
+    width: 49.5%;
+    height: 250px;
+  }
+
+  .vehicles-list-on-main .vehicles-list-col img {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicles-list-on-main .vehicles-list-col {
+    height: auto;
+    width: 100%;
+  }
+}
+/* конец VEHICLES LIST (НА ГЛАВНОЙ)   */
+
+/* VIDEO SECTION  */
+.video-section {
+  background-image: url(../images/video_background.jpg);
+  background-position: 50% 50%;
+  background-size: auto 100%;
+  padding-bottom: 60px;
+  box-shadow: 0px 5px 30px #000,
+              0px -5px 30px #000;
+  position: relative; /* для свечения */
+}
+
+@media (min-width: 768px) {
+  .video-section .col-sm-5 {
+    padding-right: 0;
+  }
+
+  .video-section .col-sm-7 {
+    padding-left: 0;
+  }
+
+}
+
+@media (max-width: 992px) {
+  .video-section h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+.video-section ul {
+  margin: 0;
+  padding:0;
+  display: inline-block;
+  list-style: none;
+  width: 100%;
+}
+
+.video-section ul li {
+  background: linear-gradient(to bottom, #5c5c5c 0%,#595959 28%,#444444 100%);
+  height: 64px;
+  display: table;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {
+  .video-section ul li {
+    height: 53px;
+  }
+  .video-section ul li a::before {
+    line-height: 53px;
+    width: 53px;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  .video-section ul li {
+    height: 41px;
+  }
+  .video-section ul li a::before {
+    line-height: 41px;
+    width: 41px;
+  }
+}
+
+.video-section ul li a {
+  padding-left: 25%;
+  text-decoration: none;
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+}
+
+
+.video-section li a::before {
+  width: 64px;
+  content: ">";
+  font-size: 32px;
+  line-height: 64px;
+  text-align: center;
+  background: linear-gradient(to bottom, #ff8a02 0%,#fc8502 20%,#f06d01 72%,#eb6400 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: .1s all ease-in-out;
+}
+
+.video-section ul li:hover a::before {
+  width: 80px;
+}
+
+
+.video-section ul li a.highlighted::before {
+  width: 80px;
+}
+
+@media (max-width: 768px) {
+  .video-section ul {
+    display: block;
+    text-align: center;
+  }
+
+  .video-section ul li {
+    width: auto;
+    background: none;
+    display: inline-block;
+    height: 30px;
+  }
+
+  .video-section ul li a,
+  .video-section ul li a:hover {
+    border-radius: 3px;
+    height: 30px;
+    padding: 6px 12px;
+    width: auto;
+    color: #fb771d;
+    cursor: pointer;
+    background-color: rgba(65, 58, 58, 0.4);
+  }
+
+  .video-section li a::before {
+    background: none;
+    content: "";
+  }
+
+  .video-section ul li a.highlighted {
+    background-color: rgb(79, 79, 79);
+  }
+
+}
+
+.video-wrapper {
+  max-width: 768px;
+}
+
+.video {
+  border: solid 5px #fb771d;
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.video-section .video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* конец VIDEO SECTION  */
+
+/* -------------------------
+конец страницы  ГЛАВНАЯ:
+-------------------------  */
+
+/* -------------------------
+ страница  КАТАЛОГ ТЕХНИКИ:
+-------------------------  */
+/* VEHICLES LIST  */
+.vehicles-catalog h3 {
+  padding: 2%;
+}
+.category-item {
+  display: flex;
+  padding: 5px;
+  border-radius: 2px;
+  align-items: center;
+}
+
+.category-item.selected {
+  background-color: rgba(255,255,255,.1);
+}
+
+.category-item:hover {
+  text-decoration: none;
+  background-color: rgba(255,255,255,.05);
+}
+
+.vehicle-categories img {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.vehicle-categories p {
+  font-size: 16px;
+  color: #ff781b;
+  text-transform: uppercase;
+
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+
+.vehicles-list .vehicle-item {
+  display: inline-block;
+  width: 32.5%;
+  padding: 5px;
+  position: relative;
+}
+
+.vehicles-list .vehicle-item img {
+  border: solid 3px #fb771d;
+  width: 100%;
+}
+
+.vehicles-list .vehicle-item h4 {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ff781b;
+  position: absolute;
+  margin: 0;
+  padding: 10px 0;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 768px) {
+  .vehicle-categories {
+    padding-right: 0;
+    border-right: 1px solid #ff781b;
+  }
+  .vehicles-list .row {
+    margin-left: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .vehicle-categories img {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .vehicles-list .vehicle-item {
+    width: 49.5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicles-list .vehicle-item .flex {
+    display: block;
+  }
+
+  .vehicles-list .vehicle-item {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+/* конец VEHICLES LIST  */
+/* -----------------------------
+ конец старницы КАТАЛОГ ТЕХНИКИ:
+-----------------------------  */
+
+/* -------------------------
+  старница ОДИНОЧНЫЙ ТОВАР:
+-------------------------  */
+
+/* Меню каталога техники */
+
+@media (min-width: 1200px) {
+  .vehicles-menu {
+    padding: 0;
+  }
+}
+
+.vehicles-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  font-size: 18px;
+  line-height: .9;
+  padding-top: 16px;
+}
+
+.vehicles-menu li {
+  background: url(../images/single_product/submenu-item.png);
+  background-size: 100% 100%;
+  display: inline-block;
+  width: 18%;
+  height: 70px;
+  vertical-align: middle;
+  padding: 0 4% 0 4%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* задаём другой фон для быбраного раздела меню: */
+.vehicles-menu li.selected {
+  background: url(../images/single_product/submenu-item-selected.png);
+  background-size: 100% 100%;
+}
+
+/* накладываем li-элемента друг на друга: */
+.vehicles-menu li + li {
+  margin-left: -25px;
+}
+
+/* нижеследующий код для того, чтобы предыдущий li-элемент (вкладка) отображался поверх последующего */
+.vehicles-menu li:nth-of-type(1) {
+  z-index: 20;
+}
+.vehicles-menu li:nth-of-type(2) {
+  z-index: 19;
+}
+.vehicles-menu li:nth-of-type(3) {
+  z-index: 18;
+}
+.vehicles-menu li:nth-of-type(4) {
+  z-index: 17;
+}
+.vehicles-menu li:nth-of-type(5) {
+  z-index: 16;
+}
+.vehicles-menu li:nth-of-type(6) {
+  z-index: 15;
+}
+
+.vehicles-menu p {
+  margin: 0;
+  height: 70px;
+  display: table;
+}
+
+.vehicles-menu li a {
+  color: black;
+  text-decoration: none;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media (max-width: 992px) {
+  .vehicles-menu li {
+    padding: 0 2% 0 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .vehicles-menu li {
+    width: 34%;
+  }
+
+  .vehicles-menu li:nth-of-type(4) {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .vehicles-menu.container ul li {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    background: none;
+    height: initial;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .vehicles-menu.container ul li.selected {
+    background-color: #fb771d;
+  }
+
+  .vehicles-menu li p {
+    height: initial;
+    display: block;
+  }
+
+  .vehicles-menu li a {
+    color: white;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+}
+/* конец Меню каталога техники */
+
+/* Фото и описание техники */
+.vehicles-summary p {
+  color: white;
+  clear: both;
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.vehicles-summary .vehicle-image {
+  background: url(../images/single_product/shine.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.vehicles-summary .row + .row {
+  margin-top: 30px;
+}
+
+@media (max-width: 992px) {
+  .vehicles-summary p {
+    font-size: 14px;
+  }
+}
+
+/* конец Фото и описание техники */
+
+/* -------------------------
+конец страницы  ОДИНОЧНЫЙ ТОВАР
+-------------------------  */
+
+/* -------------------------
+    страница  НОВОСТИ
+-------------------------  */
+
+/* article */
+.articles article {
+  margin-top: 50px;
+  background-color: white;
+  padding: 15px 30px;
+}
+
+.articles article h4 {
+  text-align: center;
+}
+
+.articles article img {
+  border: solid 3px #fb771d;
+  margin: 0 auto;
+}
+
+.articles article p {
+  text-align: justify;
+  text-indent: 30px;
+}
+
+@media (max-width: 992px) {
+  .articles article p {
+    margin-top: 20px;
+  }
+}
+
+.articles .article-date {
+  position: absolute;
+  background: url(../images/news/date-background.png) no-repeat;
+  color: rgba(196, 0, 0, 0.5);
+  width: 98px;
+  height: 80px;
+  top: -45px;
+  left: -25px;
+}
+
+.articles .col-md-push-7 .article-date {
+  position: absolute;
+  background: url(../images/news/date-background-mirror.png) no-repeat;
+  left: auto;
+  right: -25px;
+}
+
+.articles .article-date p {
+  text-indent: 0;
+  margin: 0;
+  line-height: 1;
+  font-size: 14px;
+  text-align: center;
+}
+
+.article-date p:first-child {
+  margin-top: 3px;
+  font-weight: bold;
+  font-size: 36px;
+  font-style: italic;
+}
+
+.article-date p:last-child {
+  font-weight: bold;
+}
+
+@media (max-width: 992px) {
+  .articles .article-date,
+  .articles .col-md-push-7 .article-date {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .articles article .article-date p {
+    font-size: 16px;
+    display: inline-block;
+    margin: 0;
+    color: #fb771d;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+}
+
+/* конец article */
+/* -------------------------
+    конец страницы  НОВОСТИ
+-------------------------  */
+
+/* -------------------------
+    страница  КОНТАКТЫ
+-------------------------  */
+.contacts {
+  text-align: center;
+  color: white;
+}
+
+.contacts h1 {
+  font-size: 60px;
+}
+
+@media (max-width: 768px) {
+  .contacts h1 {
+    font-size: 40px;
+  }
+}
+
+
+.map {
+  margin-top: 35px;
+  background: url(../images/contacts/map_of_kz.png) no-repeat;
+  background-position: 50% 0;
+  background-size: 130% auto;
+  position: relative;
+  height: 0px;
+  width: 100%;
+  padding-top: 28%;
+}
+
+.city {
+  position: absolute;
+  margin-top: -61px;
+  margin-left: -24px;
+  transition: all .3s;
+  width: 40px;
+}
+
+.city:hover {
+  margin-top: -70px;
+}
+
+.city.almaty:hover {
+  margin-top: -110px;
+}
+
+.city > a {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.city img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*расположение городов на карте: */
+.city.almaty {
+  width: 60px;/* у Алматы размер точки больше, чем у других городов */
+  margin-top: -100px;
+  top: 65%;
+  left: 71%;
+}
+.city.oral {
+  top: 23%;
+  left: 25%;
+}
+.city.aqtaw {
+  top: 55%;
+  left: 17%;
+}
+.city.aqtobe {
+  top: 28%;
+  left: 34%;
+}
+.city.atyraw {
+  top: 39%;
+  left: 20%;
+}
+.city.qaragandy {
+  top: 40%;
+  left: 60%;
+}
+.city.kokshetaw {
+  top: 24%;
+  left: 53%;
+}
+.city.kostanay {
+  top: 22%;
+  left: 41%;
+}
+.city.qyzqylorda {
+  top: 50%;
+  left: 39%;
+}
+.city.pavlodar {
+  top: 22%;
+  left: 65%;
+}
+.city.pertropavlovsk {
+  top: 15%;
+  left: 51%;
+}
+.city.semey {
+  top: 27%;
+  left: 72%;
+}
+.city.astana {
+  top: 32%;
+  left: 56%;
+}
+.city.oskemen {
+  top: 31%;
+  left: 77%;
+}
+.city.shimkent {
+  top: 74%;
+  left: 51%;
+}
+.city.taraz {
+  top: 70%;
+  left: 57%;
+}
+/* конец расположение городов на карте: */
+
+@media (max-width: 992px) {
+  .city {
+    height: 55.5px;
+    width: 18px;
+    margin-top: -29px;
+  }
+
+  .map .city.almaty {
+    width: 28px;
+    margin-top: -50px;
+  }
+}
+
+.contacts .col-sm-4 {
+  padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .contacts .col-sm-4 {
+    text-align: center;
+  }
+}
+/* -------------------------
+    конец страницы  КОНТАКТЫ
+-------------------------  */

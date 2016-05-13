@@ -1,0 +1,542 @@
+@charset "UTF-8";
+/* (начало) ОБЩИЕ СТИЛИ */
+/* (начало) подключаем шрифт 'Bebas Neue' различной толщины: */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url("../fonts/bebas_neue/BebasNeue Regular.otf") format("truetype");
+  font-weight: normal; }
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url("../fonts/bebas_neue/BebasNeue Bold.otf") format("truetype");
+  font-weight: bold; }
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url("../fonts/bebas_neue/BebasNeue Book.otf") format("truetype");
+  font-weight: 300; }
+/* (конец) подключаем шрифт 'Bebas Neue' различной толщины: */
+body {
+  line-height: 1.2;
+  color: black;
+  font-family: 'PT Sans', Arial, sans-serif;
+  font-size: 16px; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+a {
+  color: inherit; }
+  a:hover, a:active, a:focus {
+    color: inherit;
+    text-decoration: none; }
+
+.btn-company-style {
+  font-size: 14px;
+  color: white;
+  border: none;
+  background-color: #004902;
+  padding: 10px 15px;
+  border-radius: 10px; }
+  .btn-company-style:hover, .btn-company-style:focus {
+    background-color: #007c03; }
+
+@media (max-width: 768px) {
+  h3 {
+    font-size: 18px; } }
+
+@media (min-width: 768px) {
+  ul.navbar-nav > li > .dropdown-menu:before {
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    display: inline-block;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ccc;
+    border-left: 10px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: ''; }
+
+  ul.navbar-nav > li > .dropdown-menu:after {
+    position: absolute;
+    top: -9px;
+    left: 31px;
+    display: inline-block;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #ffffff;
+    border-left: 9px solid transparent;
+    content: ''; } }
+/* (конец) ОБЩИЕ СТИЛИ  */
+/*(начало) запись на приём СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА И РАЗДЕЛА НА СТРАНИЦЕ УСЛУГИ */
+.modal-service-request .modal-content {
+  background-color: #c1de97; }
+
+.service-request h4 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  margin-top: 25px; }
+
+.service-request {
+  color: #004902; }
+  .service-request form {
+    padding: 0 40px 20px; }
+    .service-request form .col {
+      padding: 0 25px; }
+      @media (max-width: 768px) {
+        .service-request form .col {
+          padding: 0; } }
+    .service-request form h4 {
+      text-decoration: none;
+      font-size: 18px; }
+    .service-request form label {
+      font-size: 14px;
+      font-weight: normal; }
+    .service-request form input:not([type=submit]) {
+      font-size: 20px;
+      line-height: 20px;
+      border: 1px solid #004902;
+      padding: 7px 15px;
+      height: auto;
+      color: #004902; }
+    .service-request form ::-webkit-input-placeholder {
+      color: #004902;
+      opacity: .8; }
+    .service-request form :-moz-placeholder {
+      color: #004902;
+      opacity: .8; }
+    .service-request form ::-moz-placeholder {
+      color: #004902;
+      opacity: .8; }
+    .service-request form :-ms-input-placeholder {
+      color: #004902;
+      opacity: .8; }
+    .service-request form input[type=submit] {
+      float: right; }
+      @media (max-width: 768px) {
+        .service-request form input[type=submit] {
+          margin-bottom: 15px;
+          float: none; } }
+
+/*(конец) запись на приём СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА И РАЗДЕЛА НА СТРАНИЦЕ УСЛУГИ */
+/*(начало) HEADER*/
+header {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  background-color: white; }
+
+.header__logo {
+  margin: 7px 0 2px;
+  vertical-align: top; }
+
+.header__header-summary {
+  color: #ff5b5b;
+  display: inline-block;
+  vertical-align: top;
+  margin: 7px 0 0 12px; }
+  @media (max-width: 480px) {
+    .header__header-summary {
+      display: block;
+      text-align: right; } }
+
+.nav-and-phonenumbers {
+  float: right; }
+  @media (max-width: 768px) {
+    .nav-and-phonenumbers {
+      width: 100%;
+      display: block; } }
+
+.navbar {
+  font-size: 18px;
+  font-family: "Bebas Neue", sans-serif;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  display: inline-block; }
+  @media (max-width: 768px) {
+    .navbar {
+      display: block; } }
+  @media (min-width: 768px) {
+    .navbar .navbar-nav > li + li::before {
+      content: '|';
+      float: left;
+      padding-top: 25px; } }
+  .navbar .navbar-nav > li > a {
+    color: black; }
+    @media (min-width: 768px) {
+      .navbar .navbar-nav > li > a {
+        padding-top: 25px;
+        padding-bottom: 10px; } }
+    .navbar .navbar-nav > li > a:hover {
+      color: #004902;
+      font-weight: bold; }
+  .navbar .navbar-nav > li.current > a {
+    color: #004902;
+    font-weight: bold; }
+  .navbar .navbar-nav > li.open > a,
+  .navbar .navbar-nav > li.open > a:hover {
+    background-color: transparent;
+    font-weight: bold;
+    color: #004902; }
+  .navbar .open > a,
+  .navbar .open > a:hover {
+    background-color: #a8df93; }
+  .navbar .dropdown-menu {
+    font-size: 18px; }
+    .navbar .dropdown-menu > li > a:focus, .navbar .dropdown-menu > li > a:hover {
+      background-color: #a8df93; }
+
+/*(начало)номера телефонов */
+.tel-numbers {
+  text-align: right;
+  display: inline-block;
+  margin-top: 3px;
+  vertical-align: top; }
+  @media (max-width: 480px) {
+    .tel-numbers {
+      text-align: left; } }
+  .tel-numbers a {
+    margin: 0;
+    display: block; }
+    .tel-numbers a::before {
+      vertical-align: sub;
+      margin-right: 5px; }
+  .tel-numbers .tel-numbers__cell-number::before {
+    content: url(../img/icon-mobile.png); }
+  .tel-numbers .tel-numbers__fixed-number::before {
+    content: url(../img/icon-phone.png); }
+
+/*(конец)номера телефонов */
+/*(конец) HEADER*/
+/*(начало) FOOTER*/
+.footer-wrapper {
+  background: url(../img/footer-background.jpg);
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  line-height: 2.1;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 65px 0 35px; }
+  @media (max-width: 768px) {
+    .footer-wrapper {
+      padding: 35px 0 15px;
+      text-align: center; } }
+  .footer-wrapper h3 {
+    margin-top: 15px; }
+    @media (min-width: 1200px) {
+      .footer-wrapper h3 {
+        margin-top: -35px; } }
+  .footer-wrapper .address {
+    line-height: 1.5;
+    text-transform: none; }
+    @media (min-width: 1200px) {
+      .footer-wrapper .address {
+        text-align: right; } }
+
+/*(конец) FOOTER*/
+/* -------------------------
+  (начало) ГЛАВНАЯ страница
+-------------------------  */
+/* начало ГЛАВНЫЙ БАННЕР */
+.banner-main {
+  background: url(../img/main_pic.jpg) no-repeat;
+  background-size: auto 100%;
+  background-position: 50% 50%; }
+  @media (min-width: 1200px) {
+    .banner-main {
+      margin-top: -70px;
+      background-position: 50% 70px;
+      height: 100vh; } }
+  .banner-main p {
+    border: 1px solid #004902;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 300;
+    font-size: 60px;
+    padding: 4.824561404% 1.31578947368%;
+    margin-top: 8.771929825%;
+    margin-bottom: 26.315789474%;
+    display: inline-block; }
+    @media (max-width: 1200px) {
+      .banner-main p {
+        background-color: rgba(255, 255, 255, 0.5); } }
+    @media (max-width: 768px) {
+      .banner-main p {
+        font-size: 30px; } }
+
+/* конец ГЛАВНЫЙ БАННЕР */
+/* начало ВИДЫ УСЛУГ*/
+.services-on-main {
+  text-align: center;
+  margin-top: -13.157894737%;
+  margin-bottom: 1.315789474%; }
+  .services-on-main h4 {
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase; }
+  .services-on-main p {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #004902; }
+  .services-on-main a {
+    color: #004902;
+    font-weight: bold; }
+  .services-on-main img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto; }
+
+/* конец ВИДЫ УСЛУГ*/
+/* начало АНТИВОЗРАСТНАЯ КОСМЕТОЛОГИЯ */
+.anti-age-cosmetology {
+  background-image: url(../img/index/anti-age-cosm-background.jpg); }
+  .anti-age-cosmetology .anti-age-cosmetology__heading {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center; }
+    .anti-age-cosmetology .anti-age-cosmetology__heading h2 {
+      text-align: center;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 300;
+      margin-left: 5.263157895%;
+      margin-right: 5.263157895%; }
+    .anti-age-cosmetology .anti-age-cosmetology__heading figure {
+      height: 1px;
+      background: #004902;
+      flex: 1 1 auto;
+      align-content: center; }
+  .anti-age-cosmetology .anti-age-cosmetology__section {
+    padding: 10px 15px; }
+  .anti-age-cosmetology a {
+    padding: 15px 0;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #004902;
+    background-color: transparent;
+    border-radius: 10px;
+    display: block;
+    width: 100%; }
+    .anti-age-cosmetology a:hover, .anti-age-cosmetology a:focus {
+      background-color: white; }
+  .anti-age-cosmetology img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto; }
+  .anti-age-cosmetology .summary {
+    padding: 15px; }
+    .anti-age-cosmetology .summary p {
+      margin-top: 10px; }
+
+/* конец АНТИВОЗРАСТНАЯ КОСМЕТОЛОГИЯ */
+/* начало НЕМНОГО О КРАСИВОЙ РАБОТЕ (раздел главной) */
+.about-on-main {
+  padding: 5px 0;
+  position: relative; }
+  .about-on-main h3 {
+    margin-top: 10px;
+    text-align: center;
+    display: inline-block;
+    float: right; }
+    @media (max-width: 992px) {
+      .about-on-main h3 {
+        float: none;
+        display: block; } }
+    .about-on-main h3 a {
+      border-bottom: 2px solid black; }
+  @media (max-width: 992px) {
+    .about-on-main img {
+      margin: 0 auto; } }
+  .about-on-main .text-block {
+    background-color: rgba(121, 190, 119, 0.7);
+    padding: 55px 35px 15px;
+    line-height: 1.4;
+    text-align: justify;
+    position: absolute;
+    width: 850px;
+    top: 70px;
+    right: 0; }
+    @media (max-width: 1200px) and (min-width: 992px) {
+      .about-on-main .text-block {
+        padding: 25px 15px 15px;
+        width: 650px; } }
+    @media (max-width: 992px) {
+      .about-on-main .text-block {
+        position: static;
+        width: 100%;
+        padding: 15px; } }
+    .about-on-main .text-block a {
+      float: right;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-decoration: underline; }
+
+/* конец НЕМНОГО О КРАСИВОЙ РАБОТЕ (раздел главной) */
+/* -------------------------
+  (конец) ГЛАВНАЯ страница
+-------------------------  */
+/* -------------------------
+  (начало) КРАСИВАЯ РАБОТА страница
+-------------------------  */
+/* начало О КРАСИВОЙ РАБОТЕ */
+.about-header {
+  text-align: right; }
+
+.about-on-about {
+  text-indent: 30px;
+  line-height: 1.4;
+  text-align: justify;
+  background-color: rgba(121, 190, 119, 0.7);
+  padding: 15px 0; }
+  .about-on-about img {
+    margin: 0 auto 15px; }
+
+/* конец О КРАСИВОЙ РАБОТЕ */
+/* начало ВИДЕО О НАС */
+.video-section {
+  background: url(../img/about/video-seciton-background.jpg);
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  padding-bottom: 30px; }
+
+@media (min-width: 992px) {
+  .video-wrapper {
+    max-width: 900px;
+    margin: 0 auto; } }
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%; }
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+/* конец ВИДЕО О НАС */
+/* начало ОБОРУДОВАНИЕ */
+.equipment {
+  text-align: center;
+  padding-bottom: 3%; }
+  .equipment h3 {
+    margin-bottom: 2%; }
+  .equipment h4 {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; }
+  .equipment img {
+    border: 3px solid #004902;
+    margin: 0 auto; }
+    @media (min-width: 768px) {
+      .equipment img {
+        border-radius: 10px; } }
+
+/* конец ОБОРУДОВАНИЕ */
+/* -------------------------
+  (конец) КРАСИВАЯ РАБОТА страница
+-------------------------  */
+/* -------------------------
+  (начало) УСЛУГИ страница
+-------------------------  */
+/* начало АККОРДЕОН И ТЕКСТ */
+.accordion-and-text {
+  margin-top: 2%; }
+  @media (min-width: 768px) {
+    .accordion-and-text h3 {
+      margin-top: 0; } }
+  .accordion-and-text p {
+    text-align: justify;
+    line-height: 1.4; }
+
+.panel-default {
+  text-transform: uppercase;
+  border: none; }
+
+.panel-default > .panel-heading {
+  cursor: pointer;
+  color: black;
+  background: linear-gradient(to bottom, #a2fd74 0%, #96ea69 31%, #85d35b 59%, #6fb347 92%, #4a7c27 100%);
+  border: 1px solid #004902;
+  border-radius: 7px;
+  padding: 20px; }
+  @media (max-width: 768px) {
+    .panel-default > .panel-heading {
+      padding: 10px; } }
+
+.panel-group .panel-heading + .panel-collapse > .panel-body {
+  border: 1px solid #004902;
+  margin: 0 7px;
+  padding: 0; }
+  .panel-group .panel-heading + .panel-collapse > .panel-body ul li {
+    color: #004902; }
+    .panel-group .panel-heading + .panel-collapse > .panel-body ul li a {
+      display: block;
+      padding: 15px; }
+      @media (max-width: 768px) {
+        .panel-group .panel-heading + .panel-collapse > .panel-body ul li a {
+          padding: 10px; } }
+      .panel-group .panel-heading + .panel-collapse > .panel-body ul li a:hover {
+        background-color: #4fdc52;
+        color: white; }
+  .panel-group .panel-heading + .panel-collapse > .panel-body ul li.active {
+    background: rgba(0, 0, 255, 0.3); }
+
+/* конец АККОРДЕОН И ТЕКСТ */
+/* начало ФОТО ДО И ПОСЛЕ */
+.before-after .item {
+  padding: 15px; }
+.before-after img {
+  border: solid 3px #004902;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .before-after img {
+      max-height: 200px; } }
+
+/* конец ФОТО ДО И ПОСЛЕ */
+/* начало МОДАЛКА ФОТО ДО И ПОСЛЕ */
+.before-and-after-modal {
+  background-color: #c1de97; }
+  .before-and-after-modal img {
+    width: 100%;
+    margin-top: 30px; }
+
+/* конец МОДАЛКА ФОТО ДО И ПОСЛЕ */
+/* начало ЗАКАЗАТЬ УСЛУГУ у этого раздела общие стили с одноимённой модалкой */
+.service-request.on-services {
+  background-color: #c1de97; }
+
+/* конец МОДАЛКА ФОТО ДО И ПОСЛЕ */
+/* -------------------------
+  (конец) УСЛУГИ страница
+-------------------------  */
+/* -------------------------
+  (начало) КОНТАКТЫ страница
+-------------------------  */
+/* начало КОНТАКТЫ ТЕКСТ */
+.text-section {
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.3;
+  padding: 2% 0; }
+  .text-section p {
+    margin: 0; }
+
+/* конец КОНТАКТЫ ТЕКСТ  */
+/* начало КАРТА  */
+.map-wrapper {
+  border-top: 3px solid #004902;
+  border-bottom: 3px solid #004902;
+  margin-bottom: 2%; }
+
+/* конец КАРТА  */
+/* -------------------------
+  (конец) КОНТАКТЫ страница
+-------------------------  */
+
+/*# sourceMappingURL=styles.css.map */

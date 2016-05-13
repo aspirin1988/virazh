@@ -1,0 +1,46 @@
+/* --кнопка Ертая и Сергея  */
+#callButton.blink-cb-module-main-btns {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+#callButton.blink-cb-module-main-btns .blink-cb-module-btns-container .blink-cb-module-main-btn-container {
+  background: url(../images/call-button.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.blink-cb-module-main-btns .blink-cb-module-btns-container .blink-cb-module-main-btn-container {
+  transition: .3s all;
+}
+
+#callButton.blink-cb-module-main-btns .blink-cb-module-btns-container .blink-cb-module-main-btn-container:hover {
+  width: 100px;
+  height: 100px;
+  margin-top: -15px;
+  margin-left: -10px;
+}
+
+#callButton .blink-cb-open-popup.blink-cb-module-main-btn a {
+  opacity:0;
+}
+
+@media (max-width: 992px) {
+  #callButton.blink-cb-module-main-btns {
+    display: none;
+  }
+}
+
+/* конец кнопка Ертая и Сергея  */
+ /* сайдбар звонка */
+.blink-cb-module-container
+.blink-cb-module-main-body .blink-cb-module-main-body-container .blink-cb-module-main-body-header-btns li.active a {
+  color: #fb771d;
+}
+
+.blink-cb-module-main-body .blink-cb-module-flip-container .blink-cb-module-flipper .blink-cb-module-flip-front form#Recall input[type=submit] {
+  background-color: #fb771d;
+  color: white;
+}
+
+ /* конец сайдбар звонка */
