@@ -62,7 +62,10 @@
 	<div class="row car-gallery">
 
 		<?php
-		$homeProducts = get_products_cat_by_slug_parent('types_of_transport'); $first=$homeProducts[0]; ?>
+		$homeProducts = get_products_cat_by_slug_parent('types_of_transport'); $first=$homeProducts[0];
+		//print_r($homeProducts);
+
+		?>
 		<style>
 			.transport-types .type-list ul li.light-car<?=0?>::before {
 				content: url('<?=get_field('icon','product_cat_'.$first->term_id)?>'); }

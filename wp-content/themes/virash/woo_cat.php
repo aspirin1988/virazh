@@ -52,3 +52,8 @@ function get_products_cat_by_slug_parent($slug){
 
     return get_categories( $args );
 }
+
+function get_id_products_cat_by_slug_parent($slug){
+    $parent=get_product_cat_bu_slug($slug);
+    return $parent->term_id;
+}
