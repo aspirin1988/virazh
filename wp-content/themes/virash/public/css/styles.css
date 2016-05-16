@@ -842,7 +842,13 @@ footer {
   flex-flow: row wrap; }
 .products-list .item {
   position: relative;
-  padding: 10px 25px; }
+  padding: 10px 25px;
+  display: flex;
+  flex-flow: wrap column; }
+  .products-list .item a {
+    flex: 1;
+    display: flex;
+    align-items: center; }
   .products-list .item .square {
     border: 8px solid #040466;
     position: absolute;
@@ -859,7 +865,8 @@ footer {
     width: 100%; }
   .products-list .item h4 {
     padding: 5px 0;
-    text-align: center; }
+    text-align: center;
+    align-self: center; }
   .products-list .item:hover h4 {
     background-color: #dadae8; }
 
