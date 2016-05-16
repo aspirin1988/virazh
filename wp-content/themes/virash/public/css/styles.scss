@@ -1,0 +1,1339 @@
+/* НАЧАЛО подключаем шрифт 'Bebas Neue' normal и bold: */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../fonts/bebas_neue/BebasNeue Regular.otf') format('truetype');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../fonts/bebas_neue/BebasNeue Bold.otf') format('truetype');
+  font-weight: bold;
+}
+/* КОНЕЦ подключаем шрифт 'Bebas Neue' normal и bold: */
+
+/* НАЧАЛО переменные sass */
+$company-color: #040466;
+$company-font: 'Bebas Neue', Arial, sans-serif;
+$site-font: 'Open Sans', Arial, sans-serif;
+/* КОНЕЦ переменные sass */
+
+/* НАЧАЛО общие стили */
+body {
+  color: black;
+  font-family: $site-font;
+}
+
+h1 {
+  font-size: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-size: 36px;
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+}
+
+h1, h2 {
+  font-family: $company-font;
+  font-weight: bold;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-blue {
+  background-color: $company-color;
+  border-radius: 0;
+  color: white;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: white;
+    background-color: lighten($company-color, 10%)
+  }
+}
+
+.breadcrumb {
+  background: none;
+  color: $company-color;
+  margin-top: 1%;
+}
+
+.breadcrumb>li+li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: ">";
+}
+
+.title-square-container {
+  position: relative;
+  width: auto;
+  display: inline-block;
+  margin: 0 auto 3%;
+
+  h1 {
+    display: inline-block;
+  }
+
+  .title-square { // синий квадрат-полурамка
+    border: 10px solid #dadae8;
+
+    z-index: -1;
+    position: absolute;
+    top: -15px;
+    right: -70px;
+    bottom: -15px;
+    left: 35px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+/* КОНЕЦ общие стили */
+
+/* НАЧАЛО header */
+header {
+  background-color: $company-color;
+  text-align: center;
+
+  padding: 15px 0;
+}
+
+.header__phone-numbers {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  float: left;
+
+  padding: 5px 0 5px 35px;
+
+  @media (max-width: 992px) {
+    float: none;
+    font-size: 16px;
+  }
+
+  p {
+    margin: 0;
+
+    &:first-of-type {
+      a {
+        position: relative;
+
+        &:before {
+          content: url(../img/icon-telephone.png);
+          position: absolute;
+          left: -30px;
+          top: 1px;
+        }
+      }
+    }
+  }
+}
+
+.header__logo {
+  max-width: 100%;
+
+  @media (max-width: 992px) {
+    display: block;
+    margin: 15px auto;
+  }
+}
+
+.header__search-form {
+  padding: 15px 0;
+  float: right;
+
+  @media (max-width: 992px) {
+    float: none;
+  }
+
+  input[type=text] {
+    background: white 97% 50% url(../img/icon-search.png) no-repeat;
+
+    border: none;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    padding: 4px 24px 4px 8px;
+
+    @media (max-width: 480px) {
+      width: 150px;
+    }
+  }
+
+  input[type=submit] {
+    background-color: rgba(255, 255, 255, 0.9);
+
+    border: none;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+
+    padding: 4px 8px;
+    margin-left: -4px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+/* КОНЕЦ header */
+
+/* НАЧАЛО navbar */
+.navbar {
+  background-color: white;
+
+  border-left: 1px solid $company-color;
+  border-right: 1px solid $company-color;
+  border-top: none;
+  border-bottom: 3px solid $company-color;
+  border-radius: 0;
+
+  min-height: 40px;
+  margin-bottom: 0;
+  z-index: 50;
+
+  .navbar-nav {
+    @media (min-width: 768px) {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+    }
+
+    li {
+      &.active {
+        background-color: #eee;
+      }
+    }
+
+    &>li {
+      position: static;
+
+      @media (min-width: 768px) {
+        float: none;
+        display: inline-block;
+        margin-left: -4px;
+      }
+
+      @media (min-width: 1200px) {
+        border-left: 1px solid #cecece;
+
+        &:last-of-type {
+          border-right: 1px solid #cecece;
+        }
+
+        &.active {
+          border-bottom: 3px solid #cecece;
+          margin-bottom: -3px;
+        }
+      }
+
+      a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .submenu {
+        border: 1px solid $company-color;
+        border-bottom: 2px solid $company-color;
+        background-color: white;
+        padding: 10px;
+
+        z-index: 100;
+        position: absolute;
+        top: 40px;
+        left: 140px;
+        right: 140px;
+        display: none;
+
+        li {
+
+          h5 {
+            font-weight: bold;
+            margin: 0;
+
+            a {
+              padding: 10px;
+            }
+          }
+
+          a {
+            display: block;
+            padding: 5px 0;
+
+            &:hover {
+              background: rgba(0,0,0,.09);
+            }
+          }
+        }
+
+      }
+
+      @media (min-width: 992px) {
+        &:hover > .submenu,
+        & > .submenu:hover {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .navbar-toggle {
+    border-color: $company-color;
+    border-radius: 0;
+
+    .icon-bar {
+      background-color: $company-color;
+    }
+  }
+}
+/* начало toggle для навбара при скролле: */
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.content-padding {
+  margin-top: 43px;
+}
+/* конец toggle для навбара при скролле: */
+
+/* КОНЕЦ navbar */
+/* НАЧАЛО footer */
+
+footer {
+  background: linear-gradient(to bottom, rgba(25,25,146,1) 0%,rgba(18,18,108,1) 1%,rgba(18,18,111,1) 5%,rgba(17,17,109,1) 20%,rgba(5,5,97,1) 86%,rgba(4,4,96,1) 95%,rgba(7,7,104,1) 99%,rgba(10,10,134,1) 100%);
+  color: white;
+  margin-top: 40px;
+  padding: 15px 0 40px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
+  .row div:last-child {
+    text-align: right;
+    @media (max-width: 992px) {
+      text-align: left;
+    }
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+
+      a + a {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+/* КОНЕЦ footer */
+
+/* -----------------------------------
+------ НАЧАЛО главная страница -------
+--------------------------------------*/
+/*  НАЧАЛО main section  */
+.main-section {
+  background: 50% 50%/cover  url(../img/index/slider-background.jpg)  no-repeat;
+  padding-top: 7%;
+  padding-bottom: 5%;
+  margin-top: -43px;
+  position: relative;
+
+  .row>div:first-of-type {
+    text-align: right;
+  }
+
+  p {
+    color: white;
+    text-transform: uppercase;
+    font-family: $company-font;
+    font-size: 36px;
+    display: inline-block;
+    padding: 7px 40px 0;
+    margin: 0;
+    background-color: rgba(0, 0, 100, 0.6);
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      padding: 10px 20px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 18px;
+    }
+
+    &:nth-of-type(odd) {
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  }
+
+  button {
+    margin-left: 15%;
+    font-family: $company-font;
+    font-size: 16px;
+  }
+
+  .carousel-inner .item { /*высота итемов слайдера*/
+    height: 250px;
+
+    @media (max-width: 768px) {
+      padding-top: 50px;
+      height: 400px; /*высота итемов слайдера*/
+    }
+  }
+}
+
+/*  КОНЕЦ main section  */
+
+/*  НАЧАЛО articles on main */
+.articles-on-main {
+
+  .row {
+    position: relative; //по отн.к полурамке
+  }
+
+
+  h2 {
+    text-align: center;
+    margin: 3% 0 2.192982456%;
+  }
+
+  img {
+    width: 100%;
+    height: 250px;
+    border: 5px solid $company-color;
+    transition: all 0.2s linear;
+
+    @media (max-width: 768px) {
+      height: auto;
+    }
+  }
+
+  .article {
+    padding: 7px;
+    position: relative; //к подписи к картинке
+
+    &:hover h3 {
+      padding: 9px 30px 5px 55px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 7px 15px;
+    }
+
+    h3 {
+      color: white;
+      font-family: $company-font;
+
+      background-color: $company-color;
+      margin: 0;
+      padding: 9px 50px 5px 20px;
+      display: block;
+
+      position: absolute;
+      left: 7px;
+      bottom: 7px;
+      transition: all 0.3s linear;
+
+      @media (max-width: 1200px) {
+        right: 7px;
+      }
+      @media (max-width: 768px) {
+        right: 15px;
+        left: 15px;
+        bottom: 7px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -40px;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 40px 0 0 40px;
+        border-color: transparent transparent transparent $company-color;
+
+        @media (max-width: 1200px) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .square { // синий квадрат-полурамка
+    border: 10px solid $company-color;
+
+    position: absolute;
+    top: -15px;
+    right: -25px;
+    bottom: -15px;
+    left: 150px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+/*  КОНЕЦ articles on main */
+/* НАЧАЛО transport types */
+.transport-types {
+  margin-top: 3%;
+  @media (min-width: 1200px) {
+    width: 1000px;
+  }
+  
+  &::before {
+    content: url(../img/index/line-shadow.png);
+    margin: 0 auto;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: url(../img/index/line-shadow.png);
+    margin: 3% auto 0;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .picture-of-car {
+    position: relative;
+
+    img {
+      margin: 0 auto;
+      max-height: 320px;
+    }
+    .square { // синий квадрат-полурамка
+      border: 10px solid $company-color;
+
+      z-index: -5;
+      position: absolute;
+      top: 25%;
+      right: 50px;
+      bottom: -15px;
+      left: 20%;
+
+      @media (max-width: 768px) {
+        border-width: 8px;
+        bottom: 0;
+      }
+
+    }
+  }
+
+  .type-list {
+    text-align: right;
+
+    ul {
+      font-size: 32px;
+      font-family: $company-font;
+
+      @media (max-width: 768px) {
+        font-size: 24px;
+      }
+
+      li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-right: 10px;
+
+        a {
+          width: 100%;
+          display: block;
+        }
+
+        &::before {
+          position: absolute;
+          top: 5px;
+          left: 10px;
+          transition: .5s all;
+          
+          @media (max-width: 1200px) {
+            display: none;
+          }
+        }
+
+        &:hover::before {
+          left: 35px;
+        }
+
+        &:hover {
+          background-color: rgba(0,0,100,.1);
+        }
+        
+        &.light-car::before {
+          content: url(../img/index/icon-lightweight-car.png);
+        }
+        &.commercial::before {
+          content: url(../img/index/icon-truck.png);
+        }
+        &.bus::before {
+          content: url(../img/index/icon-bus.png);
+        }
+        &.special-transport::before {
+          content: url(../img/index/icon-special-transport.png);
+        }
+        &.tracktor::before {
+          content: url(../img/index/icon-traktor.png);
+        }
+      }
+    }
+  }
+}
+
+/* КОНЕЦ transport types */
+
+/* НАЧАЛО brands on main */
+
+.brands-on-main.container {
+  @media (min-width: 1200px) {
+    width: 1100px;
+  }
+
+  &::after {
+    content: url(../img/index/line-shadow.png);
+    margin: 3% auto 0;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .owl-carousel {
+    a:hover img {
+      border: 2px solid rgba(4, 4, 102, 0.7);
+      border-radius: 50%;
+    }
+  }
+}
+
+.owl-nav {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+.owl-prev {
+  position: absolute;
+  left: -40px;
+  transition: all .2s;
+
+  &:hover {
+    margin-left: -3px;
+  }
+}
+
+.owl-next {
+  position: absolute;
+  right: -40px;
+  z-index: 9990;
+  transition: all .2s;
+
+  &:hover {
+    margin-right: -3px;
+  }
+}
+/* КОНЕЦ brands on main */
+/* -----------------------------------
+------ КОНЕЦ главная страница -------
+--------------------------------------*/
+/* ------------------------------------------------
+--- НАЧАЛО карта (общ. для ГЛАВНОЙ И КОНТАКТЫ)-----
+--------------------------------------------------*/
+.map-of-kz {
+  background: 50% 0/100% 100% url(../img/map_of_kz.png) no-repeat;
+  height: 0;
+  padding-top: 50%;
+  position: relative;
+  
+  @media (min-width: 1200px) {
+    padding-top: 550px;
+    width: 1000px;
+  }
+
+  .city {
+    color: white;
+    font-size: 24px;
+    font-family: $company-font;
+    text-align: center;
+    text-shadow:  black 0 0 2px,
+                  black 0 0 2px,
+                  0 0 10px rgba(150, 150, 255, 1);
+
+    display: block;
+    position: absolute;
+
+    height: 40px;
+    width: 200px;
+    margin-top: -43px;
+    margin-left: -100px;
+    transition: all .5s;
+
+    @media (max-width: 1200px) {
+      font-size: 18px;
+      width: 160px;
+      margin-left: -80px;
+      margin-top: -30px;
+    }
+    @media (max-width: 992px) {
+      font-size: 16px;
+      width: 150px;
+      margin-left: -75px;
+    }
+    @media (max-width: 768px) {
+      font-size: 14px;
+      width: 100px;
+      margin-left: -50px;
+    }
+
+    &:hover {
+      letter-spacing: 3px;
+
+      @media (max-width: 768px) {
+        letter-spacing: 0;
+      }
+    }
+
+    &:hover .circle {
+      background-color: yellow;
+    }
+
+    .circle {
+      display: block;
+      width: 15px;
+      height: 15px;
+      border: 2px solid white;
+      border-radius: 50%;
+      margin: 0 auto;
+      transition: all .5s;
+
+      @media (max-width: 1200px) {
+        width: 12px;
+        height: 12px;
+      }
+      @media (max-width: 992px) {
+        width: 10px;
+        height: 10px;
+      }
+      @media (max-width: 768px) {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    &.almaty {
+      top: 78%;
+      left: 75%;
+    }
+    &.pertropavlovsk {
+      top: 7%;
+      left: 54%;
+    }
+    &.taraz {
+      top: 80%;
+      left: 60%;
+    }
+    &.shimkent {
+      top: 88%;
+      left: 54%;
+    }
+    &.qyzqylorda {
+      top: 68%;
+      left: 45%;
+    }
+    &.aqtobe {
+      top: 32%;
+      left: 29%;
+    }
+    &.aqtaw {
+      top: 65%;
+      left: 7%;
+    }
+    &.atyraw {
+      top: 42%;
+      left: 12%;
+    }
+    &.oral {
+      top: 20%;
+      left: 14%;
+    }
+    &.kostanay {
+      top: 14%;
+      left: 43%;
+    }
+    &.kokshetaw {
+      top: 18%;
+      left: 54%;
+    }
+    &.pavlodar {
+      top: 21%;
+      left: 73%;
+    }
+    &.astana {
+      top: 28%;
+      left: 58%;
+    }
+    &.qaragandy {
+      top: 38%;
+      left: 61%;
+    }
+    &.qaragandy {
+      top: 38%;
+      left: 61%;
+    }
+    &.semey {
+      top: 29%;
+      left: 80%;
+    }
+    &.oskemen {
+      top: 38%;
+      left: 86%;
+    }
+
+    .cityname {
+      @media (max-width: 450px) {
+        opacity: 0;
+      }
+    }
+
+  }
+}
+
+/*НАЧАЛО модальное окно карты */
+.modal-header,
+.modal-footer {
+  font-family: $company-font;
+  color: white;
+  letter-spacing: 1px;
+
+  background-color: $company-color;
+
+  .close {
+    font-size: 26px;
+    color: #FFFFFF;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .btn {
+    padding-bottom: 3px;
+    border-radius: 0;
+    color: black;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+
+.modal-body {
+  padding: 0;
+  height: 400px;
+
+}
+/*КОНЕЦ модальное окно карты */
+/* ------------------------------------------------
+--- КОНЕЦ карта (общ. для ГЛАВНОЙ И КОНТАКТЫ)-----
+--------------------------------------------------*/
+
+/* -------------------------------
+--- НАЧАЛО страницы Контакты -----
+----------------------------------*/
+/* НАЧАЛО разделитель */
+.bold-divider {
+  background: $company-color;
+  height: 13px;
+  width: 100%;
+}
+/* НАЧАЛО разделитель */
+/* КОНЕЦ адреса филиалов */
+.addresses {
+  font-size: 18px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
+  .address-item {
+    padding: 10px 25px;
+  }
+
+  h3 {
+    font-family: $company-font;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    margin: 10px 0 8px;
+
+    &.city-name {
+      display: inline-block;
+      padding-right: 25px;
+      border-bottom: 3px solid #595959;
+    }
+  }
+
+  .icon {
+    position: relative;
+    &::before {
+
+      position: absolute;
+      left: -25px;
+      top: 2px;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  .address::before {
+      content: url(../img/contacts/marker.png);
+  }
+
+  .phone-numbers::before {
+    content: url(../img/contacts/telephone.png);
+  }
+
+  .email::before {
+    content: url(../img/contacts/mail.png);
+  }
+
+  .work-schedule::before {
+    content: url(../img/contacts/clock.png);
+    top: 0;
+  }
+
+
+}
+
+/* КОНЕЦ адреса филиалов */
+/* -------------------------------
+--- КОНЕЦ страницы Контакты -----
+----------------------------------*/
+/* -------------------------------
+--- НАЧАЛО страницы Каталог статей -----
+----------------------------------*/
+.articles-list {
+  .article-item {
+    padding: 10px 35px;
+
+    &::after {
+      content: url(../img/articles/article-shadow.png);
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #040466;
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
+
+  .article-date {
+    color: #ff0101;
+  }
+
+  //стили для троеточия и ограничения кол-ва строк текста.
+    /* styles for '...' */
+  .article-fragment {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.4em;
+    /* max-height = line-height (1.2) * lines max number (7) */
+    max-height: 9.8em;
+    /* fix problem when last visible word doesn't adjoin right side  */
+    word-break: break-all;
+    /* place for '...' */
+    margin-right: -1em;
+    padding-right: 1em;
+  }
+  /* create the ... */
+  .article-fragment::before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+  }
+  /* hide ... if we have text, which is less than or equal to max lines */
+  .article-fragment::after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+  }
+
+  button.btn {
+    font-size: 12px;
+    border-radius: 0;
+    color: white;
+
+    display: block;
+    margin-bottom: 20px;
+    background: #bbb;
+
+    &:hover {
+      background: #aaa;
+    }
+  }
+}
+
+/* -------------------------------
+--- КОНЕЦ страницы Каталог статей  ----
+----------------------------------*/
+/* -------------------------------
+--- НАЧАЛО страницы Одиночния статья  ----
+----------------------------------*/
+
+.single-article {
+  .article {
+    text-align: justify;
+    position: relative;
+    padding: 0 30px;
+
+    &:after {
+      content: url(../img/articles/single-article-right-shadow.png);
+      position: absolute;
+      right: -10px;
+      top: 0;
+      z-index: -1;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    img {
+      border: 1px solid #040466;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 0;
+
+    &.other-news {
+      border-bottom: 2px #284094 solid;
+      margin-bottom: 30px;
+    }
+  }
+
+  .article-date {
+    color: #ff0101;
+  }
+
+  .other-article {
+    text-align: center;
+    background: 50% 100% url(../img/articles/article-shadow.png) no-repeat;
+    padding-bottom: 10px;
+    margin-top: 10px;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #040466;
+    }
+
+    button.btn {
+      font-size: 12px;
+      border-radius: 0;
+      color: white;
+
+      display: block;
+      margin: 0 auto 20px;
+      background: #bbb;
+
+      &:hover {
+        background: #aaa;
+      }
+    }
+  }
+}
+/* -------------------------------
+--- КОНЕЦ страницы Одиночния статья  ----
+----------------------------------*/
+/* -------------------------------
+--- НАЧАЛО страницы Каталог товаров  ----
+----------------------------------*/
+.filter {
+  @media (max-width: 768px) {
+    padding: 0 50px;
+  }
+
+  h3 {
+    color: $company-color;
+  }
+
+  button,
+  button:focus,
+  button:active {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    position: relative;
+
+    span {
+      color: #999;
+    }
+  }
+
+  .collapse {
+    padding-left: 25px;
+    transition: all .5s;
+  }
+
+  label {
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+
+  input[type=checkbox] {
+    vertical-align: sub;
+  }
+
+  input[type=text] {
+    display: block;
+    border-radius: 3px;
+    border: 1px #aaa solid;
+    padding: 5px;
+    max-width: 100%;
+    margin-bottom: 5px;
+  }
+
+}
+
+.products-list {
+  .item {
+    position: relative;
+    padding: 10px 25px;
+
+    .square {
+      border: 8px solid $company-color;
+      position: absolute;
+      top: 0;
+      left: 50px;
+      right: 10px;
+      bottom: 70px;
+      z-index: -1;
+
+      opacity: 0;
+      transition: .7s all;
+    }
+
+    &:hover .square {
+      opacity: 1;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    h4 {
+      padding: 5px 0;
+      text-align: center;
+    }
+
+    &:hover h4 {
+      background-color: #dadae8;
+    }
+  }
+}
+
+/* -------------------------------
+--- КОНЕЦ страницы Каталог товаров  ----
+----------------------------------*/
+
+/* -------------------------------
+--- НАЧАЛО страницы Одиночный товар  ----
+----------------------------------*/
+/* НАЧАЛО одиночный товар */
+.single-product {
+  padding-top: 2%;
+
+  .preview-col {
+    background: 100% 50%/auto 100% url(../img/product/shadow-vertical.png) no-repeat;
+
+    @media (min-width: 768px) {
+      padding-right: 50px;
+    }
+  }
+
+  .summary-col {
+    text-align: justify;
+    text-indent: 30px;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    @media (min-width: 768px) {
+      padding-left: 30px;
+    }
+  }
+
+  .product-main-photo {
+    background: 50% 100%/100% auto url(../img/product/shadow-bottom.png) no-repeat;
+    padding-bottom: 4%;
+    margin-bottom: 4%;
+    position: relative;
+
+    img {
+      width: 90%;
+      max-height: 350px;
+      margin: 0 auto;
+      padding-top: 5%;
+    }
+
+    .square {
+      border: 8px solid $company-color;
+
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      bottom: 100px;
+      right: 150px;
+    }
+  }
+
+  .thumb img {
+    border: 3px solid $company-color;
+    padding: 5%;
+  }
+}
+/* КОНЕЦ одиночный товар */
+
+/* НАЧАЛО табы и содержимое */
+.single-product-tabs {
+  .tabs {
+    font-family: $company-font;
+    font-size: 24px;
+    text-align: center;
+
+    border: 1px solid #626262;
+    background-color: #d1d1d1;
+
+    display: flex;
+    flex-flow: row wrap;
+
+    li {
+      flex: 1 1 auto;
+
+      @media (max-width: 768px) {
+        flex-basis: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      & + li {
+        border-left: 1px solid #626262;
+      }
+
+      a {
+        padding-bottom: 5px;
+
+        @media (max-width: 768px) {
+          padding: 5px 5px 2px;
+        }
+      }
+    }
+  }
+
+  li.active a,
+  li.active a:hover,
+  li.active a:focus,
+  li.active a:active {
+    background-color: $company-color;
+
+    color: white;
+  }
+
+  .nav-tabs>li.active>a,
+  .nav-tabs>li.active>a:focus,
+  .nav-tabs>li.active>a:hover {
+    border: none;
+    border-radius: 0;
+  }
+
+  .tab-content {
+    border: 5px solid $company-color;
+    border-top: none;
+    padding: 10px 20px;
+  }
+
+  .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: rgba(4, 4, 102, 0.1);
+  }
+}
+/* КОНЕЦ табы и содержимое */
+
+
+/* -------------------------------
+--- КОНЕЦ страницы Одиночный товар  ----
+----------------------------------*/
