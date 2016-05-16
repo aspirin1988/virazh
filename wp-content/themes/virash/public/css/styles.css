@@ -837,6 +837,9 @@ footer {
   max-width: 100%;
   margin-bottom: 5px; }
 
+.products-list .products {
+  display: flex;
+  flex-flow: row wrap; }
 .products-list .item {
   position: relative;
   padding: 10px 25px; }

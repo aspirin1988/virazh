@@ -1,3 +1,4 @@
+<?php include_once ('woo_cat.php')?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -255,7 +256,7 @@
 
 	<?php
 
-do_action( 'woocommerce_before_main_content','»' );
+do_action( 'woocommerce_before_main_content' );
 
 function the_breadcrumb() {
 	if (!is_front_page()) {

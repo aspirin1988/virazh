@@ -1,4 +1,44 @@
-<?php get_header() ?>
+<?php get_header();
+
+$wo_filter=get_products_cat_by_slug_parent('products');
+
+//print_r($wo_filter);
+$current_filter=array();
+foreach ($_GET as $key=>$value)
+{
+	if ($value='on') {
+		$current_filter[$key] = $value;
+	}
+}
+print_r($current_filter);
+$args = array( 		'taxonomy'     => 'product_cat' );
+$query = new WP_Query( $args );
+
+function check(array $filter, $patern, $true='checked="checked"', $false='')
+{
+	foreach ($filter as $keys => $values) {
+		if (($patern->slug == $keys)) { return $true; }
+	}
+	return $false;
+}
+
+function collapse ($level,$filter){
+ foreach ($level as $value)
+ {
+	 foreach ($filter as $key=>$value1)
+	 {
+
+		 if ($value->slug==$key)
+		 {
+			 return true;
+		 }
+	 }
+ }
+	return false;
+}
+
+?>
+
 
 <!-- НАЧАЛО заголовок с декор-рамкой-->
 <div class="container text-center">
@@ -12,75 +52,40 @@
 <!-- НАЧАЛО список статей-->
 <div class="container products-catalog">
 	<div class="row">
-		<div class="col-sm-3 filter">
+
+		<form action="" method="get" class="col-sm-3 filter">
 			<h3>Вид транспорта</h3>
+			<?php foreach ($wo_filter as $key => $val): ?>
 			<div>
-				<button type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false"
-						aria-controls="collapse1">
-					<span class="glyphicon glyphicon-plus"></span> <input type="checkbox"> Mercedes-Benz
+			<?php $collapse=false; $level1=get_products_cat_by_slug_parent($val->slug); $collapse=collapse($level1,$current_filter); if (!$level1): ?>
+				<input type="checkbox" id="<?=$val->slug?>" name="<?=$val->slug?>" <?=check($current_filter,$val)?> > <label for="aklasse"><?=$val->name?></label><br><?=$collapse?>
+			<?php else: ?>
+				<button type="button" data-toggle="collapse" data-target="#<?=$val->slug?>" aria-expanded="false"
+						aria-controls="<?=$val->slug?>">
+					<span class="glyphicon glyphicon-<?php if ($collapse){echo'minus';}else{echo'plus';} ?>"></span> <input  type="checkbox" name="<?=$val->slug?>" <?=check($current_filter,$val)?> ><?=$val->name?>
 				</button>
-				<div class="collapse" id="collapse1">
-					<input type="checkbox" id="aklasse"> <label for="aklasse">A-Klasse</label><br>
-					<input type="checkbox" id="bklasse"> <label for="bklasse">B-Klasse</label><br>
-					<input type="checkbox" id="cklasse"> <label for="cklasse">C-Klasse</label><br>
-					<button type="button" data-toggle="collapse" data-target="#eklasse" aria-expanded="false"
-							aria-controls="eklasse">
-						<span class="glyphicon glyphicon-plus"></span> <input type="checkbox"> E-Klasse
-					</button>
-					<div class="collapse" id="eklasse">
-						<input type="checkbox" id="e200"> <label for="e200">E200</label><br>
-						<input type="checkbox" id="e240"> <label for="e240">E240</label><br>
-						<input type="checkbox" id="e320"> <label for="e320">E320</label><br>
-						<input type="checkbox" id="e550"> <label for="e550">E550</label><br>
-					</div>
+				<div class="collapse <?php if($collapse){echo 'in';}; ?>" id="<?=$val->slug?>">
+					<?php foreach (get_products_cat_by_slug_parent($val->slug) as $key1=> $val1): ?>
+						<?php $collapse=false; $level2=get_products_cat_by_slug_parent($val1->slug); $collapse=collapse($level2,$current_filter); if (!$level2): ?>
+						<input type="checkbox" name="<?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter,$val1); ?> > <label for="aklasse"><?=$val1->name?></label><br>
+						<?php else: ?>
+							<button type="button" data-toggle="collapse" data-target="#<?=$val1->slug?>" aria-expanded="false"
+									aria-controls="<?=$val1->slug?>">
+								<span class="glyphicon glyphicon-<?php if ($collapse){echo'minus';}else{echo'plus';} ?>"></span> <input name="<?=$val1->slug?>" type="checkbox" <?=check($current_filter,$val1); ?>><?=$val1->name?>
+							</button>
+							<div class="collapse <?php if($collapse){echo 'in';}; ?>" id="<?=$val1->slug?>">
+							<?php foreach (get_products_cat_by_slug_parent($val1->slug) as $key2=> $val2): ?>
+								<input name="<?=$val2->slug?>" type="checkbox" id="<?=$val1->slug?>" <?=check($current_filter,$val2); ?> > <label for="aklasse"><?=$val2->name?></label><br>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+					<?php endforeach;?>
 				</div>
+				<?php endif; ?>
 			</div>
-			<div>
-				<button type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false"
-						aria-controls="collapse2">
-					<span class="glyphicon glyphicon-plus"></span> <input type="checkbox"> BMW
-				</button>
-				<div class="collapse" id="collapse2">
-					<button type="button" data-toggle="collapse" data-target="#1series" aria-expanded="false"
-							aria-controls="1series">
-						<span class="glyphicon glyphicon-plus"></span> <input type="checkbox"> 1-series
-					</button>
-					<div class="collapse" id="1series">
-						<input type="checkbox" id="sub2series114"> <label for="sub2series114">114</label><br>
-						<input type="checkbox" id="sub2series116"> <label for="sub2series116">116</label><br>
-						<input type="checkbox" id="sub2series118"> <label for="sub2series118">118</label><br>
-						<input type="checkbox" id="sub2series120"> <label for="sub2series120">120</label><br>
-					</div>
-					<button type="button" data-toggle="collapse" data-target="#2series" aria-expanded="false"
-							aria-controls="1series">
-						<span class="glyphicon glyphicon-plus"></span> <input type="checkbox"> 2-series
-					</button>
-					<div class="collapse" id="2series">
-						<input type="checkbox" id="sub2series214"> <label for="sub2series214">214</label><br>
-						<input type="checkbox" id="sub2series216"> <label for="sub2series216">216</label><br>
-						<input type="checkbox" id="sub2series218"> <label for="sub2series218">218</label><br>
-						<input type="checkbox" id="sub2series220"> <label for="sub2series220">220</label><br>
-					</div>
-					<input type="checkbox" id="3series"> <label for="3series">3-series</label><br>
-					<input type="checkbox" id="5series"> <label for="5series">5-series</label><br>
-					<input type="checkbox" id="6series"> <label for="6series">6-series</label><br>
-					<input type="checkbox" id="7series"> <label for="7series">7-series</label><br>
-				</div>
-			</div>
-			<div>
-				<button type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false"
-						aria-controls="collapse3">
-					<span class="glyphicon glyphicon-plus"></span> <input type="checkbox"> Audi
-				</button>
-				<div class="collapse" id="collapse3">
-					<input type="checkbox" id="a1Series"> <label for="a1Series">A1-series</label><br>
-					<input type="checkbox" id="a2Series"> <label for="a2Series">A2-series</label><br>
-					<input type="checkbox" id="a4Series"> <label for="a4Series">A4-series</label><br>
-					<input type="checkbox" id="a6Series"> <label for="a6Series">A6-series</label><br>
-					<input type="checkbox" id="a8Series"> <label for="a8Series">A8-series</label><br>
-					<input type="checkbox" id="ttSeries"> <label for="ttSeries">TT-series</label><br>
-				</div>
-			</div>
+			<?php endforeach; ?>
+
+
 			<h3>Опции</h3>
 			<input type="checkbox" id="option1"> <label for="option1">Опция 1</label><br>
 			<input type="checkbox" id="option2"> <label for="option2">Опция 2</label><br>
@@ -94,56 +99,42 @@
 			<input type="text" id="priceFrom">
 			<label for="priceTo">Цена до:</label>
 			<input type="text" id="priceTo">
+			<input type="submit">
+		</form>
 
-		</div>
 		<div class="col-sm-9 products-list">
 			<div class="row">
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
-				<div class="col-md-4 col-sm-6 item">
-					<a href="#"><img src="img/products/auto.png" class="img-responsive"></a>
-					<h4><a href="#">Название товара</a></h4>
-					<div class="square"></div>
-				</div>
+
+				<?php if ( have_posts() ) : ?>
+
+					<?php woocommerce_product_loop_start(); ?>
+
+					<?php woocommerce_product_subcategories(); ?>
+
+					<?php while ( have_posts() ) : the_post(); ?>
+
+						<?php wc_get_template_part( 'content', 'product' ); ?>
+
+					<?php endwhile; // end of the loop. ?>
+
+					<?php woocommerce_product_loop_end(); ?>
+
+					<?php
+					/**
+					 * woocommerce_after_shop_loop hook.
+					 *
+					 * @hooked woocommerce_pagination - 10
+					 */
+					do_action( 'woocommerce_after_shop_loop' );
+					?>
+
+				<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
+
+					<?php wc_get_template( 'loop/no-products-found.php' ); ?>
+
+				<?php endif; ?>
 			</div>
+
 			<ul class="pagination">
 				<li>
 					<a href="#" aria-label="Previous">
@@ -167,66 +158,8 @@
 <!-- КОНЕЦ список статей-->
 
 
-<?php
-/**
- * The Template for displaying product archives, including the main shop page which is a post type archive
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/archive-product.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
- * will need to copy the new files to your theme to maintain compatibility. We try to do this.
- * as little as possible, but it does happen. When this occurs the version of the template file will.
- * be bumped and the readme will list any important changes.
- *
- * @see 	    http://docs.woothemes.com/document/template-structure/
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     2.0.0
- */
-
-/*if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}*/
-
-//get_header( 'shop' ); ?>
-
-	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
-	?>
-
-		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
-			<h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
-
-		<?php endif; ?>
-
-		<?php
-			/**
-			 * woocommerce_archive_description hook.
-			 *
-			 * @hooked woocommerce_taxonomy_archive_description - 10
-			 * @hooked woocommerce_product_archive_description - 10
-			 */
-			do_action( 'woocommerce_archive_description' );
-		?>
 
 		<?php if ( have_posts() ) : ?>
-
-			<?php
-				/**
-				 * woocommerce_before_shop_loop hook.
-				 *
-				 * @hooked woocommerce_result_count - 20
-				 * @hooked woocommerce_catalog_ordering - 30
-				 */
-				do_action( 'woocommerce_before_shop_loop' );
-			?>
 
 			<?php woocommerce_product_loop_start(); ?>
 

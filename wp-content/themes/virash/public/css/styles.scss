@@ -1170,6 +1170,11 @@ footer {
 }
 
 .products-list {
+  .products {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
   .item {
     position: relative;
     padding: 10px 25px;
