@@ -119,7 +119,7 @@
 function get_product_cat_bu_slug ($slug){
 	$args = array(
 		'child_of'     => 0,
-		'parent'       => 0,
+		'parent'       => '',
 		'orderby'      => 'id',
 		'order'        => 'ASC',
 		'hide_empty'   => 1,

@@ -252,14 +252,18 @@
 		</div><!-- /.navbar-collapse -->
 	</nav>
 	<!--КОНЕЦ навбар-->
+
 	<?php
+
+do_action( 'woocommerce_before_main_content','»' );
+
 function the_breadcrumb() {
 	if (!is_front_page()) {
 		echo '<a href="';
 		echo get_option('home');
 		echo '">Главная';
 		echo "</a> » ";
-		if (is_category() || is_single()) {
+		if ((is_category() || is_single())) {
 			the_category(' ');
 			if (is_single()) {
 				echo " » ";
@@ -301,8 +305,4 @@ function get_child($menu,$parent=0)
 	}
 	return $child;
 }
-
-
-
-
 ?>
