@@ -69,17 +69,16 @@ ul {
     background-color: lighten($company-color, 10%)
   }
 }
-
-.breadcrumb {
+.breadcrumb{
+  color: #777777;
+}
+.breadcrumb a {
   background: none;
   color: $company-color;
   margin-top: 1%;
 }
 
 .breadcrumb>li+li:before {
-  padding: 0 5px;
-  color: #ccc;
-  content: ">";
 }
 
 .title-square-container {
@@ -858,7 +857,7 @@ footer {
     padding-bottom: 3px;
     border-radius: 0;
     color: black;
-
+    background: #DDD;
     &:hover {
       background-color: white;
     }
@@ -1026,14 +1025,14 @@ footer {
     background: white;
   }
 
-  button.btn {
+  a.btn {
     font-size: 12px;
     border-radius: 0;
     color: white;
-
+    max-width:120px;
     display: block;
     margin-bottom: 20px;
-    background: #bbb;
+    background: #DDD;
 
     &:hover {
       background: #aaa;
@@ -1099,14 +1098,14 @@ footer {
       border: 1px solid #040466;
     }
 
-    button.btn {
+   a.btn {
+     display: inline-block;
       font-size: 12px;
       border-radius: 0;
       color: white;
-
-      display: block;
+      max-width:120px;
       margin: 0 auto 20px;
-      background: #bbb;
+      background: #DDD;
 
       &:hover {
         background: #aaa;

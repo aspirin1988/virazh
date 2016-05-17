@@ -87,175 +87,26 @@
 
 		}
 		?>
-
-				<li>
-					<a href="#">Финансовые продукты</a>
-					<div class="submenu subfinancial row">
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Кредит</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Рассрочка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Лизинг</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li>
-					<a href="#">Сервис</a>
-					<div class="submenu subservice row">
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li>
-					<a href="#">Зап. части</a>
-					<div class="submenu subautoparts row">
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li>
-					<a href="#">Акции</a>
-					<div class="submenu subakcii row">
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Субссылка</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li>
-					<a href="#">Новости</a>
-					<div class="submenu subnews row">
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Раздел новостей</a></h5></li>
-								<li><a href="articles.html">Каталог статьей</a></li>
-								<li><a href="single_article.html">Одная статья</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Раздел новостей</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-4">
-							<ul>
-								<li><h5><a href="#">Раздел новостей</a></h5></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-								<li><a href="#">Ссылка</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li><a href="contacts.html">Контакты</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</nav>
 	<!--КОНЕЦ навбар-->
-
+	<div class="container">
+	<ol class="breadcrumb pull-right" >
 	<?php
-woocommerce_breadcrumb(array('delimiter'=>' > ', 'home'=>'Главная' ));
+
+woocommerce_breadcrumb(array(
+	'delimiter'=>' > ',
+	'home'=>'Главная',
+	'wrap_before' => '<li>',
+	'wrap_after'  => '</li>',
+	'before'      => '',
+
+));
+?>
+	</ol>
+	</div>
+<?php
 
 
 /*function the_breadcrumb() {

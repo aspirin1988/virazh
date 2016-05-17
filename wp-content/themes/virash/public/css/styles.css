@@ -53,14 +53,12 @@ ul {
     background-color: #060697; }
 
 .breadcrumb {
+  color: #777777; }
+
+.breadcrumb a {
   background: none;
   color: #040466;
   margin-top: 1%; }
-
-.breadcrumb > li + li:before {
-  padding: 0 5px;
-  color: #ccc;
-  content: ">"; }
 
 .title-square-container {
   position: relative;
@@ -612,7 +610,8 @@ footer {
   .modal-footer .btn {
     padding-bottom: 3px;
     border-radius: 0;
-    color: black; }
+    color: black;
+    background: #DDD; }
     .modal-header .btn:hover,
     .modal-footer .btn:hover {
       background-color: white; }
@@ -737,14 +736,15 @@ footer {
     margin-top: 0.2em;
     /* bg color = bg color under block */
     background: white; }
-  .articles-list button.btn {
+  .articles-list a.btn {
     font-size: 12px;
     border-radius: 0;
     color: white;
+    max-width: 120px;
     display: block;
     margin-bottom: 20px;
-    background: #bbb; }
-    .articles-list button.btn:hover {
+    background: #DDD; }
+    .articles-list a.btn:hover {
       background: #aaa; }
 
 /* -------------------------------
@@ -787,14 +787,15 @@ footer {
     display: block;
     margin: 0 auto;
     border: 1px solid #040466; }
-  .single-article .other-article button.btn {
+  .single-article .other-article a.btn {
+    display: inline-block;
     font-size: 12px;
     border-radius: 0;
     color: white;
-    display: block;
+    max-width: 120px;
     margin: 0 auto 20px;
-    background: #bbb; }
-    .single-article .other-article button.btn:hover {
+    background: #DDD; }
+    .single-article .other-article a.btn:hover {
       background: #aaa; }
 
 /* -------------------------------
