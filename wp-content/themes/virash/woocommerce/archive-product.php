@@ -1,17 +1,28 @@
 <?php get_header();
 
-
-
 $wo_filter=get_products_cat_by_slug_parent('products');
+$dop_param=wc_get_attribute_taxonomy_names();
+$dop_param_label=wc_get_attribute_taxonomies();
 $current_filter=array();
 foreach ($wo_filter as $key_cat=>$val_cat) {
 	foreach ($_GET as $key => $value) {
 		if ($value == 'on') {
 			$cat = explode($val_cat->term_id, $key);
 			if (substr_count($key, $val_cat->term_id)) {
-				$current_filter[$val_cat->slug][$cat[1]]['param']['value'] = $cat[1];
-				$current_filter[$val_cat->slug][$cat[1]]['param']['slug'] = $key;
-				$current_filter[$val_cat->slug]['filter_id'][] = get_id_products_cat_by_slug_parent($cat[1]);
+				$current_filter['one'][$val_cat->slug][$cat[1]]['param']['value'] = $cat[1];
+				$current_filter['one'][$val_cat->slug][$cat[1]]['param']['slug'] = $key;
+				$current_filter['one'][$val_cat->slug]['filter_id'][] = get_id_products_cat_by_slug_parent($cat[1]);
+			}
+			else
+			{
+				foreach ($dop_param_label as $key1=>$val1) {
+					if (substr_count($key, 'pa_'.$val1->attribute_name)) {
+						$cat = explode('pa_'.$val1->attribute_name, $key);
+						$current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['value'] = str_replace('_','.',$cat[1]);
+						$current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['slug'] = 'pa_'.$val1->attribute_name;
+					}
+				}
+
 			}
 		} else {
 
@@ -21,16 +32,23 @@ foreach ($wo_filter as $key_cat=>$val_cat) {
 		}
 	}
 }
+//print_r($current_filter);
+$current_cat=get_queried_object();
+//echo '<br>exemple <br> Array ( [one] => Array ( [types_of_transport] => Array ( [cars] => Array ( [param] => Array ( [value] => cars [slug] => 15cars ) ) [filter_id] => Array ( [0] => 8 ) ) ) [priceFrom] => [priceTo] => )<br>';
 if (!$current_filter)
 {
-	$current_cat=get_queried_object();
-	$current_filter['cat_'.$current_cat->slug]['value'] = $current_cat->slug;
-	$current_filter['filter_id'][] = $current_cat->term_id;
+	$current_filter['one']['types_of_transport'][$current_cat->slug]['param']['value'] = $current_cat->slug;
+	$current_filter['one']['types_of_transport'][$current_cat->slug]['param']['slug'] = '15'.$current_cat->slug;
+	$current_filter['one']['types_of_transport']['filter_id'][] = $current_cat->term_id;
+	$current_filter['priceFrom']=null;
+	$current_filter['priceTo']=null;
 }
-print_r($wo_filter);
-echo '<br><br>';
-print_r($current_filter);
-$filter_array=array(
+//print_r($current_filter);
+//print_r($wo_filter);
+//echo '<br><br>';
+
+
+/*$filter_array=array(
 	'orderby'      => 'id',
 	'order'        => 'ASC',
 	'tax_query' => array(
@@ -41,7 +59,7 @@ $filter_array=array(
 			'operator' => 'in',
 		)
 	)
-);
+);*/
 
 $filter_array=array(
 	'orderby'      => 'id',
@@ -52,7 +70,7 @@ $filter_array=array(
 );
 
 $count=0;
-foreach ($current_filter as $value)
+foreach ($current_filter['one'] as $value)
 {
 	if (gettype($value)=='array') {
 		$count++;
@@ -67,29 +85,57 @@ foreach ($current_filter as $value)
 	{
 		$filter_array['tax_query']['relation'] = 'AND';
 	}
+
+
+}
+if ($count==0){
+	$filter_array['tax_query']['relation'] = 'OR';
+	$filter_array['tax_query'][] = array(
+		'taxonomy' => 'product_cat',
+		'field' => 'slug',
+		'terms' => 'products',
+		'operator' => 'IN',
+
+	);
 }
 
-echo  '<br>';
-echo  '<br>';
+//echo  '<br>';
+//echo  '<br>';
+//print_r($filter_array);
+//echo  '<br>';
+//print_r($dop_param);
+//echo  '<br>';
+//print_r($dop_param_label);
+//echo  '<br>';
 
-print_r($filter_array);
 
-$dop_param=wc_get_attribute_taxonomies();
+//print_r($dop_param);
 
 // Подмена запроса на свой !!!
-query_posts( $filter_array );
-//print_r();
+$temp_post=query_posts( $filter_array );
+//print_r($temp_post[0]->ID);
 
-function check(array $filter, $patern, $true='checked="checked"', $false='')
+
+
+$meta=array();
+foreach ($temp_post as $value) {
+	foreach ($dop_param_label as $value1) {
+		$attr=wp_get_post_terms($value->ID, 'pa_'.$value1->attribute_name);
+		$meta['pa_'.$value1->attribute_name]['lable']=$value1->attribute_label;
+		$meta['pa_'.$value1->attribute_name]['value'][$attr[0]->name]=$attr[0]->name;
+	}
+}
+//print_r($meta);
+
+function check($filter, $patern, $true='checked="checked"', $false='')
 {
-
-	foreach ($filter as $keys => $values) {
-		foreach ($values as $keys1 => $values1) {
-			if (($patern->slug == $values1['param']['value'])) {
-				return $true;
+		foreach ($filter as $keys => $values) {
+			foreach ($values as $keys1 => $values1) {
+				if (($patern == $values1['param']['value'])) {
+					return $true;
+				}
 			}
 		}
-	}
 	return $false;
 }
 
@@ -129,8 +175,8 @@ function collapse ($level,$filter){
 			<h3>Фильтр</h3>
 			<?php foreach ($wo_filter as $key => $val): ?>
 			<div>
-			<?php $collapse=false; $level1=get_products_cat_by_slug_parent($val->slug); $collapse=collapse($level1,$current_filter); if (!$level1): ?>
-				<input type="checkbox" id="<?=$val->slug?>" name="<?=$val->slug?>" <?=check($current_filter,$val)?> > <label for="aklasse"><?=$val->name?></label><br><?=$collapse?>
+			<?php $collapse=false; $level1=get_products_cat_by_slug_parent($val->slug); $collapse=collapse($level1,$current_filter['one']); if (!$level1): ?>
+				<input type="checkbox" id="<?=$val->slug?>" name="<?=$val->slug?>" <?=check($current_filter['one'],$val->slug)?> > <label for="aklasse"><?=$val->name?></label><br><?=$collapse?>
 			<?php else: ?>
 				<button type="button" data-toggle="collapse" data-target="#<?=$val->slug?>" aria-expanded="false"
 						aria-controls="<?=$val->slug?>">
@@ -138,17 +184,17 @@ function collapse ($level,$filter){
 				</button>
 				<div class="collapse in" id="<?=$val->slug?>">
 					<?php foreach (get_products_cat_by_slug_parent($val->slug) as $key1=> $val1): ?>
-						<?php $collapse=false; $level2=get_products_cat_by_slug_parent($val1->slug); $collapse=collapse($level2,$current_filter); if (!$level2): ?>
-						<input type="checkbox" name="<?=$val->cat_ID?><?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter,$val1); ?> > <label for="aklasse"><?=$val1->name?></label><br>
+						<?php $collapse=false; $level2=get_products_cat_by_slug_parent($val1->slug); $collapse=collapse($level2,$current_filter['one']); if (!$level2): ?>
+						<input type="checkbox" name="<?=$val->cat_ID?><?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val1->slug); ?> > <label for="aklasse"><?=$val1->name?></label><br>
 						<?php else: ?>
 							<button type="button" data-toggle="collapse" data-target="#<?=$val1->slug?>" aria-expanded="false"
 									aria-controls="<?=$val1->slug?>">
 								<span class="glyphicon glyphicon-<?php if ($collapse){echo'minus';}else{echo'plus';} ?>"></span> 
-								<input name="<?=$val->cat_ID?><?=$val1->slug?>" type="checkbox" <?=check($current_filter,$val1); ?>><?=$val1->name?>
+								<input name="<?=$val->cat_ID?><?=$val1->slug?>" type="checkbox" <?=check($current_filter['one'],$val1->slug); ?>><?=$val1->name?>
 							</button>
 							<div class="collapse <?php if($collapse){echo 'in';}; ?>" id="<?=$val1->slug?>">
 							<?php foreach (get_products_cat_by_slug_parent($val1->slug) as $key2=> $val2): ?>
-								<input name="<?=$val->cat_ID?><?=$val2->slug?>" type="checkbox" id="<?=$val1->slug?>" <?=check($current_filter,$val2); ?> > <label for="aklasse"><?=$val2->name?></label><br>
+								<input name="<?=$val->cat_ID?><?=$val2->slug?>" type="checkbox" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="aklasse"><?=$val2->name?></label><br>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>
@@ -159,14 +205,27 @@ function collapse ($level,$filter){
 				<br>
 			<?php endforeach; ?>
 
-
 			<h3>Опции</h3>
+			<?php foreach ($meta as $key => $val): if ($key!=''): ?>
+			<div>
+				<button type="button" data-toggle="collapse" data-target="#<?=$key?>" aria-expanded="false"
+						aria-controls="<?=$key?>">
+					<?=$val['lable']?>
+				</button>
+				<div class="collapse in" id="<?=$key?>">
+					<?php foreach ($val['value'] as $key1 => $val1): if ($key1!=''&&$val1!=''):  ?>
+					<input type="checkbox" name="<?=$key?><?=$val1?>" <?=check($current_filter['second'],$val1); ?> id="<?=$val1?>"> <label for="aklasse"><?=$val1?></label><br>
+					<?php endif; endforeach; ?>
+				</div>
+			</div>
+			<?php endif; endforeach; ?>
+			<!--<h3>Опции</h3>
 			<input type="checkbox" id="option1"> <label for="option1">Опция 1</label><br>
 			<input type="checkbox" id="option2"> <label for="option2">Опция 2</label><br>
 			<input type="checkbox" id="option3"> <label for="option3">Опция 3</label><br>
 			<input type="checkbox" id="option4"> <label for="option4">Опция 4</label><br>
 			<input type="checkbox" id="option5"> <label for="option5">Опция 5</label><br>
-			<input type="checkbox" id="option6"> <label for="option6">Опция 6</label><br>
+			<input type="checkbox" id="option6"> <label for="option6">Опция 6</label><br>-->
 
 			<h3>Цена</h3>
 			<label for="priceFrom">Цена от:</label>
@@ -189,10 +248,83 @@ function collapse ($level,$filter){
 
 						<?php $display=false;
 						$price=get_metadata('post', get_the_ID(), '_regular_price', true);
-						if (isset($current_filter['priceFrom']['value']) && $current_filter['priceFrom']!=''&& isset($current_filter['priceTo']) && $current_filter['priceTo']!='')
+						$price_param=array();
+						if (isset($current_filter['priceFrom']) && $current_filter['priceFrom']!='')
 						{
-							if ($price >= $current_filter['priceFrom']&&$price <= $current_filter['priceTo']) {
+							$price_param['from']['value']=$current_filter['priceFrom'];
+							$price_param['from']['name']='from';
+						}
+
+						if (isset($current_filter['priceTo']) && $current_filter['priceTo']!='')
+						{
+							$price_param['to']['value']=$current_filter['priceTo'];
+							$price_param['to']['name']='to';
+						}
+						switch (count($price_param))
+						{
+							case 1:
+
+								if(isset($price_param['from'])) {
+									if ((int)$price >= (int)$price_param['from']['value']) {
+										$display = true;
+									} else {
+										$display = false;
+									}
+								}
+								else
+								{
+									if ((int)$price <= (int)$price_param['to']['value']) {
+										$display = true;
+									} else {
+										$display = false;
+									}
+								}
+								break;
+							case 2:
+								if ((int)$price >= (int)$price_param['from']['value']&& (int)$price <= (int)$price_param['to']['value']) {
+									$display=true;
+								}
+								else {
+									$display = false;
+								}
+								break;
+							default:
+								$display=true;
+								break;
+
+						}
+
+						$dop_display=array();
+						foreach ($current_filter['second'] as $value){
+							foreach ($value as $val)
+							{
+								global $product;
+
+								if ($product->get_attribute($val['param']['slug'])==$val['param']['value'])
+								{
+									$dop_display[$val['param']['slug']]=true;
+									$display=true;
+									break;
+								}
+								else
+								{
+									$dop_display[$val['param']['slug']]=false;
+									$display=false;
+								}
+							}
+						}
+						$dop_display_b=true;
+						foreach ($dop_display as $value)
+						{
+							$dop_display_b= $dop_display_b*$value;
+						}
+						/*if (isset($current_filter['priceFrom']) && $current_filter['priceFrom']!=''&& isset($current_filter['priceTo']) && $current_filter['priceTo']!='')
+						{
+							if ((int)$price >= (int)$current_filter['priceFrom']&& (int)$price <= (int)$current_filter['priceTo']) {
 							$display=true;
+							}
+							else {
+								$display = false;
 							}
 						}
 						else {
@@ -215,8 +347,8 @@ function collapse ($level,$filter){
 								}
 
 							}
-						}
-						if ($display) {
+						}*/
+						if ($display&&$dop_display_b) {
 							$count_product++;
 							wc_get_template_part('content', 'product');
 						}

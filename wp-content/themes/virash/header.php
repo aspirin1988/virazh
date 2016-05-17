@@ -255,10 +255,10 @@
 	<!--КОНЕЦ навбар-->
 
 	<?php
+woocommerce_breadcrumb(array('delimiter'=>' > ', 'home'=>'Главная' ));
 
-do_action( 'woocommerce_before_main_content' );
 
-function the_breadcrumb() {
+/*function the_breadcrumb() {
 	if (!is_front_page()) {
 		echo '<a href="';
 		echo get_option('home');
@@ -279,7 +279,7 @@ function the_breadcrumb() {
 	}
 }
 
-the_breadcrumb();
+the_breadcrumb();*/
 
 function isset_child($menu,$parent=0)
 {
