@@ -2,7 +2,6 @@
 
 <footer>
 	<div class="container">
-		<h4 class="text-uppercase">Автосалоны Вираж</h4>
 		<div class="row">
 			<?php $menu=wp_get_nav_menu_items('footer'); /*print_r($menu);*/ $title=get_post();/* print_r($menu);*/
 			foreach ($menu as $key=>$val) : if ($val->menu_item_parent==0):?>
@@ -17,6 +16,8 @@
 			<?php endif; endforeach; ?>
 			<div class="col-md-2 col-sm-6 hidden-xs">
 			</div>
+			<h4 class="text-uppercase footer-h4">Автосалоны Вираж</h4>
+
 			<div class="col-md-2 col-sm-6 hidden-xs">
 				<p>Адрес:</p>
 				<a ><?=get_field('address',4)?></a><br>

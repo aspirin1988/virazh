@@ -358,6 +358,10 @@ footer {
 ------ НАЧАЛО главная страница -------
 --------------------------------------*/
 /*  НАЧАЛО main section  */
+ .text-uppercase .footer-h4
+ {
+   float: right;
+ }
 .main-section {
   background: 50% 50%/cover  url(../img/index/slider-background.jpg)  no-repeat;
   padding-top: 7%;
