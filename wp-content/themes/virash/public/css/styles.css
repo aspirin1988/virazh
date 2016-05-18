@@ -919,9 +919,8 @@ footer {
       left: -25px; }
     .single-product .product-thumbs .owl-next {
       right: -25px; }
-  .single-product .thumb img {
-    border: 3px solid #040466;
-    padding: 5%; }
+  .single-product .thumb-container {
+    border: 3px solid #040466; }
 
 /* КОНЕЦ одиночный товар */
 /* НАЧАЛО табы и содержимое */
