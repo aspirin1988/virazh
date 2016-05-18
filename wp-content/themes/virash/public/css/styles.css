@@ -911,6 +911,14 @@ footer {
       top: 0;
       bottom: 100px;
       right: 150px; }
+  .single-product .product-thumbs {
+    padding: 0 20px 10px; }
+    .single-product .product-thumbs .owl-nav {
+      top: 35%; }
+    .single-product .product-thumbs .owl-prev {
+      left: -25px; }
+    .single-product .product-thumbs .owl-next {
+      left: -25px; }
   .single-product .thumb img {
     border: 3px solid #040466;
     padding: 5%; }

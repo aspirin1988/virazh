@@ -22,7 +22,7 @@
 				<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>">
 				<div class="square"></div>
 			</div>
-			<div class="row">
+			<div class="product-thumbs">
 				<div class="owl-carousel owl-carousel-products">
 					<?php foreach ($images as $key=>$value):?>
 						<a href="#" data-img="<?=wp_get_attachment_image_url($value,'full') ?>" class="thumb">

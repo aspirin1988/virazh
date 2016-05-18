@@ -1275,6 +1275,20 @@ footer {
     }
   }
 
+  .product-thumbs {
+    padding: 0 20px 10px;
+
+    .owl-nav {
+      top: 35%;
+    }
+    .owl-prev {
+      left: -25px;
+    }
+    .owl-next {
+      left: -25px;
+    }
+  }
+
   .thumb img {
     border: 3px solid $company-color;
     padding: 5%;
