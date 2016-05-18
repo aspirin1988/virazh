@@ -4,62 +4,17 @@
 	<div class="container">
 		<h4 class="text-uppercase">Автосалоны Вираж</h4>
 		<div class="row">
+			<?php $menu=wp_get_nav_menu_items('footer'); /*print_r($menu);*/ $title=get_post();/* print_r($menu);*/
+			foreach ($menu as $key=>$val) : if ($val->menu_item_parent==0):?>
 			<div class="col-md-2 col-sm-6 hidden-xs">
-				<h4><a href="#">Текст</a></h4>
+				<h4><a href="<?=$val->url?>"><?=$val->title?></a></h4>
 				<ul>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
+					<?php foreach ($menu as $key1=>$val1) : if ($val->ID==$val1->menu_item_parent):?>
+					<li><a href="<?=$val1->url?>"><?=$val1->title?></a></li>
+					<?php endif; endforeach; ?>
 				</ul>
 			</div>
-			<div class="col-md-2 col-sm-6 hidden-xs">
-				<h4><a href="#">Текст</a></h4>
-				<ul>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-				</ul>
-			</div>
-			<div class="col-md-2 col-sm-6 hidden-xs">
-				<h4><a href="#">Текст</a></h4>
-				<ul>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-				</ul>
-			</div>
-			<div class="col-md-2 col-sm-6 hidden-xs">
-				<h4><a href="#">Текст</a></h4>
-				<ul>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-				</ul>
-			</div>
-			<div class="col-md-2 col-sm-6 hidden-xs">
-				<h4><a href="#">Текст</a></h4>
-				<ul>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-					<li><a href="#">Текст</a></li>
-				</ul>
-			</div>
-			<div class="col-md-2 col-sm-6">
+			<?php endif; endforeach; ?>
 				<p>Адрес:</p>
 				<a ><?=get_field('address',4)?></a><br>
 				<br>

@@ -72,100 +72,36 @@
 	<div class="bold-divider"></div>
 </div>
 <!-- КОНЕЦ разделитель-->
-
+<?=get_field('address')?>
 <!-- НАЧАЛО адреса филиалов -->
 <div class="container addresses">
 	<div class="row">
+		<?php
+		$args = array( 'category_name'=> 'address' ,'numberposts'=>20 , 'order'=>'ASC' );
+		$categories=get_posts($args );
+		foreach ($categories as $key=> $value) :
+		?>
 		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
+			<h3 class="city-name"><?=$value->post_title?></h3>
+			<p class="address icon"><?=get_field('address',$value->ID) ?></p>
+			<p class="phone-numbers icon">Тел:
+				<?php if (get_field('phone1',$value->ID)): ?>
+				<a href="tel:<?=get_field('phone1',$value->ID) ?>"><?=get_field('phone1',$value->ID) ?></a>
+				<br>
+				<?php endif; ?>
+				<?php if (get_field('phone2',$value->ID)): ?>
+				<a href="tel:<?=get_field('phone2',$value->ID) ?>"><?=get_field('phone2',$value->ID) ?></a>
+				<br>
+				<?php endif; ?>
+				<?php if (get_field('phone2',$value->ID)): ?>
+				<a href="tel:<?=get_field('phone3',$value->ID) ?>"><?=get_field('phone3',$value->ID) ?></a></p>
+				<?php endif; ?>
+
+			<p class="email icon"><a href="mailto:<?=get_field('email',$value->ID) ?>"><?=get_field('email',$value->ID) ?></a></p>
 			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
+			<?=get_field('schedule',$value->ID) ?>
 		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
-		<div class="address-item col-md-4 col-sm-6">
-			<h3 class="city-name">Алматы</h3>
-			<p class="address icon"><a href="#">пр. Райымбека, 173/2</a></p>
-			<p class="phone-numbers icon">Тел: <a href="#">+7 (727) 356 48 38</a><br>
-				<a href="#">+7 (727) 356 02 48</a></p>
-			<p class="email icon"><a href="mailto:info@virazh.kz">info@virazh.kz</a></p>
-			<h3 class="work-schedule icon">График работы Автосалона:</h3>
-			<p>Пн-Пт:  09:00 - 18:00 <br>
-				Сб-Вс:  09:00 - 15:00 </p>
-		</div>
+		<?php endforeach; ?>
 	</div>
 </div>
 <!-- КОНЕЦ адреса филиалов -->
