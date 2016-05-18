@@ -1362,9 +1362,10 @@ footer {
 --- НАЧАЛО страницы Форма поиска ----
 ----------------------------------*/
 .no-results {
-
   .page-header {
-    color: white;
+    background: none;
+    border-bottom: none;
+    margin-top: 0;
   }
 }
 
