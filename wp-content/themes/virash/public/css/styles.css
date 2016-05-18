@@ -308,7 +308,7 @@ footer {
   padding: 7px;
   position: relative; }
   .articles-on-main .article:hover h3 {
-    padding: 9px 30px 5px 55px; }
+    padding: 9px 10px 5px 55px; }
   @media (max-width: 768px) {
     .articles-on-main .article {
       padding: 7px 15px; } }
@@ -317,7 +317,7 @@ footer {
     font-family: "Bebas Neue", Arial, sans-serif;
     background-color: rgba(4, 4, 102, 0.51);
     margin: 0;
-    padding: 9px 50px 5px 20px;
+    padding: 9px 40px 5px 20px;
     display: block;
     position: absolute;
     left: 7px;
