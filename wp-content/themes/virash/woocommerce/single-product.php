@@ -76,11 +76,10 @@
 			</table>
 		</div>
 		<div id="menu2" class="tab-pane fade">
-			<?php ?>
+			<?=get_field('tab-1') ?>
 		</div>
 		<div id="menu3" class="tab-pane fade">
-			<h3>Menu 3</h3>
-			<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+			<?=get_field('tab-2') ?>
 		</div>
 	</div>
 </div>
@@ -89,7 +88,7 @@
 
 
 <?php
-/**
+/*/**
  * The Template for displaying all single products
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/single-product.php.
@@ -109,36 +108,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//get_header( 'shop' ); ?>
+//get_header( 'shop' ); */?><!--
 	123
 	<?php
-		/**
+/*		/**
 		 * woocommerce_before_main_content hook.
 		 *
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked woocommerce_breadcrumb - 20
 		 */
 		do_action( 'woocommerce_before_main_content' );
-	?>
+	*/?>
 
 
 
 	<?php
-		/**
+/*		/**
 		 * woocommerce_after_main_content hook.
 		 *
 		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
 		 */
 		do_action( 'woocommerce_after_main_content' );
-	?>
+	*/?>
 
 	<?php
-		/**
+/*		/**
 		 * woocommerce_sidebar hook.
 		 *
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
 		do_action( 'woocommerce_sidebar' );
-	?>
+	*/?>
 
-<?php get_footer(); ?>
+--><?php /*get_footer(); */?>
