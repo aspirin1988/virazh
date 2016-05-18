@@ -23,7 +23,7 @@
 				<div class="square"></div>
 			</div>
 			<div class="row">
-				<div class="owl-carousel">
+				<div class="owl-carousel owl-carousel-products">
 					<?php foreach ($images as $key=>$value):?>
 						<a href="#" data-img="<?=wp_get_attachment_image_url($value,'full') ?>" class="thumb">
 							<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full') ?>">
