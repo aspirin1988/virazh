@@ -18,7 +18,7 @@
 			</div>
 			<h4 class="text-uppercase footer-h4">Автосалоны Вираж</h4>
 
-			<div class="col-md-2 col-sm-6 hidden-xs">
+			<div class="col-md-2 col-sm-6">
 				<p>Адрес:</p>
 				<a ><?=get_field('address',4)?></a><br>
 				<br>
