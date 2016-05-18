@@ -137,11 +137,11 @@ $(document).ready(function () {
   /* НАЧАЛО параметры для карусели Owl-carousel фото товаров */
   $(".owl-carousel-products").owlCarousel({
     items: 4,
-    margin: 4,
+    margin: 5,
     nav: true,
     navText: [
-      "<img src='../wp-content/themes/virash/public/img/index/carousel-left-arrow.png'>",
-      "<img src='../wp-content/themes/virash/public/img/index/carousel-right-arrow.png'>"
+      "<img src='../../wp-content/themes/virash/public/img/index/carousel-left-arrow.png'>",
+      "<img src='../../wp-content/themes/virash/public/img/index/carousel-right-arrow.png'>"
     ]
   });
   /* КОНЕЦ параметры для карусели Owl-carousel  фото товаров */
