@@ -14,7 +14,7 @@
 		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'virash' ); ?></h1>
 	</header><!-- .page-header -->
 
-	<div class="page-content">
+	<div class="page-content container">
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
