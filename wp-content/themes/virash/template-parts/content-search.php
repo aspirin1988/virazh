@@ -1,30 +1,7 @@
-<?php
-/**
- * Template part for displaying results in search pages.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package virash
- */
-
-?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php virash_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php virash_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+<div class="article-item col-md-4 col-sm-6">
+	<a href="<?=get_permalink()?>"><img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>"></a>
+	<h2><a href="<?=get_permalink()?>"><?=get_the_title()?></a></h2>
+	<p class="article-date"><?=get_the_date()?></p>
+	<p class="article-fragment"><?=mb_substr(strip_tags(get_the_content()),0,128)?></p>
+	<a href="<?=get_permalink()?>" class="btn" type="button" name="button">Читать далее</a>
+</div>

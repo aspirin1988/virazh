@@ -27,7 +27,6 @@
 <body>
 <header>
 	<div class="container">
-		<?php print_r(get_queried_object()) ?>
 		<div class="header__phone-numbers">
 			<p><a href="tel:<?=get_field('phone1',4)?>"><?=get_field('phone1',4)?></a></p>
 			<p><a href="tel:<?=get_field('phone2',4)?>"><?=get_field('phone2',4)?></a></p>
@@ -37,6 +36,10 @@
 			<input type="text" placeholder="Поиск по сайту">
 			<input type="submit" value="Поиск">
 		</form>
+
+		<?php get_search_form(); ?>
+
+
 	</div>
 </header>
 
