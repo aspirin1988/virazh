@@ -443,17 +443,21 @@ footer {
 .owl-prev {
   position: absolute;
   left: -40px;
-  transition: all .2s; }
+  transition: all .2s;
+  opacity: .7; }
   .owl-prev:hover {
-    margin-left: -3px; }
+    margin-left: -3px;
+    opacity: 1; }
 
 .owl-next {
   position: absolute;
   right: -40px;
   z-index: 9990;
-  transition: all .2s; }
+  transition: all .2s;
+  opacity: .7; }
   .owl-next:hover {
-    margin-right: -3px; }
+    margin-right: -3px;
+    opacity: 1; }
 
 /* КОНЕЦ brands on main */
 /* -----------------------------------
