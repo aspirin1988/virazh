@@ -69,8 +69,9 @@ ul {
     background-color: lighten($company-color, 10%)
   }
 }
-.breadcrumb{
+.breadcrumb {
   color: #777777;
+  background: none;
 }
 .breadcrumb a {
   background: none;

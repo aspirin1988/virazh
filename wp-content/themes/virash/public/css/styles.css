@@ -53,7 +53,8 @@ ul {
     background-color: #060697; }
 
 .breadcrumb {
-  color: #777777; }
+  color: #777777;
+  background: none; }
 
 .breadcrumb a {
   background: none;
