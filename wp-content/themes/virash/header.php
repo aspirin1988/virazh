@@ -6,8 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Вираж | Главная</title>
-
+	<title>Вираж | <?php if (get_field('title')){the_field('title');}else{wp_title();}?></title>
+	<meta name="description" content="<?=get_field('description')?>"/>
+	<link rel="shortcut icon" href="<?=get_field('favicon',4)?>">
 	<!-- Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
 	<!-- Bootstrap -->
