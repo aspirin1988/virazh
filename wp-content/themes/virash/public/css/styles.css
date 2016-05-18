@@ -891,7 +891,7 @@ footer {
     position: relative; }
     .single-product .product-main-photo img {
       max-width: 90%;
-      max-height: 350px;
+      height: 350px;
       margin: 0 auto;
       padding-top: 5%; }
     .single-product .product-main-photo .square {
