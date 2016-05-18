@@ -25,11 +25,9 @@
 			<div class="row">
 				<div class="owl-carousel">
 					<?php foreach ($images as $key=>$value):?>
-					<div class="col-xs-3">
 						<a href="#" data-img="<?=wp_get_attachment_image_url($value,'full') ?>" class="thumb">
 							<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full') ?>">
 						</a>
-					</div>
 					<?php endforeach; ?>
 				</div>
 			</div>
