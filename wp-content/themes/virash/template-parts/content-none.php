@@ -9,12 +9,17 @@
 
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Ничего не найдено', 'virash' ); ?></h1>
-	</header><!-- .page-header -->
+<section class="no-results not-found ">
+<div class="text-center">
+		<div class="title-square-container text-center ">
+			<h1 class="page-title"><?php esc_html_e( 'Ничего не найдено', 'virash' ); ?></h1>
+			<div class="title-square"></div>
+		</div>
+</div>
+
 
 	<div class="page-content container">
+
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
