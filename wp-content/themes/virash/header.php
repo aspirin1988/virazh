@@ -93,6 +93,7 @@
 		</div><!-- /.navbar-collapse -->
 	</nav>
 	<!--КОНЕЦ навбар-->
+	<?php if (!is_front_page()) :?>
 	<div class="container">
 	<ol class="breadcrumb pull-right" >
 	<?php
@@ -108,6 +109,7 @@ woocommerce_breadcrumb(array(
 ?>
 	</ol>
 	</div>
+	<?php endif;?>
 <?php
 
 
