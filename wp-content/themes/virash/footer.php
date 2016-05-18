@@ -15,15 +15,18 @@
 				</ul>
 			</div>
 			<?php endif; endforeach; ?>
+			<div class="col-md-2 col-sm-6 hidden-xs">
+			</div>
+			<div class="col-md-2 col-sm-6 hidden-xs">
 				<p>Адрес:</p>
 				<a ><?=get_field('address',4)?></a><br>
 				<br>
 				<p>Телефон <br> Клиентской службы:</p>
-				<a href="tel:<?=get_field('phone2')?>"><?=get_field('phone2')?></a>
+				<a href="tel:<?=get_field('phone2',4)?>"><?=get_field('phone2',4)?></a>
 				<div class="social-icons">
-					<a href="<?=get_field('vk')?>"><img src="<?=bloginfo('template_directory')?>/public/img/icon-vk.png"></a>
-					<a href="<?=get_field('fb')?>"><img src="<?=bloginfo('template_directory')?>/public/img/icon-fb.png"></a>
-					<a href="<?=get_field('tw')?>"><img src="<?=bloginfo('template_directory')?>/public/img/icon-twitter.png"></a>
+					<a href="<?=get_field('vk',4)?>"><img src="<?=bloginfo('template_directory')?>/public/img/icon-vk.png"></a>
+					<a href="<?=get_field('fb',4)?>"><img src="<?=bloginfo('template_directory')?>/public/img/icon-fb.png"></a>
+					<a href="<?=get_field('tw',4)?>"><img src="<?=bloginfo('template_directory')?>/public/img/icon-twitter.png"></a>
 				</div>
 			</div>
 		</div>

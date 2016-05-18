@@ -47,8 +47,12 @@
 	<ul class="nav tabs">
 		<li class="active"><a data-toggle="tab" href="#menu0">Описание</a></li>
 		<li><a data-toggle="tab" href="#menu1">Характеристики</a></li>
+		<?php if (get_field('tab-1')): ?>
 		<li><a data-toggle="tab" href="#menu2">Таб</a></li>
+		<?php endif; ?>
+		<?php if (get_field('tab-2')): ?>
 		<li><a data-toggle="tab" href="#menu3">Ещё таб</a></li>
+		<?php endif; ?>
 	</ul>
 	<div class="tab-content">
 		<div id="menu0" class="tab-pane fade in active">
@@ -75,11 +79,13 @@
 				</tbody>
 			</table>
 		</div>
+		<?php if (get_field('tab-1')): ?>
 		<div id="menu2" class="tab-pane fade">
-			<?=get_field('tab-1') ?>
+			<?=get_field('tab-1'); endif;?>
 		</div>
+		<?php if (get_field('tab-2')): ?>
 		<div id="menu3" class="tab-pane fade">
-			<?=get_field('tab-2') ?>
+			<?=get_field('tab-2'); endif; ?>
 		</div>
 	</div>
 </div>
