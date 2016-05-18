@@ -1,4 +1,10 @@
 <?php get_header() ?>
+<?php while ( have_posts() ) : the_post();
+	global $post, $product, $woocommerce;
+	$images=$product->get_gallery_attachment_ids();
+	print_r($product->get_gallery_attachment_ids());
+	?>
+
 <!-- НАЧАЛО заголовок с декор-рамкой-->
 <div class="container text-center">
 	<div class="title-square-container">
@@ -11,38 +17,25 @@
 <!-- НАЧАЛО одиночный товар-->
 <div class="container single-product">
 	<div class="row">
-		<?php  ?>
 		<div class="col-md-7 preview-col">
 			<div class="product-main-photo">
-				<img class="img-responsive" src="img/product/auto.png">
+				<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>">
 				<div class="square"></div>
 			</div>
 			<div class="row">
+				<?php foreach ($images as $key=>$value):?>
 				<div class="col-xs-3">
-					<a href="#" data-img="img/product/auto.png" class="thumb">
-						<img class="img-responsive" src="img/product/auto.png">
+					<a href="#" data-img="<?=wp_get_attachment_image_url($value,'full') ?>" class="thumb">
+						<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full') ?>">
 					</a>
 				</div>
-				<div class="col-xs-3">
-					<a href="#" data-img="img/product/auto2.png" class="thumb">
-						<img class="img-responsive" src="img/product/auto2.png">
-					</a>
-				</div>
-				<div class="col-xs-3">
-					<a href="#" data-img="img/product/auto3.png" class="thumb">
-						<img class="img-responsive" src="img/product/auto3.png">
-					</a>
-				</div>
-				<div class="col-xs-3">
-					<a href="#" data-img="img/product/auto4.png" class="thumb">
-						<img class="img-responsive" src="img/product/auto4.png">
-					</a>
-				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 		<div class="col-md-5 summary-col">
 			<p>
-				<?=get_comment()?>
+				<?=get_the_content()?>
+
 			</p>
 		</div>
 	</div>
@@ -59,8 +52,7 @@
 	</ul>
 	<div class="tab-content">
 		<div id="menu0" class="tab-pane fade in active">
-			<h3>HOME</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<?=get_the_excerpt()?>
 		</div>
 		<div id="menu1" class="tab-pane fade">
 			<table class="table table-striped">
@@ -71,54 +63,20 @@
 				</tr>
 				</thead>
 				<tbody>
+				<?php $attributes = $product->get_attributes();
+				foreach ($attributes as $attribute):
+					?>
 				<tr>
-					<td>Тип топлива:</td>
-					<td>дизель</td>
+					<td><?=wc_attribute_label($attribute['name'])?>:</td>
+					<td><?=$product->get_attribute($attribute['name'])?></td>
 				</tr>
-				<tr>
-					<td>Номинальная грузоподъёмность:</td>
-					<td>3000кг</td>
-				</tr>
-				<tr>
-					<td>ВЫСОТА ПОДЪЕМА:</td>
-					<td>3000 ММ</td>
-				</tr>
-				<tr>
-					<td>УГОЛ НАКЛОНА(ПЕРЕД/НАЗАД)Г: </td>
-					<td>6°/12°</td>
-				</tr>
-				<tr>
-					<td>СКОРОСТЬ (ПЕРЕДНИЙ ХОД) ДВИЖЕНИЕ <br>
-						С ГРУЗОМ/БЕЗ ГРУЗА: </td>
-					<td>18/19 КМ/Ч</td>
-				</tr>
-				<tr>
-					<td>РАЗМЕР ВИЛ:</td>
-					<td>1070*125*45 ММ</td>
-				</tr>
-				<tr>
-					<td>КОЛЕСНАЯ БАЗА:</td>
-					<td>1700 ММ</td>
-				</tr>
-				<tr>
-					<td>ПНЕВМАТИЧЕСКИЕ ШИНЫ <br>
-						НОМИНАЛЬНАЯ МОЩНОСТЬ:</td>
-					<td>37 КВТ</td>
-				</tr>
-				<tr>
-					<td>ОБЪЕМ ДВИГАТЕЛЯ:</td>
-					<td>2.54 Л</td>
-				</tr>
-				<tr>
-					<td>НАПРЯЖЕНИЕ:</td>
-					<td>12 ВОЛЬТ</td>
-				</tr>
+				<?php endforeach;
+				?>
 				</tbody>
 			</table>
 		</div>
 		<div id="menu2" class="tab-pane fade">
-			<h3>Menu 2</h3>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+			<?php ?>
 		</div>
 		<div id="menu3" class="tab-pane fade">
 			<h3>Menu 3</h3>
@@ -127,6 +85,8 @@
 	</div>
 </div>
 <!--КОНЕЦ табы и содержимое-->
+<?php endwhile; // end of the loop. ?>
+
 
 <?php
 /**
@@ -161,11 +121,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
-		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-		<?php endwhile; // end of the loop. ?>
 
 	<?php
 		/**
@@ -185,4 +141,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 		do_action( 'woocommerce_sidebar' );
 	?>
 
-<?php get_footer( 'shop' ); ?>
+<?php get_footer(); ?>

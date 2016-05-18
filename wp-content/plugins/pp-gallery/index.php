@@ -103,6 +103,14 @@ function pp_gallery_boxes() {
     add_meta_box('pp_gallery', 'PP Gallery', 'pp_gallery_widget_render', 'page');
 }
 
+function my_enqueue($hook) {
+    wp_enqueue_script( 'my_custom_uikit',  '/wp-content/plugins/pp-gallery/bower_components/uikit/js/uikit.min.js' );
+    wp_enqueue_script( 'my_custom_upload', '/wp-content/plugins/pp-gallery/bower_components/uikit/js/components/upload.min.js' );
+    wp_enqueue_script( 'my_custom_pp-gallery', '/wp-content/plugins/pp-gallery/pp-gallery.js' );
+
+}
+add_action( 'admin_init', 'my_enqueue' );
+
 register_activation_hook( __FILE__, 'pp_gallery_activation');
 add_action('add_meta_boxes', 'pp_gallery_boxes');
 add_action('save_post', 'pp_gallery_upload');

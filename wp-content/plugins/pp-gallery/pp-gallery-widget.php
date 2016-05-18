@@ -35,8 +35,3 @@
         </div>
     </div>
 </div>
-
-<script src="/wp-content/plugins/pp-gallery/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/wp-content/plugins/pp-gallery/bower_components/uikit/js/uikit.min.js"></script>
-<script src="/wp-content/plugins/pp-gallery/bower_components/uikit/js/components/upload.min.js"></script>
-<script src="/wp-content/plugins/pp-gallery/pp-gallery.js"></script>

@@ -1,45 +1,49 @@
-(function () {
-    $('.remove-pp-img').click(function (event) {
-        var removeId = $(this).data('pp-id');
+window.onload = function () {
 
-        $.post('/wp-content/plugins/pp-gallery/', {removeId: removeId}, function (response) {
-            location.reload();
-        } );
-    });
-    $(function(){
+    (function($) {
+        $('.remove-pp-img').click(function (event) {
+            var removeId = $(this).data('pp-id');
 
-        var progressbar = $("#progressbar"),
-            bar         = progressbar.find('.uk-progress-bar'),
-            postID      = $('#postID').val(),
-            settings    = {
+            $.post('/wp-content/plugins/pp-gallery/', {removeId: removeId}, function (response) {
+                location.reload();
+            });
+        });
 
-                action: '/wp-content/plugins/pp-gallery/?postID=' + postID, // upload url
+        $(function(){
 
-                allow : '*.(jpg|jpeg|gif|png)', // allow only images
+            var progressbar = $("#progressbar"),
+                bar         = progressbar.find('.uk-progress-bar'),
+                postID      = $('#postID').val(),
+                settings    = {
 
-                loadstart: function() {
-                    bar.css("width", "0%").text("0%");
-                    progressbar.removeClass("uk-hidden");
-                },
+                    action: '/wp-content/plugins/pp-gallery/?postID=' + postID, // upload url
 
-                progress: function(percent) {
-                    percent = Math.ceil(percent);
-                    bar.css("width", percent+"%").text(percent+"%");
-                },
+                    allow : '*.(jpg|jpeg|gif|png)', // allow only images
 
-                allcomplete: function(response) {
+                    loadstart: function() {
+                        bar.css("width", "0%").text("0%");
+                        progressbar.removeClass("uk-hidden");
+                    },
 
-                    bar.css("width", "100%").text("100%");
+                    progress: function(percent) {
+                        percent = Math.ceil(percent);
+                        bar.css("width", percent+"%").text(percent+"%");
+                    },
 
-                    setTimeout(function(){
-                        progressbar.addClass("uk-hidden");
-                    }, 250);
+                    allcomplete: function(response) {
 
-                    location.reload();
-                }
-            };
+                        bar.css("width", "100%").text("100%");
 
-        var select = UIkit.uploadSelect($("#upload-select"), settings),
-            drop   = UIkit.uploadDrop($("#upload-drop"), settings);
-    });
-})();
+                        setTimeout(function(){
+                            progressbar.addClass("uk-hidden");
+                        }, 250);
+
+                        location.reload();
+                    }
+                };
+
+            var select = UIkit.uploadSelect($("#upload-select"), settings),
+                drop   = UIkit.uploadDrop($("#upload-drop"), settings);
+        });
+    })(jQuery);
+};
