@@ -890,7 +890,7 @@ footer {
     margin-bottom: 4%;
     position: relative; }
     .single-product .product-main-photo img {
-      width: 90%;
+      max-width: 90%;
       max-height: 350px;
       margin: 0 auto;
       padding-top: 5%; }
