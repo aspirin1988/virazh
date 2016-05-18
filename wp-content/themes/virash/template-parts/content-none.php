@@ -11,7 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'virash' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'Ничего не найдено', 'virash' ); ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content container">
@@ -22,15 +22,13 @@
 
 		<?php elseif ( is_search() ) : ?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'virash' ); ?></p>
+			<p><?php esc_html_e( 'Извините, но ничего нет соответствующего условиям поиска. Пожалуйста, попытайтесь снова с другими ключевыми словами.', 'virash' ); ?></p>
 			<?php
-				get_search_form();
 
 		else : ?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'virash' ); ?></p>
+			<p><?php esc_html_e( 'Кажется, мы не можем найти то, что вы ищете. Воспользуйтесь поиском.', 'virash' ); ?></p>
 			<?php
-				get_search_form();
 
 		endif; ?>
 	</div><!-- .page-content -->

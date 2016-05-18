@@ -32,10 +32,6 @@
 			<p><a href="tel:<?=get_field('phone2',4)?>"><?=get_field('phone2',4)?></a></p>
 		</div>
 		<a href="/"> <img class="header__logo" src="<?=get_field('logo',4)?>" alt="Лого"></a>
-		<form class="header__search-form" action="?">
-			<input type="text" placeholder="Поиск по сайту">
-			<input type="submit" value="Поиск">
-		</form>
 
 		<?php get_search_form(); ?>
 

@@ -171,8 +171,11 @@ function collapse ($level,$filter){
 <div class="container products-catalog">
 	<div class="row">
 
-		<form action="" method="get" class="col-sm-3 filter">
+		<form action="" method="get" class="col-sm-3 filter ">
 			<h3>Фильтр</h3>
+			<input type="submit" value="Применить фильтр" class="btn" >
+			<br>
+			<br>
 			<?php foreach ($wo_filter as $key => $val): ?>
 			<div>
 			<?php $collapse=false; $level1=get_products_cat_by_slug_parent($val->slug); $collapse=collapse($level1,$current_filter['one']); if (!$level1): ?>
@@ -218,7 +221,7 @@ function collapse ($level,$filter){
 					<?php endif; endforeach; ?>
 				</div>
 			</div>
-			<?php endif; endforeach; ?>
+			<?php endif;  endforeach; ?>
 			<!--<h3>Опции</h3>
 			<input type="checkbox" id="option1"> <label for="option1">Опция 1</label><br>
 			<input type="checkbox" id="option2"> <label for="option2">Опция 2</label><br>
@@ -232,7 +235,8 @@ function collapse ($level,$filter){
 			<input type="text" id="priceFrom" value="<?=$current_filter['priceFrom']?>" name="priceFrom">
 			<label for="priceTo">Цена до:</label>
 			<input type="text" id="priceTo" value="<?=$current_filter['priceTo']?>" name="priceTo">
-			<input type="submit">
+			<br>
+			<input type="submit" value="Применить фильтр" class="btn" >
 		</form>
 
 		<div class="col-sm-9 products-list">

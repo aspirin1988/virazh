@@ -845,7 +845,8 @@ footer {
   .products-list .item a {
     flex: 1;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    padding: 3px; }
   .products-list .item .square {
     border: 8px solid #040466;
     position: absolute;
