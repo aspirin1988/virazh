@@ -456,13 +456,14 @@ footer {
       color: white;
       font-family: $company-font;
 
-      background-color: $company-color;
+      background-color: rgba(4, 4, 102, 0.51);
       margin: 0;
       padding: 9px 50px 5px 20px;
       display: block;
 
       position: absolute;
       left: 7px;
+      right: 7px;
       bottom: 7px;
       transition: all 0.3s linear;
 
@@ -473,22 +474,6 @@ footer {
         right: 15px;
         left: 15px;
         bottom: 7px;
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: -40px;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 40px 0 0 40px;
-        border-color: transparent transparent transparent $company-color;
-
-        @media (max-width: 1200px) {
-          display: none;
-        }
       }
     }
   }
