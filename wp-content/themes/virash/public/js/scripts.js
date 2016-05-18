@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 
   /* НАЧАЛО параметры для карусели Owl-carousel брендов на Главной стр. */
-  $(".owl-carousel").owlCarousel({
+  $(".owl-carousel-brands").owlCarousel({
     items: 7,
     margin: 30,
     loop: true,

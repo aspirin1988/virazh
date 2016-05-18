@@ -101,7 +101,7 @@
 <div class="brands-on-main container hidden-xs">
 	<h2 class="text-center">Бренды</h2>
 
-	<div class="owl-carousel">
+	<div class="owl-carousel-brands">
 		<?php 
 		
 		$homeProducts = get_products_cat_by_slug_parent('brands');
