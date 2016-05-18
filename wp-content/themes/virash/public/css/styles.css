@@ -920,7 +920,8 @@ footer {
     .single-product .product-thumbs .owl-next {
       right: -28px; }
   .single-product .thumb-container {
-    border: 3px solid #040466; }
+    border: 3px solid #040466;
+    padding: 5%; }
 
 /* КОНЕЦ одиночный товар */
 /* НАЧАЛО табы и содержимое */
