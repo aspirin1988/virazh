@@ -153,18 +153,22 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 
-
-// добавляет вызов функции при инициализации административного раздела
+/*@TODO<<<-add field to taxonomy->>>*/
+// добавление полей в категорию
 add_action('admin_init', 'category_custom_fields', 1);
 
 // функция расширения функционала административного раздела
 function category_custom_fields()
 {
-	$taxonomy='edited_'.$_GET['taxonomy'];
-	if ($taxonomy=='edited_'){$taxonomy='edited_'.$_POST['taxonomy'];}
+	$taxonomy = 'edited_' . $_GET['taxonomy'];
+	if (!$_GET['taxonomy']) {
+		$taxonomy = 'edited_' . $_POST['taxonomy'];
+	}
+
 	// добавления действия после отображения формы ввода параметров категории
 	add_action('edit_category_form_fields', 'category_custom_fields_form');
 	add_action('edit_tag_form_fields', 'category_custom_fields_form');
+
 	// добавления действия при сохранении формы ввода параметров категории
 	add_action("edited_category", 'category_custom_fields_save');
 	add_action("$taxonomy", 'category_custom_fields_save');
@@ -177,7 +181,6 @@ function category_custom_fields_form($tag)
 	if (!$cat_meta){$cat_meta=get_fields("{$tag->taxonomy}_{$t_id}");}
 	foreach ($cat_meta as $key=>$value):
 		?>
-
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="extra1"><?php _e($key); ?></label></th>
 			<td>
@@ -191,15 +194,10 @@ function category_custom_fields_form($tag)
 	endforeach;
 }
 
-function category_custom_fields_save($term_id)
+function category_custom_fields_save()
 {
-	$tag=$_POST['taxonomy'];
-	$term_id=$_POST['tag_ID'];
-	print_r($_POST);
-	file_put_contents(ABSPATH.'/text.txt',print_r($_POST,true));
-	print_r($tag."<br>");
-	print_r($tag."<br>");
-	print_r($tag);
+	$tag = $_POST['taxonomy'];
+	$term_id = $_POST['tag_ID'];
 	if (isset($_POST['Cat_meta'])) {
 		$t_id = $term_id;
 		$cat_meta = get_option("{$tag}_{$t_id}");
