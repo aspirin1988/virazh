@@ -158,7 +158,7 @@ function collapse ($level,$filter){
 
 
 <!-- НАЧАЛО заголовок с декор-рамкой-->
-<div class="container text-center">
+<div class="container text-center" xmlns="http://www.w3.org/1999/html">
 	<div class="title-square-container">
 		<h1>Каталог товаров</h1>
 		<div class="title-square"></div>
@@ -179,16 +179,15 @@ function collapse ($level,$filter){
 			<?php foreach ($wo_filter as $key => $val): ?>
 			<div>
 			<?php $collapse=false; $level1=get_products_cat_by_slug_parent($val->slug); $collapse=collapse($level1,$current_filter['one']); if (!$level1): ?>
-				<input type="checkbox" id="<?=$val->slug?>" name="<?=$val->slug?>" <?=check($current_filter['one'],$val->slug)?> > <label for="aklasse"><?=$val->name?></label><br><?=$collapse?>
+				<input type="checkbox" id="<?=$val->slug?>" name="<?=$val->slug?>" <?=check($current_filter['one'],$val->slug)?> > <label for="<?=$val->slug?>"><?=$val->name?></label><br><?=$collapse?>
 			<?php else: ?>
-				<button type="button" data-toggle="collapse" data-target="#<?=$val->slug?>" aria-expanded="false"
-						aria-controls="<?=$val->slug?>">
+				<button type="button" data-toggle="collapse" data-target="#<?=$val->slug?>" aria-expanded="false" aria-controls="<?=$val->slug?>">
 					<?=$val->name?>
 				</button>
 				<div class="collapse in" id="<?=$val->slug?>">
 					<?php foreach (get_products_cat_by_slug_parent($val->slug) as $key1=> $val1): ?>
 						<?php $collapse=false; $level2=get_products_cat_by_slug_parent($val1->slug); $collapse=collapse($level2,$current_filter['one']); if (!$level2): ?>
-						<input type="checkbox" name="<?=$val->cat_ID?><?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val1->slug); ?> > <label for="aklasse"><?=$val1->name?></label><br>
+						<input type="checkbox" name="<?=$val->cat_ID?><?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val1->slug); ?> > <label for="<?=$val1->slug?>"><?=$val1->name?></label><br>
 						<?php else: ?>
 							<button type="button" data-toggle="collapse" data-target="#<?=$val1->slug?>" aria-expanded="false"
 									aria-controls="<?=$val1->slug?>">
@@ -197,7 +196,7 @@ function collapse ($level,$filter){
 							</button>
 							<div class="collapse <?php if($collapse){echo 'in';}; ?>" id="<?=$val1->slug?>">
 							<?php foreach (get_products_cat_by_slug_parent($val1->slug) as $key2=> $val2): ?>
-								<input name="<?=$val->cat_ID?><?=$val2->slug?>" type="checkbox" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="aklasse"><?=$val2->name?></label><br>
+								<input name="<?=$val->cat_ID?><?=$val2->slug?>" type="checkbox" id="<?=$val2->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="<?=$val2->slug?>"><?=$val2->name?></label><br>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>
@@ -217,7 +216,7 @@ function collapse ($level,$filter){
 				</button>
 				<div class="collapse in" id="<?=$key?>">
 					<?php foreach ($val['value'] as $key1 => $val1): if ($key1!=''&&$val1!=''):  ?>
-					<input type="checkbox" name="<?=$key?><?=$val1?>" <?=check($current_filter['second'],$val1); ?> id="<?=$val1?>"> <label for="aklasse"><?=$val1?></label><br>
+					<input type="checkbox" name="<?=$key?><?=$val1?>" <?=check($current_filter['second'],$val1); ?> id="<?=$val1?>"> <label for="<?=$val1?>"><?=$val1?></label><br>
 					<?php endif; endforeach; ?>
 				</div>
 			</div>
