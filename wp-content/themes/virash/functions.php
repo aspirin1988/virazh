@@ -168,15 +168,14 @@ function category_custom_fields()
 	// добавления действия при сохранении формы ввода параметров категории
 	add_action("edited_category", 'category_custom_fields_save');
 	add_action("$taxonomy", 'category_custom_fields_save');
-	print_r($taxonomy);
 }
 
 function category_custom_fields_form($tag)
 {
 	$t_id = $tag->term_id;
 	$cat_meta = get_option("{$tag->taxonomy}_{$t_id}");
-	print_r(get_fields("{$tag->taxonomy}_{$t_id}"));
-	foreach (get_fields("{$tag->taxonomy}_{$t_id}") as $key=>$value):
+	if (!$cat_meta){$cat_meta=get_fields("{$tag->taxonomy}_{$t_id}");}
+	foreach ($cat_meta as $key=>$value):
 		?>
 
 		<tr class="form-field">

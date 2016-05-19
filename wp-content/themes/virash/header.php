@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<?php $current_object=get_queried_object(); ?>
-	<title>Вираж | <?php if (is_tax()){$_title=get_field('title',$current_object->taxonomy.'_'.$current_object->term_taxonomy_id); if ($_title){echo $_title;} else{ if (get_field('title')){the_field('title');}else{wp_title();}}}else{if (get_field('title')){the_field('title');}else{wp_title();}}?></title>
-	<meta name="description" content="<?php if (is_tax()){ echo get_field('description',$current_object->taxonomy.'_'.$current_object->term_taxonomy_id);}else{ the_field('description');}?>"/>
+	<?php $current_object=get_queried_object(); $field=get_option($current_object->taxonomy.'_'.$current_object->term_taxonomy_id) ?>
+	<title>Вираж | <?php if (is_tax()){$_title=$field['title']; if ($_title){echo $_title;} else{ if (get_field('title')){the_field('title');}else{wp_title();}}}else{if (get_field('title')){the_field('title');}else{wp_title();}}?></title>
+	<meta name="description" content="<?php if (is_tax()){ echo $field['description'];}else{ the_field('description');}?>"/>
 	<link rel="shortcut icon" href="<?=get_field('favicon',4)?>">
 	<!-- Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
