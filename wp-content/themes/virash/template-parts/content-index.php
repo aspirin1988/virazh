@@ -63,7 +63,6 @@
 
 		<?php
 		$homeProducts = get_products_cat_by_slug_parent('types_of_transport'); $first=$homeProducts[0];
-		//print_r($homeProducts);
 
 		?>
 		<style>
