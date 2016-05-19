@@ -107,7 +107,26 @@ ul {
     }
   }
 }
+/* НАЧАЛО стили Скролла */
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 6px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: rgba(4, 4, 102, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(4, 4, 102, 0.8);
+  -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(4, 4, 102, 0.4);
+}
+/* КОНЕЦ стили Скролла */
 /* КОНЕЦ общие стили */
 
 /* НАЧАЛО header */
@@ -1235,14 +1254,24 @@ footer {
 
   .summary-col {
     text-align: justify;
-    text-indent: 30px;
 
-    padding-top: 2%;
     padding-bottom: 2%;
+    border-top: 1px rgba(11, 0, 124, 0.05) solid;
 
     @media (min-width: 768px) {
       padding-left: 30px;
+      max-height: 500px;
+      overflow: auto;
     }
+
+    ul {
+      list-style: disc inside;
+    }
+
+    p {
+      text-indent: 30px;
+    }
+
   }
 
   .product-main-photo {
@@ -1253,9 +1282,12 @@ footer {
 
     img {
       max-width: 90%;
-      height: 350px;
       margin: 0 auto;
-      padding-top: 5%;
+      border: 5px solid $company-color;
+
+      @media (min-width: 768px) {
+        height: 350px;
+      }
     }
 
     .square {
@@ -1286,7 +1318,6 @@ footer {
 
   .thumb-container {
     border: 3px solid $company-color;
-    padding: 5%;
   }
 }
 /* КОНЕЦ одиночный товар */
@@ -1347,6 +1378,10 @@ footer {
     border: 5px solid $company-color;
     border-top: none;
     padding: 10px 20px;
+
+    img.img-responsive {
+      margin: 0 auto;
+    }
   }
 
   .table-striped>tbody>tr:nth-of-type(odd) {

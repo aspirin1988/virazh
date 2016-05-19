@@ -20,7 +20,6 @@
 		<div class="col-md-7 preview-col">
 			<div class="product-main-photo">
 				<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>">
-				<div class="square"></div>
 			</div>
 			<div class="product-thumbs">
 				<div class="owl-carousel owl-carousel-products">
@@ -46,48 +45,52 @@
 
 <!--НАЧАЛО табы и содержимое-->
 <div class="container single-product-tabs">
-	<ul class="nav tabs">
-		<li class="active"><a data-toggle="tab" href="#menu0">Описание</a></li>
-		<li><a data-toggle="tab" href="#menu1">Характеристики</a></li>
-		<?php if (get_field('tab-1')): ?>
-		<li><a data-toggle="tab" href="#menu2">Таб</a></li>
-		<?php endif; ?>
-		<?php if (get_field('tab-2')): ?>
-		<li><a data-toggle="tab" href="#menu3">Ещё таб</a></li>
-		<?php endif; ?>
-	</ul>
-	<div class="tab-content">
-		<div id="menu0" class="tab-pane fade in active">
-			<?=get_the_excerpt()?>
-		</div>
-		<div id="menu1" class="tab-pane fade">
-			<table class="table table-striped">
-				<thead>
-				<tr>
-					<th>Параметр</th>
-					<th>Значение</th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php $attributes = $product->get_attributes();
-				foreach ($attributes as $attribute):
+	<div class="row">
+		<ul class="nav tabs">
+			<li class="active"><a data-toggle="tab" href="#menu0">Описание</a></li>
+			<li><a data-toggle="tab" href="#menu1">Характеристики</a></li>
+			<?php if (get_field('tab-1')): ?>
+				<li><a data-toggle="tab" href="#menu2">Таб</a></li>
+			<?php endif; ?>
+			<?php if (get_field('tab-2')): ?>
+				<li><a data-toggle="tab" href="#menu3">Ещё таб</a></li>
+			<?php endif; ?>
+		</ul>
+		<div class="tab-content">
+			<div id="menu0" class="tab-pane fade in active">
+				<?= get_the_excerpt() ?>
+			</div>
+			<div id="menu1" class="tab-pane fade">
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>Параметр</th>
+						<th>Значение</th>
+					</tr>
+					</thead>
+					<tbody>
+					<?php $attributes = $product->get_attributes();
+					foreach ($attributes as $attribute):
+						?>
+						<tr>
+							<td><?= wc_attribute_label($attribute['name']) ?>:</td>
+							<td><?= $product->get_attribute($attribute['name']) ?></td>
+						</tr>
+					<?php endforeach;
 					?>
-				<tr>
-					<td><?=wc_attribute_label($attribute['name'])?>:</td>
-					<td><?=$product->get_attribute($attribute['name'])?></td>
-				</tr>
-				<?php endforeach;
-				?>
-				</tbody>
-			</table>
-		</div>
-		<?php if (get_field('tab-1')): ?>
-		<div id="menu2" class="tab-pane fade">
-			<?=get_field('tab-1'); endif;?>
-		</div>
-		<?php if (get_field('tab-2')): ?>
-		<div id="menu3" class="tab-pane fade">
-			<?=get_field('tab-2'); endif; ?>
+					</tbody>
+				</table>
+			</div>
+			<?php if (get_field('tab-1')): ?>
+			<div id="menu2" class="tab-pane fade">
+				<?= get_field('tab-1');
+				endif; ?>
+			</div>
+			<?php if (get_field('tab-2')): ?>
+			<div id="menu3" class="tab-pane fade">
+				<?= get_field('tab-2');
+				endif; ?>
+			</div>
 		</div>
 	</div>
 </div>

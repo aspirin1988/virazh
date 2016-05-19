@@ -80,6 +80,24 @@ ul {
       .title-square-container .title-square {
         display: none; } }
 
+/* НАЧАЛО стили Скролла */
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 6px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: rgba(4, 4, 102, 0.1); }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(4, 4, 102, 0.8);
+  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); }
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(4, 4, 102, 0.4); }
+
+/* КОНЕЦ стили Скролла */
 /* КОНЕЦ общие стили */
 /* НАЧАЛО header */
 header {
@@ -884,12 +902,17 @@ footer {
         padding-right: 50px; } }
   .single-product .summary-col {
     text-align: justify;
-    text-indent: 30px;
-    padding-top: 2%;
-    padding-bottom: 2%; }
+    padding-bottom: 2%;
+    border-top: 1px rgba(11, 0, 124, 0.05) solid; }
     @media (min-width: 768px) {
       .single-product .summary-col {
-        padding-left: 30px; } }
+        padding-left: 30px;
+        max-height: 500px;
+        overflow: auto; } }
+    .single-product .summary-col ul {
+      list-style: disc inside; }
+    .single-product .summary-col p {
+      text-indent: 30px; }
   .single-product .product-main-photo {
     background: 50% 100%/100% auto url(../img/product/shadow-bottom.png) no-repeat;
     padding-bottom: 4%;
@@ -897,9 +920,11 @@ footer {
     position: relative; }
     .single-product .product-main-photo img {
       max-width: 90%;
-      height: 350px;
       margin: 0 auto;
-      padding-top: 5%; }
+      border: 5px solid #040466; }
+      @media (min-width: 768px) {
+        .single-product .product-main-photo img {
+          height: 350px; } }
     .single-product .product-main-photo .square {
       border: 8px solid #040466;
       position: absolute;
@@ -917,8 +942,7 @@ footer {
     .single-product .product-thumbs .owl-next {
       right: -28px; }
   .single-product .thumb-container {
-    border: 3px solid #040466;
-    padding: 5%; }
+    border: 3px solid #040466; }
 
 /* КОНЕЦ одиночный товар */
 /* НАЧАЛО табы и содержимое */
@@ -959,6 +983,8 @@ footer {
   border: 5px solid #040466;
   border-top: none;
   padding: 10px 20px; }
+  .single-product-tabs .tab-content img.img-responsive {
+    margin: 0 auto; }
 .single-product-tabs .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: rgba(4, 4, 102, 0.1); }
 

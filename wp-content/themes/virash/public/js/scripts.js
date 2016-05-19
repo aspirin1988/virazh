@@ -91,7 +91,6 @@ $(document).ready(function () {
 
   //проверяем, есть ли элементы с .car-gallery на странцие, и только тогда запускаем код
   var isItProductMain = document.getElementsByClassName('single-product');
-  console.log(isItProductMain.length);
 
   if (isItProductMain.length > 0) {
     var previewGallery = document.getElementsByClassName('single-product')[0],
@@ -145,6 +144,21 @@ $(document).ready(function () {
     ]
   });
   /* КОНЕЦ параметры для карусели Owl-carousel  фото товаров */
+
+
+  //НАЧАЛО добавление класса img-responsive ко всем
+  // img в табах единичного товара
+  var isItTabs = document.getElementsByClassName('single-product-tabs');
+  if (isItTabs.length > 0) {
+    var images = isItTabs[0].getElementsByTagName('img');
+    console.log(images[0]);
+    for (var x = 0; x < images.length; ++x) {
+      images[x].classList.add('img-responsive');
+    }
+  }
+  //КОНЕЦ добавление класса img-responsive ко всем
+  // img в табах единичного товара
+
 
   $('.collapse')
     .on('shown.bs.collapse', function() {
