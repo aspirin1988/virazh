@@ -34,7 +34,12 @@
 			</div>
 		</div>
 		<div class="col-md-5 summary-col">
+			<p class="prices">
+				Цена: <span class="price-gen">15 000 000</span> тг. <br>
+				Цена со скидкой: <span class="price-promotion">13 999 999</span> тг.
+			</p>
 			<p>
+
 				<?=get_the_content()?>
 
 			</p>

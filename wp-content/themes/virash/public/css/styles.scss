@@ -1248,6 +1248,10 @@ footer {
     background: 100% 50%/auto 100% url(../img/product/shadow-vertical.png) no-repeat;
 
     @media (min-width: 768px) {
+
+    }
+
+    @media (min-width: 992px) {
       padding-right: 50px;
       padding-left: 0;
     }
@@ -1258,11 +1262,37 @@ footer {
 
     padding-bottom: 2%;
     border-top: 1px rgba(11, 0, 124, 0.05) solid;
+    border-bottom: 1px rgba(11, 0, 124, 0.08) solid;
 
     @media (min-width: 768px) {
       padding-left: 30px;
       max-height: 555px;
       overflow: auto;
+    }
+
+    @media (max-width: 1200px) and (min-width: 992px) {
+      max-height: 455px;
+    }
+
+    .prices {
+      text-align: right;
+      font-size: 14px;
+      margin-top: 10px;
+
+      .price-gen {
+        font-weight: bold;
+      }
+
+      .price-promotion {
+        font-weight: bold;
+        color: #BB0913;
+      }
+
+      .price-gen-if-promotion {
+        font-weight: normal;
+        text-decoration: line-through;
+      }
+
     }
 
     ul {
@@ -1276,9 +1306,7 @@ footer {
   }
 
   .product-main-photo {
-    background: 50% 100%/100% auto url(../img/product/shadow-bottom.png) no-repeat;
-    padding-bottom: 5%;
-    margin-bottom: 2%;
+    margin-bottom: 3%;
     position: relative;
 
     img {
@@ -1287,6 +1315,10 @@ footer {
 
       @media (min-width: 768px) {
         height: 400px;
+      }
+
+      @media (max-width: 1200px) and (min-width: 992px) {
+        max-height: 300px;
       }
     }
 

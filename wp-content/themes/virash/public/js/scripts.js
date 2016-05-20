@@ -162,6 +162,17 @@ $(document).ready(function () {
   //КОНЕЦ добавление класса img-responsive ко всем
   // img в табах единичного товара
 
+  var prices = document.getElementsByClassName('prices');
+  if (prices.length > 0) {
+    var priceGen = prices[0].getElementsByClassName('price-gen'),
+    pricePromotion = prices[0].getElementsByClassName('price-promotion');
+
+    if (pricePromotion.length > 0) {
+      priceGen[0].classList.add('price-gen-if-promotion');
+    }
+  }
+
+
 
   $('.collapse')
     .on('shown.bs.collapse', function() {

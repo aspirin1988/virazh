@@ -897,27 +897,41 @@ footer {
   padding-top: 2%; }
   .single-product .preview-col {
     background: 100% 50%/auto 100% url(../img/product/shadow-vertical.png) no-repeat; }
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
       .single-product .preview-col {
         padding-right: 50px;
         padding-left: 0; } }
   .single-product .summary-col {
     text-align: justify;
     padding-bottom: 2%;
-    border-top: 1px rgba(11, 0, 124, 0.05) solid; }
+    border-top: 1px rgba(11, 0, 124, 0.05) solid;
+    border-bottom: 1px rgba(11, 0, 124, 0.08) solid; }
     @media (min-width: 768px) {
       .single-product .summary-col {
         padding-left: 30px;
         max-height: 555px;
         overflow: auto; } }
+    @media (max-width: 1200px) and (min-width: 992px) {
+      .single-product .summary-col {
+        max-height: 455px; } }
+    .single-product .summary-col .prices {
+      text-align: right;
+      font-size: 14px;
+      margin-top: 10px; }
+      .single-product .summary-col .prices .price-gen {
+        font-weight: bold; }
+      .single-product .summary-col .prices .price-promotion {
+        font-weight: bold;
+        color: #BB0913; }
+      .single-product .summary-col .prices .price-gen-if-promotion {
+        font-weight: normal;
+        text-decoration: line-through; }
     .single-product .summary-col ul {
       list-style: disc inside; }
     .single-product .summary-col p {
       text-indent: 30px; }
   .single-product .product-main-photo {
-    background: 50% 100%/100% auto url(../img/product/shadow-bottom.png) no-repeat;
-    padding-bottom: 5%;
-    margin-bottom: 2%;
+    margin-bottom: 3%;
     position: relative; }
     .single-product .product-main-photo img {
       width: 100%;
@@ -925,6 +939,9 @@ footer {
       @media (min-width: 768px) {
         .single-product .product-main-photo img {
           height: 400px; } }
+      @media (max-width: 1200px) and (min-width: 992px) {
+        .single-product .product-main-photo img {
+          max-height: 300px; } }
     .single-product .product-main-photo .square {
       border: 8px solid #040466;
       position: absolute;
