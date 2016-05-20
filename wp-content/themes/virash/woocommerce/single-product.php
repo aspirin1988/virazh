@@ -35,8 +35,12 @@
 		</div>
 		<div class="col-md-5 summary-col">
 			<p class="prices">
+				<?php $price=get_metadata('post', get_the_ID(), '_regular_price', true); if($price): ?>
 				Цена: <span class="price-gen"><?=get_metadata('post', get_the_ID(), '_regular_price', true);?></span> тг. <br>
-				Цена со скидкой: <span class="price-promotion">13 999 999</span> тг.
+				<?php $price_sale=get_metadata('post', get_the_ID(), '_sale_price', true); if($price_sale): ?>
+				Цена со скидкой: <span class="price-promotion"><?=$price_sale?></span> тг.
+
+				<?php endif; endif; ?>
 			</p>
 			<p>
 

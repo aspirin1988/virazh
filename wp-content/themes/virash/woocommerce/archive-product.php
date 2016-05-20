@@ -196,7 +196,7 @@ function collapse ($level,$filter){
 							</button>
 							<div class="collapse <?php if($collapse){echo 'in';}; ?>" id="<?=$val1->slug?>">
 							<?php foreach (get_products_cat_by_slug_parent($val1->slug) as $key2=> $val2): ?>
-								<input name="<?=$val->cat_ID?><?=$val2->slug?>" type="checkbox" id="<?=$val2->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="<?=$val2->slug?>"><?=$val2->name?></label><br>
+								<input name="<?=$val->cat_ID?><?=$val2->slug?>" onclick="submitform()" type="checkbox" id="<?=$val2->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="<?=$val2->slug?>"><?=$val2->name?></label><br>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>
@@ -216,7 +216,7 @@ function collapse ($level,$filter){
 				</button>
 				<div class="collapse in" id="<?=$key?>">
 					<?php foreach ($val['value'] as $key1 => $val1): if ($key1!=''&&$val1!=''):  ?>
-					<input type="checkbox" name="<?=$key?><?=$val1?>" <?=check($current_filter['second'],$val1); ?> id="<?=$val1?>"> <label for="<?=$val1?>"><?=$val1?></label><br>
+					<input type="checkbox" name="<?=$key?><?=$val1?>" onclick="submitform()" <?=check($current_filter['second'],$val1); ?> id="<?=$val1?>"> <label for="<?=$val1?>"><?=$val1?></label><br>
 					<?php endif; endforeach; ?>
 				</div>
 			</div>
@@ -251,6 +251,8 @@ function collapse ($level,$filter){
 
 						<?php $display=false;
 						$price=get_metadata('post', get_the_ID(), '_regular_price', true);
+						$price_sale=get_metadata('post', get_the_ID(), '_sale_price', true);
+						if($price_sale){$price=$price_sale;}
 						$price_param=array();
 						if (isset($current_filter['priceFrom']) && $current_filter['priceFrom']!='')
 						{
