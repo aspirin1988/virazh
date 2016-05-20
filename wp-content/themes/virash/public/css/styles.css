@@ -108,8 +108,12 @@ ul {
   .preloader img {
     max-width: 100%; }
   .preloader h2 {
-    top: 100px;
-    position: relative; }
+    top: 20px;
+    position: relative;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px;
+    display: inline-table;
+    left: 190px; }
 
 /* КОНЕЦ прелоадер */
 /* КОНЕЦ общие стили */

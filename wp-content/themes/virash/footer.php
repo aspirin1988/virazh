@@ -79,7 +79,7 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 		$('.products-list .row').html('<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>');
 
 
-		$('.preloader').show();
+		$('.preloader').css('display','flex');
 		setTimeout(function () {
 			$('#form_filter').submit();
 		},1000);
