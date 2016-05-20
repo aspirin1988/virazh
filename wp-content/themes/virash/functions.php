@@ -153,7 +153,7 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 
-/*@TODO<<<-add field to taxonomy->>>*/
+
 // добавление полей в категорию
 add_action('admin_init', 'category_custom_fields', 1);
 
