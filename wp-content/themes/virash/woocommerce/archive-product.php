@@ -238,9 +238,9 @@ function collapse ($level,$filter){
 			<input type="submit" value="Применить фильтр" class="btn submit-form" >
 		</form>
 
-		<div class="col-sm-9 products-list">
+		<div class="col-sm-9 products-list" style="position: relative;">
 			<div class="row">
-
+<!--				<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>-->
 				<?php $count_product=0; if ( have_posts() ) : ?>
 
 					<?php woocommerce_product_loop_start(); ?>
@@ -379,7 +379,7 @@ function collapse ($level,$filter){
 
 				<?php endif; ?>
 			</div>
-			<ul class="pagination">
+			<ul class="pagination hidden">
 				<li>
 					<a href="#" aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
@@ -398,6 +398,7 @@ function collapse ($level,$filter){
 			</ul>
 
 		</div>
+
 	</div>
 </div>
 <!-- КОНЕЦ список статей-->

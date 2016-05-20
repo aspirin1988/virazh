@@ -130,7 +130,7 @@ ul {
 /* НАЧАЛО прелоадер */
 .preloader {
   text-align: center;
-  position: fixed;
+  position: absolute;
   top: 40%;
   width: 100%;
   display: none;
@@ -138,6 +138,11 @@ ul {
 
   img {
     max-width: 100%;
+  }
+
+  h2{
+    top: 100px;
+    position: relative;
   }
 }
 /* КОНЕЦ прелоадер */

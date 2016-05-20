@@ -1,9 +1,7 @@
 </div><!--КОНЕЦ .content - общий див для контента ниже хедера и выше футера для sticky-navbar'a -->
 
 <!--НАЧАЛО preloader-->
-<div class="preloader">
-	<img src="<?php bloginfo('template_directory') ?>/public/img/preloader.gif" alt="Loading">
-</div>
+
 <!--КОНЕЦ preloader-->
 
 <footer>
@@ -62,6 +60,10 @@
 </div>
 <!-- КОНЕЦ Modal для карт яндекса -->
 
+<?php
+$pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/public/img/preloader.gif" alt="Loading"></div>';
+?>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<?php bloginfo('template_directory') ?>/public/js/jquery-2.2.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -70,8 +72,13 @@
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="<?php bloginfo('template_directory') ?>/public/js/scripts.js"></script>
 <script>
+
+
 	function submitform()
 	{
+		$('.products-list .row').html('<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>');
+
+
 		$('.preloader').show();
 		setTimeout(function () {
 			$('#form_filter').submit();
@@ -79,6 +86,7 @@
 
 
 	}
+
 
 	function clearfilter(){
 		$('#form_filter').find("input[type=checkbox]").prop('checked', false);
