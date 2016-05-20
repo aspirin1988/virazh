@@ -99,8 +99,8 @@ ul {
 
 /* КОНЕЦ стили Скролла */
 /* НАЧАЛО прелоадер */
-.padding {
-  padding: 0 0 0 0; }
+form button.padding {
+  margin: 0 0 0 -18px; }
 
 .preloader {
   text-align: center;

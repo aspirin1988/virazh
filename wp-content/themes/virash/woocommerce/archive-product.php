@@ -179,7 +179,7 @@ function collapse ($level,$filter){
 			<?php foreach ($wo_filter as $key => $val): ?>
 			<div>
 			<?php $collapse=false; $level1=get_products_cat_by_slug_parent($val->slug); $collapse=collapse($level1,$current_filter['one']); if (!$level1): ?>
-				<input type="checkbox" id="<?=$val->slug?>" class="padding"  name="<?=$val->slug?>" <?=check($current_filter['one'],$val->slug)?> > <label for="<?=$val->slug?>"><?=$val->name?></label><br><?=$collapse?>
+				<input type="checkbox" id="<?=$val->slug?>"  name="<?=$val->slug?>" <?=check($current_filter['one'],$val->slug)?> > <label for="<?=$val->slug?>"><?=$val->name?></label><br><?=$collapse?>
 			<?php else: ?>
 				<button type="button" data-toggle="collapse" data-target="#<?=$val->slug?>" aria-expanded="false" aria-controls="<?=$val->slug?>">
 					<?=$val->name?>
@@ -187,9 +187,9 @@ function collapse ($level,$filter){
 				<div class="collapse in" id="<?=$val->slug?>">
 					<?php foreach (get_products_cat_by_slug_parent($val->slug) as $key1=> $val1): ?>
 						<?php $collapse=false; $level2=get_products_cat_by_slug_parent($val1->slug); $collapse=collapse($level2,$current_filter['one']); if (!$level2): ?>
-						<input type="checkbox" onclick="submitform()" name="<?=$val->cat_ID?><?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val1->slug); ?> > <label for="<?=$val1->slug?>"><?=$val1->name?></label><br>
+						<input type="checkbox" onclick="submitform()"  name="<?=$val->cat_ID?><?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val1->slug); ?> > <label for="<?=$val1->slug?>"><?=$val1->name?></label><br>
 						<?php else: ?>
-							<button type="button" data-toggle="collapse" data-target="#<?=$val1->slug?>" aria-expanded="false"
+							<button type="button" data-toggle="collapse" class="padding" data-target="#<?=$val1->slug?>" aria-expanded="false"
 									aria-controls="<?=$val1->slug?>">
 								<span class="glyphicon glyphicon-<?php if ($collapse){echo'minus';}else{echo'plus';} ?>"></span> 
 								<input name="<?=$val->cat_ID?><?=$val1->slug?>" type="checkbox" <?=check($current_filter['one'],$val1->slug); ?>><?=$val1->name?>
