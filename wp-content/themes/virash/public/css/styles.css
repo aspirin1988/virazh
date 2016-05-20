@@ -899,7 +899,8 @@ footer {
     background: 100% 50%/auto 100% url(../img/product/shadow-vertical.png) no-repeat; }
     @media (min-width: 768px) {
       .single-product .preview-col {
-        padding-right: 50px; } }
+        padding-right: 50px;
+        padding-left: 0; } }
   .single-product .summary-col {
     text-align: justify;
     padding-bottom: 2%;
@@ -907,7 +908,7 @@ footer {
     @media (min-width: 768px) {
       .single-product .summary-col {
         padding-left: 30px;
-        max-height: 500px;
+        max-height: 555px;
         overflow: auto; } }
     .single-product .summary-col ul {
       list-style: disc inside; }
@@ -915,16 +916,15 @@ footer {
       text-indent: 30px; }
   .single-product .product-main-photo {
     background: 50% 100%/100% auto url(../img/product/shadow-bottom.png) no-repeat;
-    padding-bottom: 4%;
-    margin-bottom: 4%;
+    padding-bottom: 5%;
+    margin-bottom: 2%;
     position: relative; }
     .single-product .product-main-photo img {
-      max-width: 90%;
-      margin: 0 auto;
+      width: 100%;
       border: 5px solid #040466; }
       @media (min-width: 768px) {
         .single-product .product-main-photo img {
-          height: 350px; } }
+          height: 400px; } }
     .single-product .product-main-photo .square {
       border: 8px solid #040466;
       position: absolute;
@@ -934,13 +934,25 @@ footer {
       bottom: 100px;
       right: 150px; }
   .single-product .product-thumbs {
-    padding: 0 20px 10px; }
+    padding: 0 0 10px; }
     .single-product .product-thumbs .owl-nav {
-      top: 35%; }
+      top: 35%;
+      display: none; }
     .single-product .product-thumbs .owl-prev {
       left: -28px; }
     .single-product .product-thumbs .owl-next {
       right: -28px; }
+    .single-product .product-thumbs .owl-dots {
+      margin-top: 6px;
+      text-align: center; }
+    .single-product .product-thumbs .owl-dot {
+      background: rgba(0, 1, 210, 0.3);
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      margin-left: 10px; }
+    .single-product .product-thumbs .owl-dot.active {
+      background: #040466; }
   .single-product .thumb-container {
     border: 3px solid #040466; }
 

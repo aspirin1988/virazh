@@ -1249,6 +1249,7 @@ footer {
 
     @media (min-width: 768px) {
       padding-right: 50px;
+      padding-left: 0;
     }
   }
 
@@ -1260,7 +1261,7 @@ footer {
 
     @media (min-width: 768px) {
       padding-left: 30px;
-      max-height: 500px;
+      max-height: 555px;
       overflow: auto;
     }
 
@@ -1276,17 +1277,16 @@ footer {
 
   .product-main-photo {
     background: 50% 100%/100% auto url(../img/product/shadow-bottom.png) no-repeat;
-    padding-bottom: 4%;
-    margin-bottom: 4%;
+    padding-bottom: 5%;
+    margin-bottom: 2%;
     position: relative;
 
     img {
-      max-width: 90%;
-      margin: 0 auto;
+      width: 100%;
       border: 5px solid $company-color;
 
       @media (min-width: 768px) {
-        height: 350px;
+        height: 400px;
       }
     }
 
@@ -1303,16 +1303,32 @@ footer {
   }
 
   .product-thumbs {
-    padding: 0 20px 10px;
+    padding: 0 0 10px;
 
     .owl-nav {
       top: 35%;
+      display: none;
     }
     .owl-prev {
       left: -28px;
     }
     .owl-next {
       right: -28px;
+    }
+
+    .owl-dots {
+      margin-top: 6px;
+      text-align: center;
+    }
+    .owl-dot {
+      background: rgba(0, 1, 210, 0.3);
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    .owl-dot.active {
+      background: $company-color;
     }
   }
 

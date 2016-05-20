@@ -136,13 +136,16 @@ $(document).ready(function () {
   /* НАЧАЛО параметры для карусели Owl-carousel фото товаров */
   $(".owl-carousel-products").owlCarousel({
     items: 4,
-    margin: 5,
-    nav: true,
+    dots: $(".owl-carousel img").length < 5 ? false : true,
+    margin: 5
+
+    /*nav: true, //стрелки прокрутки, Илья сказал, что они не нужны, на всякий случай оставил.
     navText: [
       "<img src='../../wp-content/themes/virash/public/img/index/carousel-left-arrow.png'>",
       "<img src='../../wp-content/themes/virash/public/img/index/carousel-right-arrow.png'>"
-    ]
+    ]*/
   });
+
   /* КОНЕЦ параметры для карусели Owl-carousel  фото товаров */
 
 
@@ -151,7 +154,7 @@ $(document).ready(function () {
   var isItTabs = document.getElementsByClassName('single-product-tabs');
   if (isItTabs.length > 0) {
     var images = isItTabs[0].getElementsByTagName('img');
-    console.log(images[0]);
+
     for (var x = 0; x < images.length; ++x) {
       images[x].classList.add('img-responsive');
     }
