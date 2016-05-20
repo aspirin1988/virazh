@@ -66,6 +66,7 @@
 <script>
 	function submitform()
 	{
+		
 		$('#form_filter').submit();
 	}
 </script>

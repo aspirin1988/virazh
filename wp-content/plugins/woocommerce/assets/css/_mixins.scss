@@ -228,7 +228,7 @@
 		margin-top: -.5em;
 		display: block;
 		content: "";
-		@include animation( spin 1s ease-in-out infinite );
+		//@include animation( spin 1s ease-in-out infinite );
 		background: url(../images/icons/loader.svg) center center;
 		background-size: cover;
 		line-height: 1;
