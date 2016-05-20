@@ -173,13 +173,13 @@ function collapse ($level,$filter){
 
 		<form id="form_filter" action="" method="get" class="col-sm-3 filter ">
 			<h3>Фильтр</h3>
-			<input type="button" onclick="clearfilter()" value="Применить фильтр" class="btn" >
+			<input type="button" onclick="clearfilter()" value="Очистит фильтр" class="btn" >
 			<br>
 			<br>
 			<?php foreach ($wo_filter as $key => $val): ?>
 			<div>
 			<?php $collapse=false; $level1=get_products_cat_by_slug_parent($val->slug); $collapse=collapse($level1,$current_filter['one']); if (!$level1): ?>
-				<input type="checkbox" id="<?=$val->slug?>"  name="<?=$val->slug?>" <?=check($current_filter['one'],$val->slug)?> > <label for="<?=$val->slug?>"><?=$val->name?></label><br><?=$collapse?>
+				<input type="checkbox" id="<?=$val->slug?>" class="padding"  name="<?=$val->slug?>" <?=check($current_filter['one'],$val->slug)?> > <label for="<?=$val->slug?>"><?=$val->name?></label><br><?=$collapse?>
 			<?php else: ?>
 				<button type="button" data-toggle="collapse" data-target="#<?=$val->slug?>" aria-expanded="false" aria-controls="<?=$val->slug?>">
 					<?=$val->name?>
