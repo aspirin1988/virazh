@@ -63,5 +63,11 @@
 <script src="<?php bloginfo('template_directory') ?>/public/js/owl.carousel.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="<?php bloginfo('template_directory') ?>/public/js/scripts.js"></script>
+<script>
+	function submitform()
+	{
+		$('#form_filter').submit();
+	}
+</script>
 </body>
 </html>
