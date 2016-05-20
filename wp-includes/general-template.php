@@ -229,6 +229,13 @@ function get_search_form( $echo = true ) {
 				</label>
 				<input type="submit" class="search-submit" value="'. esc_attr_x( 'Search', 'submit button' ) .'" />
 			</form>';
+
+			/*$form='
+					<form class="header__search-form" action="?">
+						<input type="text" placeholder="Поиск по сайту">
+						<input type="submit" value="Поиск">
+					</form>';*/
+
 		} else {
 			$form = '<form role="search" method="get" id="searchform" class="searchform" action="' . esc_url( home_url( '/' ) ) . '">
 				<div>
