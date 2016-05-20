@@ -62,8 +62,8 @@ if (!$current_filter)
 );*/
 
 $filter_array=array(
-	'orderby'      => 'id',
-	'order'        => 'ASC',
+	'orderby'      => 'menu_order',
+	'order'        => 'DESC',
 	'tax_query' => array(
 
 	)
@@ -170,7 +170,6 @@ function collapse ($level,$filter){
 <!-- НАЧАЛО список статей-->
 <div class="container products-catalog">
 	<div class="row">
-
 		<form id="form_filter" action="" method="get" class="col-sm-3 filter ">
 			<h3>Фильтр</h3>
 			<input type="button" onclick="clearfilter()" value="Очистит фильтр" class="btn" >
