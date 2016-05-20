@@ -1,5 +1,11 @@
 </div><!--КОНЕЦ .content - общий див для контента ниже хедера и выше футера для sticky-navbar'a -->
 
+<!--НАЧАЛО preloader-->
+<div class="preloader">
+	<img src="<?php bloginfo('template_directory') ?>/public/img/preloader.gif" alt="Loading">
+</div>
+<!--КОНЕЦ preloader-->
+
 <footer>
 	<div class="container">
 		<div class="row">

@@ -98,6 +98,16 @@ ul {
   background: rgba(4, 4, 102, 0.4); }
 
 /* КОНЕЦ стили Скролла */
+/* НАЧАЛО прелоадер */
+.preloader {
+  text-align: center;
+  position: fixed;
+  top: 40%;
+  width: 100%; }
+  .preloader img {
+    max-width: 100%; }
+
+/* КОНЕЦ прелоадер */
 /* КОНЕЦ общие стили */
 /* НАЧАЛО header */
 header {
