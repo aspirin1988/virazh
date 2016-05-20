@@ -103,7 +103,8 @@ ul {
   text-align: center;
   position: fixed;
   top: 40%;
-  width: 100%; }
+  width: 100%;
+  display: none; }
   .preloader img {
     max-width: 100%; }
 

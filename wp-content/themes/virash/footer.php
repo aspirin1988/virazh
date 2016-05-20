@@ -72,7 +72,16 @@
 <script>
 	function submitform()
 	{
-		
+		$('.preloader').show();
+		setTimeout(function () {
+			$('#form_filter').submit();
+		},1000);
+
+
+	}
+
+	function clearfilter(){
+		$('#form_filter').find("input[type=checkbox]").prop('checked', false);
 		$('#form_filter').submit();
 	}
 </script>

@@ -173,7 +173,7 @@ function collapse ($level,$filter){
 
 		<form id="form_filter" action="" method="get" class="col-sm-3 filter ">
 			<h3>Фильтр</h3>
-			<input type="submit" value="Применить фильтр" class="btn" >
+			<input type="button" onclick="clearfilter()" value="Применить фильтр" class="btn" >
 			<br>
 			<br>
 			<?php foreach ($wo_filter as $key => $val): ?>
