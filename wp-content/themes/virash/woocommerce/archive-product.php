@@ -1,6 +1,7 @@
 <?php get_header();
-
+$query=explode('&page', $_SERVER["QUERY_STRING"]); $query=$query[0];
 $wo_filter=get_products_cat_by_slug_parent('products');
+$page=(int)get_field('display_count',4);
 $dop_param=wc_get_attribute_taxonomy_names();
 $dop_param_label=wc_get_attribute_taxonomies();
 $current_filter=array();
@@ -101,7 +102,11 @@ if ($count==0){
 
 //echo  '<br>';
 //echo  '<br>';
+$post_count=round(count(query_posts( $filter_array ))/$page);
+$filter_array['posts_per_page'] = $page;
+$filter_array['offset'] = $_GET['page']*$page;
 //print_r($filter_array);
+//print_r($post_count);
 //echo  '<br>';
 //print_r($dop_param);
 //echo  '<br>';
@@ -371,7 +376,9 @@ function collapse ($level,$filter){
 					 *
 					 * @hooked woocommerce_pagination - 10
 					 */
-					do_action( 'woocommerce_after_shop_loop' );
+
+					//do_action( 'woocommerce_after_shop_loop' );
+
 					?>
 
 				<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
@@ -380,23 +387,23 @@ function collapse ($level,$filter){
 
 				<?php endif; ?>
 			</div>
-			<ul class="pagination hidden">
-				<li>
-					<a href="#" aria-label="Previous">
+			<?php if($post_count>1):?>
+			<ul class="pagination ">
+				<li >
+					<a href="?<?php  if ($_GET['page']>0):echo $query.'&page='.($_GET['page']-1);else: echo $query.'&page='.($_GET['page']); endif;?>"  aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<?php for($i=0;$i<$post_count; $i++):?>
+				<li class="<?php if ($_GET['page']==$i):?>active<?php endif; ?>"><a href="?<?=$query.'&page='.($i)?>"><?=$i+1?></a></li>
+				<?php endfor; ?>
 				<li>
-					<a href="#" aria-label="Next">
+					<a href="?<?php if ($_GET['page']<$post_count-1):echo $query.'&page='.($_GET['page']+1);else: echo $query.'&page='.($post_count-1); endif;?>" aria-label="Next">
 						<span aria-hidden="true">&raquo;</span>
 					</a>
 				</li>
 			</ul>
+			<?php endif; ?>
 
 		</div>
 
