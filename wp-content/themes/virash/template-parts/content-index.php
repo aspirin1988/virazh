@@ -36,26 +36,26 @@
 <!-- КОНЕЦ main section -->
 
 <!--НАЧАЛО articles on main -->
-<div class="articles-on-main container">
+<!--<div class="articles-on-main container">
 	<h2>Сегодня в автосалонах вираж</h2>
 	<div id="carousel-articles" class="carousel slide" data-ride="carousel">
-		<?php $args = array( 'category_name'=> 'slider' ,'numberposts'=>100 , 'order'=>'ASC' );
-		$categories=get_posts($args );?>
+		<?php /*$args = array( 'category_name'=> 'slider' ,'numberposts'=>100 , 'order'=>'ASC' );
+		$categories=get_posts($args );*/?>
 
 		<ol class="carousel-indicators">
-			<?php $col=1; $class='active'; foreach ($categories as $key=> $value) : if ($col==3): ?>
-			<li data-target="#carousel-articles" data-slide-to="<?=$key?>" class="active"></li>
-			<?php $col=1; $class=''; endif; $col++; endforeach; ?>
-		</ol>
+			<?php /*$col=1; $class='active'; foreach ($categories as $key=> $value) : if ($col==3): */?>
+			<li data-target="#carousel-articles" data-slide-to="<?/*=$key*/?>" class="active"></li>
+			<?php /*$col=1; $class=''; endif; $col++; endforeach; */?>
+		</ol>-->
 
 
 
 
 		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox" data-interval="20000">
+		<!--<div class="carousel-inner" role="listbox" data-interval="20000">
 			<div class="item active">
 
-				<img src="<?=bloginfo('template_directory')?>/public/img/index/articles-sample2.jpg" alt="Статья">
+				<img src="<?/*=bloginfo('template_directory')*/?>/public/img/index/articles-sample2.jpg" alt="Статья">
 				<div class="carousel-caption">
 					<div class="article-preview">
 						<h4>Статья 1</h4>
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img src="<?=bloginfo('template_directory')?>/public/img/index/articles-sample.jpg" alt="Статья">
+				<img src="<?/*=bloginfo('template_directory')*/?>/public/img/index/articles-sample.jpg" alt="Статья">
 				<div class="carousel-caption">
 					<div class="article-preview">
 						<h4>Статья 1</h4>
@@ -107,7 +107,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img src="<?=bloginfo('template_directory')?>/public/img/index/articles-sample3.jpg" alt="Статья">
+				<img src="<?/*=bloginfo('template_directory')*/?>/public/img/index/articles-sample3.jpg" alt="Статья">
 				<div class="carousel-caption">
 					<div class="article-preview">
 						<h4>Статья 1</h4>
@@ -132,10 +132,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 
 		<!-- Controls -->
-		<a class="left carousel-control" href="#carousel-articles" role="button" data-slide="prev">
+		<!--<a class="left carousel-control" href="#carousel-articles" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			<span class="sr-only">Previous</span>
 		</a>
@@ -144,7 +144,7 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-</div>
+</div>-->
 <!--КОНЕЦ articles on main -->
 
 <div class="news-on-main container hidden-sm">
@@ -208,7 +208,7 @@
 <!--КОНЕЦ transport types -->
 
 <!--НАЧАЛО brands on main -->
-<div class="brands-on-main container hidden-xs">
+<div class="brands-on-main container <!--hidden-xs-->">
 	<h2 class="text-center">Бренды</h2>
 
 	<div class="owl-carousel-brands">

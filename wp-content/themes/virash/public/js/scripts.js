@@ -120,8 +120,16 @@ $(document).ready(function () {
 
 
   /* НАЧАЛО параметры для карусели Owl-carousel брендов на Главной стр. */
+  var count=0;
+  if (screen.width<=411) {
+    count = Math.round((screen.width / 90));
+  }
+  else
+  {
+    count = Math.round((screen.width / 200));
+  }
   $(".owl-carousel-brands").owlCarousel({
-    items: 7,
+    items: count,
     margin: 30,
     loop: true,
     dotsEach: true,
