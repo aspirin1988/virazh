@@ -512,6 +512,23 @@ footer {
       display: none; } }
 .news-on-main.container .owl-carousel .owl-item a:hover img {
   border: 2px solid rgba(4, 4, 102, 0.7); }
+.news-on-main.container .owl-carousel .owl-item h4 {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white; }
+  @media (max-width: 411px) {
+    .news-on-main.container .owl-carousel .owl-item h4 {
+      font-size: inherit; } }
+.news-on-main.container .owl-carousel .owl-item p {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white; }
 
 .news-on-main .owl-nav {
   position: absolute;

@@ -147,8 +147,8 @@
 </div>
 <!--КОНЕЦ articles on main -->
 
-<div class="news-on-main container hidden-xs">
-	<h2 class="text-center">Бренды</h2>
+<div class="news-on-main container hidden-sm">
+	<h2 class="text-center">Сегодня в автосалонах вираж</h2>
 
 	<div class="owl-carousel-news">
 		<?php
@@ -158,12 +158,13 @@
 			<div>
 				<a href="<?=get_permalink($value->ID)?>">
 					<img src="<?=get_the_post_thumbnail_url($value->ID);?>">
+					<h4><?=$value->post_title?></h4>
+					<p class="hidden-xs"><?=mb_substr(strip_tags($value->post_content),0,128)?>...</p>
 				</a>
 			</div>
 		<?php endforeach; ?>
 	</div>
 </div>
-
 
 
 <!--НАЧАЛО transport types -->

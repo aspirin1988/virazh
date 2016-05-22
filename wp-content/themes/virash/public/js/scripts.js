@@ -135,7 +135,7 @@ $(document).ready(function () {
 
   /* НАЧАЛО параметры для карусели Owl-carousel новостей на Главной стр. */
   $(".owl-carousel-news").owlCarousel({
-    items: 3,
+    items: 2,
     margin: 30,
     loop: true,
     dotsEach: true,
