@@ -133,6 +133,20 @@ $(document).ready(function () {
   });
   /* КОНЕЦ параметры для карусели Owl-carousel брендов на Главной стр. */
 
+  /* НАЧАЛО параметры для карусели Owl-carousel новостей на Главной стр. */
+  $(".owl-carousel-news").owlCarousel({
+    items: 3,
+    margin: 30,
+    loop: true,
+    dotsEach: true,
+    nav: true,
+    navText: [
+      "<img src='../wp-content/themes/virash/public/img/index/carousel-left-arrow.png'>",
+      "<img src='../wp-content/themes/virash/public/img/index/carousel-right-arrow.png'>"
+    ]
+  });
+  /* КОНЕЦ параметры для карусели Owl-carousel новостей на Главной стр. */
+
   /* НАЧАЛО параметры для карусели Owl-carousel фото товаров */
   $(".owl-carousel-products").owlCarousel({
     items: 4,

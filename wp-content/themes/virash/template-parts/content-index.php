@@ -48,6 +48,9 @@
 			<?php $col=1; $class=''; endif; $col++; endforeach; ?>
 		</ol>
 
+
+
+
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner" role="listbox" data-interval="20000">
 			<div class="item active">
@@ -143,6 +146,25 @@
 	</div>
 </div>
 <!--КОНЕЦ articles on main -->
+
+<div class="news-on-main container hidden-xs">
+	<h2 class="text-center">Бренды</h2>
+
+	<div class="owl-carousel-news">
+		<?php
+		$args = array( 'category_name'=> 'news' ,'numberposts'=>100 , 'order'=>'ASC' );
+		$categories=get_posts($args );
+		foreach ($categories as $key=>$value) : ?>
+			<div>
+				<a href="<?=get_permalink($value->ID)?>">
+					<img src="<?=get_the_post_thumbnail_url($value->ID);?>">
+				</a>
+			</div>
+		<?php endforeach; ?>
+	</div>
+</div>
+
+
 
 <!--НАЧАЛО transport types -->
 <div class="transport-types container">

@@ -709,6 +709,69 @@ footer {
   }
 }
 /* КОНЕЦ brands on main */
+
+
+/* НАЧАЛО news on main */
+
+.news-on-main.container {
+  @media (min-width: 1200px) {
+    width: 1100px;
+  }
+
+  &::after {
+    content: url(../img/index/line-shadow.png);
+    margin: 3% auto 0;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .owl-carousel {
+    .owl-item a:hover  img {
+      border: 2px solid rgba(4, 4, 102, 0.7);
+      //border-radius: 50%;
+    }
+  }
+}
+
+.news-on-main .owl-nav {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  border: none;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+.owl-prev {
+  position: absolute;
+  left: -40px;
+  transition: all .2s;
+  opacity: .7;
+
+  &:hover {
+    margin-left: -3px;
+    opacity: 1;
+  }
+}
+
+.owl-next {
+  position: absolute;
+  right: -40px;
+  z-index: 9990;
+  transition: all .2s;
+  opacity: .7;
+
+  &:hover {
+    margin-right: -3px;
+    opacity: 1;
+  }
+}
+/* КОНЕЦ news on main */
+
+
 /* -----------------------------------
 ------ КОНЕЦ главная страница -------
 --------------------------------------*/
