@@ -7,7 +7,7 @@
  * @package virash
  */
 $query=explode('page', $_SERVER["QUERY_STRING"]); $query=$query[0];
-$page=1;
+$page=6;
 $current_object=get_queried_object();
 $offset=get_query_var('page')*$page;
 //$wp_query->query_vars['posts_per_page']=$page;
