@@ -17,13 +17,13 @@
 				if (get_field('title')){
 					the_field('title');
 				}else{
-					wp_title();}
+					the_title();}
 			}
 		}else{
 			if (get_field('title')){
 				the_field('title');
 			}else{
-				wp_title();}
+				the_title();}
 		}?>
 	</title>
 	<meta name="description" content="<?php if (is_tax()){ echo $field['description'];}else{ the_field('description');}?>"/>
@@ -56,7 +56,6 @@
 
 	</div>
 </header>
-
 <div class="content"><!--НАЧАЛО .content - общий див для контента ниже хедера и выше футера для sticky-navbar'a -->
 
 	<!--НАЧАЛО навбар-->

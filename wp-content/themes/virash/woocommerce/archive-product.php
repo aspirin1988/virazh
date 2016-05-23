@@ -316,21 +316,26 @@ function collapse ($level,$filter){
 
 								foreach ($attr_dop as $value) {
 									if ($value == $val['param']['value']) {
-										$dop_display[$val['param']['slug']] = true;
+										$dop_display[$val['param']['slug']][] = true;
 										$display = true;
 										break;
 									} else {
-										$dop_display[$val['param']['slug']] = false;
+										$dop_display[$val['param']['slug']][] = false;
 										$display = false;
 									}
 								}
 							}
 						}
 						$dop_display_b=true;
-//						print_r($dop_display);
 						foreach ($dop_display as $value)
 						{
-							$dop_display_b= $dop_display_b*$value;
+//							print_r($value);
+							$dop_display_b1=false;
+							foreach ($value as $val) {
+								$dop_display_b1 += $val;
+							}
+							$dop_display_b*=$dop_display_b1;
+//							print_r($dop_display_b);
 						}
 						/*if (isset($current_filter['priceFrom']) && $current_filter['priceFrom']!=''&& isset($current_filter['priceTo']) && $current_filter['priceTo']!='')
 						{
@@ -363,6 +368,7 @@ function collapse ($level,$filter){
 							}
 						}*/
 						if ($display&&$dop_display_b) {
+//							print_r($dop_display);
 							$count_product++;
 							wc_get_template_part('content', 'product');
 						}
