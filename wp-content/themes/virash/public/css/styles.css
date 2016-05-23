@@ -505,7 +505,7 @@ footer {
   .news-on-main.container {
     width: 1100px; } }
 .news-on-main.container .owl-carousel .owl-item a:hover img {
-  border: 2px solid rgba(4, 4, 102, 0.7); }
+  border: none; }
 .news-on-main.container .owl-carousel .owl-item h4 {
   position: absolute;
   top: 0;
@@ -533,26 +533,30 @@ footer {
   border: none; }
   @media (max-width: 992px) {
     .news-on-main .owl-nav {
-      display: none; } }
-
-.owl-prev {
-  position: absolute;
-  left: -40px;
-  transition: all .2s;
-  opacity: .7; }
-  .owl-prev:hover {
-    margin-left: -3px;
-    opacity: 1; }
-
-.owl-next {
-  position: absolute;
-  right: -40px;
-  z-index: 9990;
-  transition: all .2s;
-  opacity: .7; }
-  .owl-next:hover {
-    margin-right: -3px;
-    opacity: 1; }
+      display: block; } }
+  .news-on-main .owl-nav .owl-prev {
+    position: absolute;
+    left: -40px;
+    transition: all .2s;
+    opacity: .7; }
+    @media (max-width: 992px) {
+      .news-on-main .owl-nav .owl-prev {
+        left: 0; } }
+    .news-on-main .owl-nav .owl-prev:hover {
+      margin-left: -3px;
+      opacity: 1; }
+  .news-on-main .owl-nav .owl-next {
+    position: absolute;
+    right: -40px;
+    z-index: 9990;
+    transition: all .2s;
+    opacity: .7; }
+    @media (max-width: 992px) {
+      .news-on-main .owl-nav .owl-next {
+        right: 0; } }
+    .news-on-main .owl-nav .owl-next:hover {
+      margin-right: -3px;
+      opacity: 1; }
 
 /* КОНЕЦ news on main */
 /* -----------------------------------
@@ -894,9 +898,22 @@ footer {
 /* -------------------------------
 --- НАЧАЛО страницы Каталог товаров  ----
 ----------------------------------*/
+.filter-button {
+  border-color: #040466;
+  width: 44px;
+  height: 36px;
+  float: left;
+  left: 10px;
+  z-index: 100;
+  /*top: 390px;
+  position: absolute;*/ }
+  .filter-button span {
+    background: #040466; }
+
 @media (max-width: 768px) {
   .filter {
-    padding: 0 50px; } }
+    padding: 0 50px;
+    display: none; } }
 .filter h3 {
   color: #040466; }
 .filter button,

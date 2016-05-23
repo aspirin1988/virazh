@@ -175,7 +175,13 @@ function collapse ($level,$filter){
 <!-- НАЧАЛО список статей-->
 <div class="container products-catalog">
 	<div class="row">
-		<form id="form_filter" action="" method="get" class="col-sm-3 filter ">
+		<div class="filter-button navbar-toggle collapsed hidden-md" onclick="$('.filter').toggle(200)" >
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</div>
+		<br>
+		<form id="form_filter" action="" method="get" class="col-sm-3 filter hidden-sm ">
 			<h3>Фильтр</h3>
 			<input type="button" onclick="clearfilter()" value="Очистит фильтр" class="btn" >
 			<br>
@@ -241,7 +247,7 @@ function collapse ($level,$filter){
 			<br>
 			<input type="submit" value="Применить фильтр" class="btn submit-form" >
 		</form>
-
+		<br>
 		<div class="col-sm-9 products-list" style="position: relative;">
 			<div class="row">
 				<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>
