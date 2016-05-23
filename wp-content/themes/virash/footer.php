@@ -93,14 +93,15 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 		$('#form_filter').submit();
 	}
 
-	function filter_open(e,t) {
-		console.log($(e,t).css('display'));
-		if($(this).css('display')=='none')
+	function filter_open() {
+		var e=$('.filter');
+		console.info(e.css('display'));
+		if(e.css('display')=='none')
 		{
-			$(this).css('display','block !important');
+			e.css('display','block !important;');
 		}
 		else {
-			$(this).css('display','none !important');
+			e.css('display','none !important;');
 		}
 	}
 

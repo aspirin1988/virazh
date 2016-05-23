@@ -175,8 +175,8 @@ function collapse ($level,$filter){
 <!-- НАЧАЛО список статей-->
 <div class="container products-catalog">
 	<div class="row">
-		<h3 class="filter-title clearfix" onclick="filter_open()">Фильтр<i class="glyphicon glyphicon-chevron-down pull-right hidden-md "></i> </h3>
-		<form id="form_filter" action="" method="get" class="col-sm-3 filter visible-lg ">
+		<h3 class="filter-title clearfix" onclick="$('.filter').toggle(200)">Фильтр<i class="glyphicon glyphicon-chevron-down pull-right hidden-button "></i> </h3>
+		<form id="form_filter" action="" method="get" class="col-sm-3 filter hidden-form ">
 			<input type="button" onclick="clearfilter()" value="Очистит фильтр" class="btn" >
 			<br>
 			<br>

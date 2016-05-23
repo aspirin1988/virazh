@@ -1252,7 +1252,14 @@ footer {
 /* -------------------------------
 --- НАЧАЛО страницы Каталог товаров  ----
 ----------------------------------*/
-
+ @media(max-width: 922px )  {
+   .hidden-form{
+     display: none;
+   }
+   .hidden-button i{
+     display: block;
+   }
+ }
 .filter-title
 {
   @media (max-width: 768px) {
