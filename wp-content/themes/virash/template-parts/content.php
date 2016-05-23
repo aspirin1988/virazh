@@ -19,7 +19,7 @@
 			<?=get_the_content();?>
 		</div>
 		<div class="col-sm-4">
-			<h2 class="text-center other-news">Другие новости</h2>
+			<h2 class="text-center other-news">Читайте так же</h2>
 			<?php $count=0; $other_post=get_posts( array('category_name'=>$current_category[0]->slug)); /*print_r($other_post);*/ ?>
 			<?php foreach ($other_post as $key=>$value): if ($value->ID!=get_the_ID()): if ($count<3): $count++; ?>
 			<div class="other-article">

@@ -504,12 +504,6 @@ footer {
 @media (min-width: 1200px) {
   .news-on-main.container {
     width: 1100px; } }
-.news-on-main.container::after {
-  content: url(../img/index/line-shadow.png);
-  margin: 3% auto 0; }
-  @media (max-width: 768px) {
-    .news-on-main.container::after {
-      display: none; } }
 .news-on-main.container .owl-carousel .owl-item a:hover img {
   border: 2px solid rgba(4, 4, 102, 0.7); }
 .news-on-main.container .owl-carousel .owl-item h4 {
@@ -529,6 +523,8 @@ footer {
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
   color: white; }
+.news-on-main.container .owl-carousel .owl-item a img:hover {
+  border: none; }
 
 .news-on-main .owl-nav {
   position: absolute;
