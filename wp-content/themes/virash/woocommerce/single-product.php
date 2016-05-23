@@ -59,10 +59,10 @@
 			<li class="active"><a data-toggle="tab" href="#menu0">Описание</a></li>
 			<li><a data-toggle="tab" href="#menu1">Характеристики</a></li>
 			<?php if (get_field('tab-1')): ?>
-				<li><a data-toggle="tab" href="#menu2">Таб</a></li>
+				<li><a data-toggle="tab" href="#menu2"><?=get_field('tab-1-name')?></a></li>
 			<?php endif; ?>
 			<?php if (get_field('tab-2')): ?>
-				<li><a data-toggle="tab" href="#menu3">Ещё таб</a></li>
+				<li><a data-toggle="tab" href="#menu3"><?=get_field('tab-2-name')?></a></li>
 			<?php endif; ?>
 		</ul>
 		<div class="tab-content">

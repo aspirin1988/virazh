@@ -121,13 +121,14 @@ $(document).ready(function () {
 
   /* НАЧАЛО параметры для карусели Owl-carousel брендов на Главной стр. */
   var count=0;
-  if (screen.width<=411) {
-    count = Math.round((screen.width / 90));
+  if (screen.width<=435) {
+    count = Math.round((screen.width / 100));
   }
   else
   {
     count = Math.round((screen.width / 200));
   }
+  console.info(count);
   $(".owl-carousel-brands").owlCarousel({
     items: count,
     margin: 30,
