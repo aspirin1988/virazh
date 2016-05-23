@@ -127,6 +127,7 @@ $meta=array();
 foreach ($temp_post as $value) {
 	foreach ($dop_param_label as $value1) {
 		$attr=wp_get_post_terms($value->ID, 'pa_'.$value1->attribute_name);
+//		print_r($attr);
 		$meta['pa_'.$value1->attribute_name]['lable']=$value1->attribute_label;
 		$meta['pa_'.$value1->attribute_name]['value'][$attr[0]->name]=$attr[0]->name;
 	}
@@ -310,17 +311,16 @@ function collapse ($level,$filter){
 							foreach ($value as $val)
 							{
 								global $product;
-
-								if ($product->get_attribute($val['param']['slug'])==$val['param']['value'])
-								{
-									$dop_display[$val['param']['slug']]=true;
-									$display=true;
-									break;
-								}
-								else
-								{
-									$dop_display[$val['param']['slug']]=false;
-									$display=false;
+								$attr_dop=explode(',',$product->get_attribute($val['param']['slug']));
+								foreach ($attr_dop as $value) {
+									if ($value == $val['param']['value']) {
+										$dop_display[$val['param']['slug']] = true;
+										$display = true;
+										break;
+									} else {
+										$dop_display[$val['param']['slug']] = false;
+										$display = false;
+									}
 								}
 							}
 						}

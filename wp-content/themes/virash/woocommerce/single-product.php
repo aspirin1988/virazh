@@ -44,7 +44,7 @@
 			</p>
 			<p>
 
-				<?=get_the_content()?>
+				<?=get_the_excerpt()?>
 
 			</p>
 		</div>
@@ -67,7 +67,7 @@
 		</ul>
 		<div class="tab-content">
 			<div id="menu0" class="tab-pane fade in active">
-				<?= get_the_excerpt() ?>
+				<?=get_the_content()?>
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table class="table table-striped">
