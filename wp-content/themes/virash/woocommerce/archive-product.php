@@ -175,14 +175,16 @@ function collapse ($level,$filter){
 <!-- НАЧАЛО список статей-->
 <div class="container products-catalog">
 	<div class="row">
+		<h3>Фильтр</h3>
 		<div class="filter-button navbar-toggle collapsed hidden-md" onclick="$('.filter').toggle(200)" >
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</div>
 		<br>
+		<br>
+		<br>
 		<form id="form_filter" action="" method="get" class="col-sm-3 filter hidden-sm ">
-			<h3>Фильтр</h3>
 			<input type="button" onclick="clearfilter()" value="Очистит фильтр" class="btn" >
 			<br>
 			<br>
