@@ -1256,9 +1256,14 @@ footer {
 .filter-title
 {
   @media (max-width: 768px) {
-    text-align: center;
-    &::after{
-      content: url("") ;
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    i {
+      font-weight: normal;
+      font-size: 16px;
+      margin-top: 5px;
     }
   }
 }

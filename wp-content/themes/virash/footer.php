@@ -92,6 +92,18 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 		$('#form_filter').find("input[type=checkbox]").prop('checked', false);
 		$('#form_filter').submit();
 	}
+
+	function filter_open(e,t) {
+		console.log($(e,t).css('display'));
+		if($(this).css('display')=='none')
+		{
+			$(this).css('display','block !important');
+		}
+		else {
+			$(this).css('display','none !important');
+		}
+	}
+
 </script>
 </body>
 </html>

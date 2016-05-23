@@ -900,9 +900,14 @@ footer {
 ----------------------------------*/
 @media (max-width: 768px) {
   .filter-title {
-    text-align: center; }
-    .filter-title::after {
-      content: url(""); } }
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5; }
+    .filter-title i {
+      font-weight: normal;
+      font-size: 16px;
+      margin-top: 5px; } }
 
 .filter-button {
   border-color: #040466;
