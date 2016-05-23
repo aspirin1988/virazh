@@ -6,7 +6,13 @@
  *
  * @package virash
  */
+$query=explode('page', $_SERVER["QUERY_STRING"]); $query=$query[0];
+$page=1;
 $current_object=get_queried_object();
+$offset=get_query_var('page')*$page;
+//$wp_query->query_vars['posts_per_page']=$page;
+$post_count=round(count(query_posts( array('category_name'=>$current_object->slug) ))/$page);
+$temp_post=query_posts( array('category_name'=>$current_object->slug, 'posts_per_page'=>$page, 'offset'=>$offset) );
 get_header(); ?>
 
 	<!-- НАЧАЛО заголовок с декор-рамкой-->
@@ -37,23 +43,23 @@ else :
 
 	<!--НАЧАЛО пагинация-->
 	<div class="container text-center">
-		<ul class="pagination">
-			<li>
-				<a href="#" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				</a>
-			</li>
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li>
-				<a href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
-		</ul>
+		<?php if($post_count>1):?>
+			<ul class="pagination ">
+				<li >
+					<a href="?<?php  if ($_GET['page']>0):echo $query.'page='.($_GET['page']-1);else: echo $query.'page='.($_GET['page']); endif;?>"  aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<?php for($i=0;$i<$post_count; $i++):?>
+					<li class="<?php if ($_GET['page']==$i):?>active<?php endif; ?>"><a href="?<?=$query.'page='.($i)?>"><?=$i+1?></a></li>
+				<?php endfor; ?>
+				<li>
+					<a href="?<?php if ($_GET['page']<$post_count-1):echo $query.'page='.($_GET['page']+1);else: echo $query.'page='.($post_count-1); endif;?>" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		<?php endif; ?>
 	</div>
 	<!--КОНЕЦ пагинация-->
 

@@ -102,6 +102,7 @@ if ($count==0){
 
 //echo  '<br>';
 //echo  '<br>';
+//print_r($filter_array);
 $post_count=round(count(query_posts( $filter_array ))/$page);
 $filter_array['posts_per_page'] = $page;
 $filter_array['offset'] = $_GET['page']*$page;
