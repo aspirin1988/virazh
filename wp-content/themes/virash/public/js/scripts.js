@@ -198,9 +198,8 @@ $(document).ready(function () {
   }
   //КОНЕЦ применяем модификатор .price-gen-if-promotion к цене без скидки,
   //если есть скидка.
-
   $('#otherArticles').css('height', $('#articleContent').height()+'px');
-
+  
 
   $('.collapse')
     .on('shown.bs.collapse', function() {
