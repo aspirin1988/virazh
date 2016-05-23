@@ -898,52 +898,60 @@ footer {
 /* -------------------------------
 --- НАЧАЛО страницы Каталог товаров  ----
 ----------------------------------*/
+@media (max-width: 768px) {
+  .filter-title {
+    text-align: center; }
+    .filter-title::after {
+      content: url(""); } }
+
 .filter-button {
   border-color: #040466;
   width: 44px;
   height: 36px;
   float: left;
   left: 10px;
-  z-index: 100;
+  z-index: 1;
   /*top: 390px;
   position: absolute;*/ }
   .filter-button span {
     background: #040466; }
 
-@media (max-width: 768px) {
-  .filter {
-    padding: 0 50px;
-    display: none; } }
-.filter h3 {
-  color: #040466; }
-.filter button,
-.filter button:focus,
-.filter button:active {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  font-weight: bold;
-  display: block;
-  position: relative; }
-  .filter button span,
-  .filter button:focus span,
-  .filter button:active span {
-    color: #999; }
-.filter .collapse {
-  padding-left: 25px;
-  transition: all .5s; }
-.filter label {
-  font-weight: normal;
-  margin-bottom: 0; }
-.filter input[type=checkbox] {
-  vertical-align: sub; }
-.filter input[type=text] {
-  display: block;
-  border-radius: 3px;
-  border: 1px #aaa solid;
-  padding: 5px;
-  max-width: 100%;
-  margin-bottom: 5px; }
+.filter {
+  margin-top: 20px; }
+  @media (max-width: 768px) {
+    .filter {
+      padding: 0 50px;
+      display: none; } }
+  .filter h3 {
+    color: #040466; }
+  .filter button,
+  .filter button:focus,
+  .filter button:active {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    position: relative; }
+    .filter button span,
+    .filter button:focus span,
+    .filter button:active span {
+      color: #999; }
+  .filter .collapse {
+    padding-left: 25px;
+    transition: all .5s; }
+  .filter label {
+    font-weight: normal;
+    margin-bottom: 0; }
+  .filter input[type=checkbox] {
+    vertical-align: sub; }
+  .filter input[type=text] {
+    display: block;
+    border-radius: 3px;
+    border: 1px #aaa solid;
+    padding: 5px;
+    max-width: 100%;
+    margin-bottom: 5px; }
 
 .products-list .products {
   display: flex;

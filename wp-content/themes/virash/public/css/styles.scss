@@ -1253,13 +1253,23 @@ footer {
 --- НАЧАЛО страницы Каталог товаров  ----
 ----------------------------------*/
 
+.filter-title
+{
+  @media (max-width: 768px) {
+    text-align: center;
+    &::after{
+      content: url("") ;
+    }
+  }
+}
+
 .filter-button{
   border-color: #040466;
   width: 44px;
   height: 36px;
   float: left;
   left: 10px;
-  z-index: 100;
+  z-index: 1;
   /*top: 390px;
   position: absolute;*/
   span{
@@ -1268,6 +1278,7 @@ footer {
 }
 
 .filter {
+  margin-top: 20px;
   @media (max-width: 768px) {
     padding: 0 50px;
     display: none;
