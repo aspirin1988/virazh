@@ -185,6 +185,8 @@ $(document).ready(function () {
   //КОНЕЦ добавление класса img-responsive ко всем
   // img в табах единичного товара
 
+  //НАЧАЛО применяем модификатор .price-gen-if-promotion к цене без скидки,
+  //если есть скидка.
   var prices = document.getElementsByClassName('prices');
   if (prices.length > 0) {
     var priceGen = prices[0].getElementsByClassName('price-gen'),
@@ -194,7 +196,10 @@ $(document).ready(function () {
       priceGen[0].classList.add('price-gen-if-promotion');
     }
   }
+  //КОНЕЦ применяем модификатор .price-gen-if-promotion к цене без скидки,
+  //если есть скидка.
 
+  $('#otherArticles').css('height', $('#articleContent').height()+'px');
 
 
   $('.collapse')
