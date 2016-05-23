@@ -898,11 +898,17 @@ footer {
 /* -------------------------------
 --- НАЧАЛО страницы Каталог товаров  ----
 ----------------------------------*/
+.hidden-form {
+  display: block; }
+
+.hidden-button {
+  display: none; }
+
 @media (max-width: 922px) {
   .hidden-form {
     display: none; }
 
-  .hidden-button i {
+  .hidden-button {
     display: block; } }
 @media (max-width: 768px) {
   .filter-title {
