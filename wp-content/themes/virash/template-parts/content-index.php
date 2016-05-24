@@ -1,6 +1,6 @@
 
 <!--НАЧАЛО main section -->
-<div id="carousel-example-generic" class="carousel slide main-section" data-ride="carousel" data-interval="4000">
+<div id="carousel-example-generic" style="background-image: url(<?=get_field('slider_bg')?>)" class="carousel slide main-section" data-ride="carousel" data-interval="4000">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
 		<?php $args = array( 'category_name'=> 'slider' ,'numberposts'=>100 , 'order'=>'ASC' );
