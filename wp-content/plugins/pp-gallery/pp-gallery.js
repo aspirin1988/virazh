@@ -9,6 +9,19 @@ window.onload = function () {
             });
         });
 
+        $('.edit-pp-img').click(function (event) {
+            var editId = $(this).data('pp-id');
+            var data={};
+            data['name']=$('#name'+editId).val();
+            data['alt']=$('#alt'+editId).val();
+            data['description']=$('#description'+editId).val();
+            console.log(data);
+            $.post('/wp-content/plugins/pp-gallery/', {editId: editId,pp:data}, function (response) {
+                console.log(response);
+                UIkit.notify("<div class='notify-suc'><i class='uk-icon-check'></i> Данные успешно сохранены! </div>");
+            });
+        });
+
         $(function(){
 
             var progressbar = $("#progressbar"),

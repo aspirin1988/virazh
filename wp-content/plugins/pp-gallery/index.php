@@ -21,6 +21,19 @@ if(isset($_POST['removeId'])) {
     pp_gallery_remove($_POST['removeId']);
 }
 
+if(isset($_POST['editId'])) {
+    echo pp_gallery_edit($_POST['editId']);
+}
+
+function get_the_post_thumbnail_tag($id=false)
+{
+    if (!$id) {
+        global $post;
+        $id=$post->ID;
+    }
+    return $id;
+}
+
 function pp_gallery_upload() {
     global $wp_query;
     $postid = $wp_query->post->ID;
@@ -48,8 +61,11 @@ function pp_gallery_upload() {
                 }
 
                 if (move_uploaded_file($pp_upload_data['images']["tmp_name"][$key], $target_file)) {
-                    $fileUrl = "/wp-content/uploads/pp_gallery/" . $pp_upload_data['id'] . '/' . basename($pp_upload_data['images']["name"][$key]);
-                    $query = "INSERT INTO pp_gallery_data (url, pp_id) VALUES ('$fileUrl','{$pp_upload_data['id']}')";
+                    $name=basename($pp_upload_data['images']["name"][$key]);
+                    $fileUrl = "/wp-content/uploads/pp_gallery/" . $pp_upload_data['id'] . '/' . $name;
+                    $name=explode('.',$name);
+                    $name=$name[0];
+                    $query = "INSERT INTO pp_gallery_data (url, pp_id,name,alt) VALUES ('$fileUrl','{$pp_upload_data['id']}','{$name}','{$name}')";
                     $wpdb->query($query);
 
                 } else {
@@ -69,6 +85,9 @@ function pp_gallery_activation() {
         id int(9) NOT NULL AUTO_INCREMENT,
         url varchar(255) DEFAULT '' NOT NULL,
         pp_id int(9) NOT NULL,
+        name TEXT,
+        alt TEXT,
+        description TEXT,
         UNIQUE KEY id (id)
     ) $charset_collate;";
 
@@ -88,7 +107,17 @@ function pp_gallery_remove($id) {
 
     $pp_gallery_get_query = "DELETE FROM pp_gallery_data WHERE id = '{$id}'";
 
-    return $wpdb->get_results($pp_gallery_get_query);
+    return json_encode($wpdb->get_results($pp_gallery_get_query));
+}
+
+function pp_gallery_edit($id) {
+
+    global $wpdb;
+    $pp_data=$_POST['pp'];
+    $pp_gallery_get_query = "UPDATE pp_gallery_data set nam='{$pp_data['name']}',alt='{$pp_data['alt']}',description='{$pp_data['description']}' WHERE id = '{$id}'";
+    file_put_contents('text.txt',$pp_gallery_get_query);
+//    return $pp_gallery_get_query;
+    return json_encode($wpdb->get_results($pp_gallery_get_query));
 }
 
 function pp_gallery_widget_render() {
@@ -106,9 +135,11 @@ function pp_gallery_boxes() {
 function my_enqueue($hook) {
     wp_enqueue_script( 'my_custom_uikit',  '/wp-content/plugins/pp-gallery/bower_components/uikit/js/uikit.min.js' );
     wp_enqueue_script( 'my_custom_upload', '/wp-content/plugins/pp-gallery/bower_components/uikit/js/components/upload.min.js' );
+    wp_enqueue_script( 'my_custom_notify', '/wp-content/plugins/pp-gallery/bower_components/uikit/js/components/notify.min.js' );
     wp_enqueue_script( 'my_custom_pp-gallery', '/wp-content/plugins/pp-gallery/pp-gallery.js' );
 
 }
+
 add_action( 'admin_init', 'my_enqueue' );
 
 register_activation_hook( __FILE__, 'pp_gallery_activation');

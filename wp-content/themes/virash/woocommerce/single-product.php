@@ -32,7 +32,7 @@
 								<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full') ?>" alt="<?=$alt_text?>">
 							</a>
 						</div>
-					<?php endforeach; ?>
+					<?php endforeach; print_r(pp_gallery_get(4)) ?>
 				</div>
 			</div>
 		</div>
