@@ -248,7 +248,7 @@ function collapse ($level,$filter){
 		<br>
 		<div class="col-sm-9 products-list" style="position: relative;">
 			<div class="row">
-				<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>
+<!--				<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>-->
 				<?php $count_product=0; if ( have_posts() ) : ?>
 
 					<?php woocommerce_product_loop_start(); ?>
