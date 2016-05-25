@@ -16,22 +16,45 @@
 		<?php foreach ($categories as $key => $value) : ?>
 		<div class="item <?php if (!$key): ?>active<?php endif; ?>">
 			<div class="carousel-content container">
-				<div class="row">
 
-					<div class="col-sm-6 animated bounceInDown">
+
+					<div class="animated bounceInDown">
 						<?=get_field('left_text',$value->ID)?>
 					</div>
-					<div class="col-sm-6 animated bounceInRight">
+					<div class="animated bounceInRight">
 						<?=get_field('right_text',$value->ID)?>
 						<?php if (get_field('link',$value->ID)) : ?>
 						<a  href="<?=get_permalink($value->ID)?>" class="btn btn-blue animated bounceInUp" type="button" name="button">Подробнее</a>
 						<?php endif; ?>
 					</div>
-				</div>
 			</div>
 		</div>
 		<?php endforeach; ?>
 	</div>
+
+
+	<!-- Wrapper for slides Старый вариант с разделением на 2 колонны
+	<div class="carousel-inner" role="listbox">
+		<?php foreach ($categories as $key => $value) : ?>
+			<div class="item <?php if (!$key): ?>active<?php endif; ?>">
+				<div class="carousel-content container">
+					<div class="row">
+
+						<div class="col-sm-6 animated bounceInDown">
+							<?=get_field('left_text',$value->ID)?>
+						</div>
+						<div class="col-sm-6 animated bounceInRight">
+							<?=get_field('right_text',$value->ID)?>
+							<?php if (get_field('link',$value->ID)) : ?>
+								<a  href="<?=get_permalink($value->ID)?>" class="btn btn-blue animated bounceInUp" type="button" name="button">Подробнее</a>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+	</div>Старый вариант с разделением на 2 колонны  -->
+
 </div>
 <!-- КОНЕЦ main section -->
 
@@ -147,7 +170,7 @@
 </div>-->
 <!--КОНЕЦ articles on main -->
 
-<div class="news-on-main container hidden-sm">
+<div class="news-on-main container">
 	<h2 class="text-center">Сегодня в автосалонах вираж</h2>
 
 	<div class="owl-carousel-news">
@@ -155,11 +178,13 @@
 		$args = array( 'category_name'=> 'news' ,'numberposts'=>100 , 'order'=>'ASC' );
 		$categories=get_posts($args );
 		foreach ($categories as $key=>$value) : ?>
-			<div>
+			<div class="preview-article">
 				<a href="<?=get_permalink($value->ID)?>">
 					<img src="<?=get_the_post_thumbnail_url($value->ID);?>">
-					<h4><?=$value->post_title?></h4>
-					<p class="hidden-xs"><?=mb_substr(strip_tags($value->post_content),0,128)?>...</p>
+					<h2><?=$value->post_title?></h2>
+					<p class="article-date"><?=$value->post_date?></p>
+					<p><?=mb_substr(strip_tags($value->post_content),0,128)?>...</p>
+					<a href="<?=get_permalink($value->ID)?>" class="btn">Читать далее</a>
 				</a>
 			</div>
 		<?php endforeach; ?>

@@ -133,7 +133,6 @@ $(document).ready(function () {
     items: count,
     margin: 30,
     loop: true,
-    dotsEach: true,
     nav: true,
     navText: [
         "<img src='../wp-content/themes/virash/public/img/index/carousel-left-arrow.png'>",
@@ -144,15 +143,25 @@ $(document).ready(function () {
 
   /* НАЧАЛО параметры для карусели Owl-carousel новостей на Главной стр. */
   $(".owl-carousel-news").owlCarousel({
-    items: 2,
-    margin: 30,
+    dots: true,
     loop: true,
-    dotsEach: true,
-    nav: true,
-    navText: [
-      "<img src='../wp-content/themes/virash/public/img/index/carousel-left-arrow.png'>",
-      "<img src='../wp-content/themes/virash/public/img/index/carousel-right-arrow.png'>"
-    ]
+    responsive : {
+      // breakpoint from 0 up
+      0 : {
+        items : 1,
+        margin: 5
+      },
+      // breakpoint from 768 up
+      480 : {
+        items : 2,
+        margin: 10
+      },
+      // breakpoint from 768 up
+      992 : {
+        items : 3,
+        margin: 20
+      }
+    }
   });
   /* КОНЕЦ параметры для карусели Owl-carousel новостей на Главной стр. */
 
@@ -198,8 +207,12 @@ $(document).ready(function () {
   }
   //КОНЕЦ применяем модификатор .price-gen-if-promotion к цене без скидки,
   //если есть скидка.
+
+  //НАЧАЛО на странице статей выравниваем высоту списка других статей, т.е.
+  //делаем эту колонку равной высоте блока со статьёй
   $('#otherArticles').css('height', $('#articleContent').height()+'px');
-  
+  //КОНЕЦ на странице статей выравниваем высоту списка других статей, т.е.
+  //делаем эту колонку равной высоте блока со статьёй
 
   $('.collapse')
     .on('shown.bs.collapse', function() {
