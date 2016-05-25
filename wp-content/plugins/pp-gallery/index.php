@@ -27,19 +27,78 @@ if(isset($_POST['editId'])) {
 
 function get_the_post_thumbnail_tag($id=false)
 {
+    global $post;
     if (!$id) {
-        global $post;
         $id=$post->ID;
     }
-    return $id;
+    $meta=array();
+    $img_id = get_post_thumbnail_id($id);
+    $attachment = get_post( $img_id );
+    $res='';
+    $meta['image_name'] = basename( get_attached_file( $img_id ) );
+    $meta['image_alt'] = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+    $meta['image_description'] =  $attachment->post_content;
+    $meta['post_name'] = $post->post_title;
+    if ($meta['image_alt'])
+    {
+        $res.=' alt="'.$meta['image_alt'].'" ';
+    }
+    else
+    {
+        $res.=' alt="'.$meta['post_name'].'" ';
+    }
+
+    /*if ($meta['image_description'])
+    {
+        $res.=' title="'.$meta['image_description'].'" ';
+    }
+    else
+    {
+        $res.=' title="'.$meta['post_name'].'" ';
+    }*/
+
+    echo $res ;
+}
+
+function get_the_thumbnail_tag_by_id($id=false)
+{
+    global $post;
+    if (!$id) {
+        $id=$post->ID;
+    }
+    $meta=array();
+    $img_id = get_post_thumbnail_id($id);
+    $attachment = get_post( $img_id );
+    $res='';
+    $meta['image_name'] = basename( get_attached_file( $img_id ) );
+    $meta['image_alt'] = get_post_meta($img_id , '_wp_attachment_image_alt', true);
+    $meta['image_description'] =  $attachment->post_content;
+    $meta['post_name'] = $post->post_title;
+    if ($meta['image_alt'])
+    {
+        $res.=' alt="'.$meta['image_alt'].'" ';
+    }
+    else
+    {
+        $res.=' alt="'.$meta['post_name'].'" ';
+    }
+
+    /*if ($meta['image_description'])
+    {
+        $res.=' title="'.$meta['image_description'].'" ';
+    }
+    else
+    {
+        $res.=' title="'.$meta['post_name'].'" ';
+    }*/
+
+    echo $res ;
 }
 
 function pp_gallery_upload() {
     global $wp_query;
     $postid = $wp_query->post->ID;
-
-    echo $postid;
-
+//    echo $postid;
     $pp_upload_data['images'] = $_FILES['files'];
     $pp_upload_data['id'] = $_GET['postID'];
 
@@ -106,18 +165,18 @@ function pp_gallery_remove($id) {
     global $wpdb;
 
     $pp_gallery_get_query = "DELETE FROM pp_gallery_data WHERE id = '{$id}'";
-
-    return json_encode($wpdb->get_results($pp_gallery_get_query));
+    $res=$wpdb->get_results($pp_gallery_get_query);
+    return json_encode($res);
 }
 
 function pp_gallery_edit($id) {
 
     global $wpdb;
     $pp_data=$_POST['pp'];
-    $pp_gallery_get_query = "UPDATE pp_gallery_data set nam='{$pp_data['name']}',alt='{$pp_data['alt']}',description='{$pp_data['description']}' WHERE id = '{$id}'";
+    $pp_gallery_get_query = "UPDATE pp_gallery_data set name='{$pp_data['name']}',alt='{$pp_data['alt']}',description='{$pp_data['description']}' WHERE id = '{$id}'";
     file_put_contents('text.txt',$pp_gallery_get_query);
-//    return $pp_gallery_get_query;
-    return json_encode($wpdb->get_results($pp_gallery_get_query));
+    $res=$wpdb->query($pp_gallery_get_query);
+    return json_encode($res);
 }
 
 function pp_gallery_widget_render() {
@@ -139,6 +198,12 @@ function my_enqueue($hook) {
     wp_enqueue_script( 'my_custom_pp-gallery', '/wp-content/plugins/pp-gallery/pp-gallery.js' );
 
 }
+
+function register_my_custom_menu_page(){
+    add_menu_page(
+        'PP GALLERY', 'PP GALLERY', 'manage_options', 'pp-gallery/index.php', '', plugins_url( 'pp-gallery/images/icon.png' ), 6 );
+}
+add_action( 'admin_menu', 'register_my_custom_menu_page' );
 
 add_action( 'admin_init', 'my_enqueue' );
 

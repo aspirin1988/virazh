@@ -55,6 +55,12 @@
     padding: 15px;
     position: relative;
 }
+.notify-err{
+    display: block;
+    background: red;
+    padding: 15px;
+    position: relative;
+}
 .uk-notify-message .uk-close{
     top:30%;
     position: absolute;

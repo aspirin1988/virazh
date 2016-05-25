@@ -18,7 +18,14 @@ window.onload = function () {
             console.log(data);
             $.post('/wp-content/plugins/pp-gallery/', {editId: editId,pp:data}, function (response) {
                 console.log(response);
-                UIkit.notify("<div class='notify-suc'><i class='uk-icon-check'></i> Данные успешно сохранены! </div>");
+                if (response==1) {
+                    UIkit.notify("<div class='notify-suc'><i class='uk-icon-check'></i> Данные успешно сохранены! </div>");
+                }
+                else 
+                {
+                    UIkit.notify("<div class='notify-err'><i class='uk-icon-remove'></i> Данные не были сохранены! <br> Или изменены! </div>");
+
+                }
             });
         });
 

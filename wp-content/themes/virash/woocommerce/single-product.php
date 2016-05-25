@@ -19,7 +19,6 @@
 	<div class="row">
 		<div class="col-md-7 preview-col">
 			<div class="product-main-photo">
-				<?php the_post_thumbnail() ?>
 				<?php $img_id = get_post_thumbnail_id(); $alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true); ?>
 				<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>" alt="<?=$alt_text?>" >
 			</div>
@@ -29,10 +28,10 @@
 						<?php $alt_text = get_post_meta($value , '_wp_attachment_image_alt', true);?>
 						<div class="thumb-container">
 							<a href="#" data-img="<?=wp_get_attachment_image_url($value,'full') ?>" class="thumb">
-								<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full') ?>" alt="<?=$alt_text?>">
+								<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full')?>" <?php get_the_thumbnail_tag_by_id($value)?>>
 							</a>
 						</div>
-					<?php endforeach; print_r(pp_gallery_get(4)) ?>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>

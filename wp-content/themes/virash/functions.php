@@ -90,7 +90,7 @@ remove_action( 'wp_head', 'rest_output_link_wp_head' );
 remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 remove_action( 'wp_head', 'menu-image' );
 remove_action( 'wp_head', 'admin_head-nav-menus.php' );
-remove_action( 'wp_head', 'woocommerce-layout-css' );
+remove_action( 'wp_head', 'admin_head-nav-menus.php' );
 remove_action( 'template_redirect', 'rest_output_link_header');
 // устаревшие функции
 /**
@@ -166,61 +166,3 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 
-
-// добавление полей в категорию
-add_action('admin_init', 'category_custom_fields', 1);
-
-// функция расширения функционала административного раздела
-function category_custom_fields()
-{
-	$taxonomy = 'edited_' . $_GET['taxonomy'];
-	if (!$_GET['taxonomy']) {
-		$taxonomy = 'edited_' . $_POST['taxonomy'];
-	}
-
-	// добавления действия после отображения формы ввода параметров категории
-	add_action('edit_category_form_fields', 'category_custom_fields_form');
-	add_action('edit_tag_form_fields', 'category_custom_fields_form');
-
-	// добавления действия при сохранении формы ввода параметров категории
-	add_action("edited_category", 'category_custom_fields_save');
-	add_action("$taxonomy", 'category_custom_fields_save');
-}
-
-function category_custom_fields_form($tag)
-{
-	$t_id = $tag->term_id;
-	$cat_meta = get_option("{$tag->taxonomy}_{$t_id}");
-	if (!$cat_meta){$cat_meta=get_fields("{$tag->taxonomy}_{$t_id}");}
-	foreach ($cat_meta as $key=>$value):
-		?>
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="extra1"><?php _e($key); ?></label></th>
-			<td>
-				<input type="text" name="Cat_meta[<?=$key?>]" id="Cat_meta[<?=$key?>]" size="25" style="width:60%;"
-					   value="<?php echo
-					   $cat_meta[$key] ? $cat_meta[$key] : ''; ?>"><br/>
-				<span class="description"><?php _e($key); ?></span>
-			</td>
-		</tr>
-		<?php
-	endforeach;
-}
-
-function category_custom_fields_save()
-{
-	$tag = $_POST['taxonomy'];
-	$term_id = $_POST['tag_ID'];
-	if (isset($_POST['Cat_meta'])) {
-		$t_id = $term_id;
-		$cat_meta = get_option("{$tag}_{$t_id}");
-		$cat_keys = array_keys($_POST['Cat_meta']);
-		foreach ($cat_keys as $key) {
-			if (isset($_POST['Cat_meta'][$key])) {
-				$cat_meta[$key] = $_POST['Cat_meta'][$key];
-			}
-		}
-		//save the option array
-		update_option("{$tag}_{$t_id}", $cat_meta);
-	}
-}
