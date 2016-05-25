@@ -295,7 +295,11 @@ header {
       a {
         padding-top: 10px;
         padding-bottom: 10px;
+        &.visited {
+          color: #000000;
+        }
       }
+
 
       .submenu {
         border: 1px solid $company-color;

@@ -108,5 +108,6 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 </script>
 <?=get_field('google',4)?>
 <?=get_field('yandex',4)?>
+<?php wp_footer() ?>
 </body>
 </html>

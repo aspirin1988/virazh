@@ -19,7 +19,7 @@
 	<div class="row">
 		<div class="col-md-7 preview-col">
 			<div class="product-main-photo">
-
+				<?php the_post_thumbnail() ?>
 				<?php $img_id = get_post_thumbnail_id(); $alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true); ?>
 				<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>" alt="<?=$alt_text?>" >
 			</div>

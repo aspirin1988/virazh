@@ -216,6 +216,8 @@ header {
     .navbar .navbar-nav > li a {
       padding-top: 10px;
       padding-bottom: 10px; }
+      .navbar .navbar-nav > li a.visited {
+        color: #000000; }
     .navbar .navbar-nav > li .submenu {
       border: 1px solid #040466;
       border-bottom: 2px solid #040466;

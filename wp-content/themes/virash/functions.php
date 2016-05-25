@@ -79,7 +79,20 @@ function virash_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'virash_setup' );
+remove_action( 'wp_head', 'wlwmanifest_link' ); // Удаляет ссылку Windows для Live Writer
 
+remove_action( 'wp_head', 'wp_shortlink_wp_head'); // Удаляет короткую ссылку
+remove_action( 'wp_head', 'wp_generator' ); // Удаляет информацию о версии WordPress
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head'); // Удаляет ссылки на предыдущую и следующую статьи
+
+// отключение WordPress REST API
+remove_action( 'wp_head', 'rest_output_link_wp_head' );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+remove_action( 'wp_head', 'menu-image' );
+remove_action( 'wp_head', 'admin_head-nav-menus.php' );
+remove_action( 'wp_head', 'woocommerce-layout-css' );
+remove_action( 'template_redirect', 'rest_output_link_header');
+// устаревшие функции
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
