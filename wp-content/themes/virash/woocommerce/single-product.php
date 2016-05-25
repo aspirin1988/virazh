@@ -19,14 +19,17 @@
 	<div class="row">
 		<div class="col-md-7 preview-col">
 			<div class="product-main-photo">
-				<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>">
+
+				<?php $img_id = get_post_thumbnail_id(); $alt_text = get_post_meta($img_id , '_wp_attachment_image_alt', true); ?>
+				<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>" alt="<?=$alt_text?>" >
 			</div>
 			<div class="product-thumbs">
 				<div class="owl-carousel owl-carousel-products">
 					<?php foreach ($images as $key=>$value):?>
+						<?php $alt_text = get_post_meta($value , '_wp_attachment_image_alt', true);?>
 						<div class="thumb-container">
 							<a href="#" data-img="<?=wp_get_attachment_image_url($value,'full') ?>" class="thumb">
-								<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full') ?>">
+								<img class="img-responsive" src="<?=wp_get_attachment_image_url($value,'full') ?>" alt="<?=$alt_text?>">
 							</a>
 						</div>
 					<?php endforeach; ?>
