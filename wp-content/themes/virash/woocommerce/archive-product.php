@@ -16,7 +16,7 @@ foreach ($wo_filter as $key_cat=>$val_cat) {
 			}
 			else
 			{
-				foreach ($dop_param_label as $key1=>$val1) {
+				foreach ($dop_param_label as $key1=>$val1)  {
 					if (substr_count($key, 'pa_'.$val1->attribute_name)) {
 						$cat = explode('pa_'.$val1->attribute_name, $key);
 						$current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['value'] = str_replace('_','.',$cat[1]);
@@ -125,12 +125,15 @@ $temp_post=query_posts( $filter_array );
 
 $meta=array();
 foreach ($temp_post as $value) {
-	foreach ($dop_param_label as $value1) {
+	$col=0;
+	foreach ($dop_param_label as $value1) { if ($col<1):
 		$attr = wp_get_post_terms($value->ID, 'pa_' . $value1->attribute_name);
+		print_r($attr);
 		foreach ($attr as $val) {
 			$meta['pa_' . $value1->attribute_name]['lable'] = $value1->attribute_label;
 			$meta['pa_' . $value1->attribute_name]['value'][$val->name] = $val->name;
 		}
+		endif;
 	}
 }
 //print_r($meta);

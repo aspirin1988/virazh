@@ -155,8 +155,13 @@ function pp_gallery_activation() {
 
 function pp_gallery_get($id) {
     global $wpdb;
+    if ($id){
 
-    $pp_gallery_get_query = "SELECT * FROM pp_gallery_data WHERE pp_id = '{$id}'";
+    }
+    else
+    {
+        $pp_gallery_get_query = "SELECT * FROM pp_gallery_data WHERE pp_id = '{$id}'";
+    }
 
     return $wpdb->get_results($pp_gallery_get_query);
 }
@@ -183,7 +188,7 @@ function pp_gallery_widget_render() {
     $postID = get_the_ID();
     $pp_gallery_current_images = pp_gallery_get($postID);
 
-    include(PPGALLERYPATH. 'pp-gallery-widget.php');
+    include_once (PPGALLERYPATH. 'pp-gallery-widget.php');
 }
 
 function pp_gallery_boxes() {
@@ -199,10 +204,35 @@ function my_enqueue($hook) {
 
 }
 
-function register_my_custom_menu_page(){
-    add_menu_page(
-        'PP GALLERY', 'PP GALLERY', 'manage_options', 'pp-gallery/index.php', '', plugins_url( 'pp-gallery/images/icon.png' ), 6 );
+
+function reg_param()
+{
+    if( ! defined( 'REG_GR_PLUGIN_DIR' ) ){ define( 'REG_GR_PLUGIN_DIR', plugin_dir_path( __FILE__ ) ); }
+    // Plugin Folder URL
+    if ( ! defined( 'REG_GR_PLUGIN_URL' ) ) { define( 'REG_GR_PLUGIN_URL', plugin_dir_url( __FILE__ ) ); }
+
+    // Plugin folder name
+    if( ! defined( 'REG_GR_PLUGIN_FOLDER' ) ){ define('REG_GR_PLUGIN_FOLDER', basename(dirname(__FILE__) )); }
+    // Plugin Root File QPath
+    if ( ! defined( 'REG_GR_PLUGIN_FILE' ) ){ define( 'REG_GR_PLUGIN_FILE', __FILE__ ); }
 }
+
+function get_main() {
+    $postID = get_the_ID();
+    $pp_gallery_current_images = pp_gallery_get($postID);
+
+    include_once (PPGALLERYPATH. 'pp-gallery-widget.php');
+}
+
+function register_my_custom_menu_page(){
+    add_menu_page('PP GALLERY', 'PP GALLERY', 'manage_options', REG_GR_PLUGIN_FOLDER, 'get_main', plugins_url( 'pp-gallery/images/icon.png' ));
+        //add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+        add_submenu_page( REG_GR_PLUGIN_FOLDER , 'Menu_item_1', 'Menu item 1', 1, REG_GR_PLUGIN_FOLDER,'get_main');
+        add_submenu_page( REG_GR_PLUGIN_FOLDER , 'Menu_item_2', 'Menu item 2', 2, 'index','get_main1');
+        add_submenu_page( REG_GR_PLUGIN_FOLDER , 'Menu_item_3', 'Menu item 2', 3, 'index1','get_all_group');
+}
+
+add_action( 'admin_menu', 'reg_param' );
 add_action( 'admin_menu', 'register_my_custom_menu_page' );
 
 add_action( 'admin_init', 'my_enqueue' );
