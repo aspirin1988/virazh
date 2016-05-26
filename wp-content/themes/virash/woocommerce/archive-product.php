@@ -5,26 +5,16 @@ $page=(int)get_field('display_count',4);
 $dop_param=wc_get_attribute_taxonomy_names();
 $dop_param_label=wc_get_attribute_taxonomies();
 $current_filter=array();
+
 foreach ($wo_filter as $key_cat=>$val_cat) {
 	foreach ($_GET['one'] as $key => $value) {
 		if ($value == 'on') {
-			$cat = explode($val_cat->term_id.'@', $key);
+			$cat = explode($val_cat->term_id . '@', $key);
 			if (substr_count($key, $val_cat->term_id)) {
 				$current_filter['one'][$val_cat->slug][$cat[1]]['param']['value'] = $cat[1];
 				$current_filter['one'][$val_cat->slug][$cat[1]]['param']['slug'] = $key;
 				$current_filter['one'][$val_cat->slug]['filter_id'][] = get_id_products_cat_by_slug_parent($cat[1]);
 			}
-			/*else
-			{*/
-				/*foreach ($dop_param_label as $key1=>$val1)  {
-					if (substr_count($key, 'pa_'.$val1->attribute_name)) {
-						$cat = explode('pa_'.$val1->attribute_name, $key);
-						$current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['value'] = str_replace('_','.',$cat[1]);
-						$current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['slug'] = 'pa_'.$val1->attribute_name;
-					}
-				}
-
-			}*/
 		} else {
 
 			if (substr_count($key, 'price')) {
@@ -37,38 +27,26 @@ foreach ($wo_filter as $key_cat=>$val_cat) {
 foreach ($dop_param_label as $key_cat=>$val_cat) {
 	foreach ($_GET['second'] as $key => $value) {
 		if ($value == 'on') {
-			$cat = explode($val_cat->attribute_name.'@', $key);
-			if ($cat[0]=='pa_') {
+			$cat = explode($val_cat->attribute_name . '@', $key);
+			if ($cat[0] == 'pa_') {
 				if (substr_count($key, $val_cat->attribute_name)) {
 					$current_filter['second'][$val_cat->attribute_name][] = $cat[1];
-//				$current_filter['second'][$val_cat->attribute_name][$cat[1]]['param']['slug'] = $key;
 				}
 			}
-			/*else
-			{*/
-			/*foreach ($dop_param_label as $key1=>$val1)  {
-                if (substr_count($key, 'pa_'.$val1->attribute_name)) {
-                    $cat = explode('pa_'.$val1->attribute_name, $key);
-                    $current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['value'] = str_replace('_','.',$cat[1]);
-                    $current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['slug'] = 'pa_'.$val1->attribute_name;
-                }
-            }
-
-        }*/
 		}
 	}
 }
 
 
 $current_cat=get_queried_object();
-if (!$current_filter)
-{
+if (!$current_filter) {
 	$current_filter['one']['types_of_transport'][$current_cat->slug]['param']['value'] = $current_cat->slug;
-	$current_filter['one']['types_of_transport'][$current_cat->slug]['param']['slug'] = '15'.$current_cat->slug;
+	$current_filter['one']['types_of_transport'][$current_cat->slug]['param']['slug'] = '15' . $current_cat->slug;
 	$current_filter['one']['types_of_transport']['filter_id'][] = $current_cat->term_id;
-	$current_filter['priceFrom']=null;
-	$current_filter['priceTo']=null;
+	$current_filter['priceFrom'] = null;
+	$current_filter['priceTo'] = null;
 }
+
 $filter_array=array(
 	'orderby'      => 'menu_order',
 	'order'        => 'DESC',
@@ -78,9 +56,8 @@ $filter_array=array(
 );
 
 $count=0;
-foreach ($current_filter['one'] as $value)
-{
-	if (gettype($value)=='array') {
+foreach ($current_filter['one'] as $value) {
+	if (gettype($value) == 'array') {
 		$count++;
 		$filter_array['tax_query'][] = array(
 			'taxonomy' => 'product_cat',
@@ -89,13 +66,11 @@ foreach ($current_filter['one'] as $value)
 			'operator' => 'in',
 		);
 	}
-	if ($count>1)
-	{
+	if ($count > 1) {
 		$filter_array['tax_query']['relation'] = 'AND';
 	}
-
-
 }
+
 if ($count==0){
 	$filter_array['tax_query']['relation'] = 'OR';
 	$filter_array['tax_query'][] = array(
@@ -120,25 +95,25 @@ $meta=array();
 foreach ($temp_post as $value) {
 	$col = 0;
 	foreach ($dop_param_label as $value1) {
-			$attr = wp_get_post_terms($value->ID, 'pa_' . $value1->attribute_name);
-			if ($attr) {
-				foreach ($attr as $val) {
-					$meta['pa_' . $value1->attribute_name]['lable'] = $value1->attribute_label;
-					$meta['pa_' . $value1->attribute_name]['value'][$val->name] = $val->name;
-				}
+		$attr = wp_get_post_terms($value->ID, 'pa_' . $value1->attribute_name);
+		if ($attr) {
+			foreach ($attr as $val) {
+				$meta['pa_' . $value1->attribute_name]['lable'] = $value1->attribute_label;
+				$meta['pa_' . $value1->attribute_name]['value'][$val->name] = $val->name;
+			}
 		}
 	}
 }
 
 function check($filter, $patern, $true='checked="checked"', $false='')
 {
-		foreach ($filter as $keys => $values) {
-			foreach ($values as $keys1 => $values1) {
-				if (($patern == $values1['param']['value'])) {
-					return $true;
-				}
+	foreach ($filter as $keys => $values) {
+		foreach ($values as $keys1 => $values1) {
+			if (($patern == $values1['param']['value'])) {
+				return $true;
 			}
 		}
+	}
 	return $false;
 }
 
@@ -154,18 +129,16 @@ function check_second($filter, $patern, $true='checked="checked"', $false='')
 	return $false;
 }
 
-function collapse ($level,$filter){
- foreach ($level as $value)
- {
-	 foreach ($filter as $key=>$value1)
-	 {
+function collapse ($level,$filter)
+{
+	foreach ($level as $value) {
+		foreach ($filter as $key => $value1) {
 
-		 if ($value->slug==$value1['value'])
-		 {
-			 return true;
-		 }
-	 }
- }
+			if ($value->slug == $value1['value']) {
+				return true;
+			}
+		}
+	}
 	return false;
 }
 ?>
@@ -268,30 +241,25 @@ function collapse ($level,$filter){
 						$price_sale=get_metadata('post', get_the_ID(), '_sale_price', true);
 						if($price_sale){$price=$price_sale;}
 						$price_param=array();
-						if (isset($current_filter['priceFrom']) && $current_filter['priceFrom']!='')
-						{
-							$price_param['from']['value']=$current_filter['priceFrom'];
-							$price_param['from']['name']='from';
+						if (isset($current_filter['priceFrom']) && $current_filter['priceFrom']!='') {
+							$price_param['from']['value'] = $current_filter['priceFrom'];
+							$price_param['from']['name'] = 'from';
 						}
 
-						if (isset($current_filter['priceTo']) && $current_filter['priceTo']!='')
-						{
-							$price_param['to']['value']=$current_filter['priceTo'];
-							$price_param['to']['name']='to';
+						if (isset($current_filter['priceTo']) && $current_filter['priceTo']!='') {
+							$price_param['to']['value'] = $current_filter['priceTo'];
+							$price_param['to']['name'] = 'to';
 						}
-						switch (count($price_param))
-						{
+						switch (count($price_param)) {
 							case 1:
 
-								if(isset($price_param['from'])) {
+								if (isset($price_param['from'])) {
 									if ((int)$price >= (int)$price_param['from']['value']) {
 										$display = true;
 									} else {
 										$display = false;
 									}
-								}
-								else
-								{
+								} else {
 									if ((int)$price <= (int)$price_param['to']['value']) {
 										$display = true;
 									} else {
@@ -300,24 +268,22 @@ function collapse ($level,$filter){
 								}
 								break;
 							case 2:
-								if ((int)$price >= (int)$price_param['from']['value']&& (int)$price <= (int)$price_param['to']['value']) {
-									$display=true;
-								}
-								else {
+								if ((int)$price >= (int)$price_param['from']['value'] && (int)$price <= (int)$price_param['to']['value']) {
+									$display = true;
+								} else {
 									$display = false;
 								}
 								break;
 							default:
-								$display=true;
+								$display = true;
 								break;
-
 						}
+
 						$dop_display=array();
-						foreach ($current_filter['second'] as $key=>$value){
-							foreach ($value as $val)
-							{
+						foreach ($current_filter['second'] as $key=>$value) {
+							foreach ($value as $val) {
 								global $product;
-								$attr_dop=explode(',',$product->get_attribute($key));
+								$attr_dop = explode(',', $product->get_attribute($key));
 								foreach ($attr_dop as $value) {
 									if ($value == $val) {
 										$dop_display[$key][] = true;
@@ -329,13 +295,12 @@ function collapse ($level,$filter){
 							}
 						}
 						$dop_display_b=true;
-						foreach ($dop_display as $value)
-						{
-							$dop_display_b1=false;
+						foreach ($dop_display as $value) {
+							$dop_display_b1 = false;
 							foreach ($value as $val) {
 								$dop_display_b1 += $val;
 							}
-							$dop_display_b*=$dop_display_b1;
+							$dop_display_b *= $dop_display_b1;
 						}
 						
 						if ($display&&$dop_display_b) {
