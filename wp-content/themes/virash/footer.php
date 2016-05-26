@@ -76,6 +76,9 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 
 	function submitform()
 	{
+		if (screen.width<1024) {
+			$('.filter').hide(200);
+		}
 		$('.products-list .row').html('<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div><br><br><br><br><br><br><br><br><br><br>');
 
 
