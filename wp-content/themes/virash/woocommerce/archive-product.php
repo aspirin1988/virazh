@@ -5,7 +5,6 @@ $page=(int)get_field('display_count',4);
 $dop_param=wc_get_attribute_taxonomy_names();
 $dop_param_label=wc_get_attribute_taxonomies();
 $current_filter=array();
-print_r($_GET);
 foreach ($wo_filter as $key_cat=>$val_cat) {
 	foreach ($_GET['one'] as $key => $value) {
 		if ($value == 'on') {
@@ -38,7 +37,6 @@ foreach ($wo_filter as $key_cat=>$val_cat) {
 foreach ($dop_param_label as $key_cat=>$val_cat) {
 	foreach ($_GET['second'] as $key => $value) {
 		if ($value == 'on') {
-//			print_r($val_cat);
 			$cat = explode($val_cat->attribute_name.'@', $key);
 			if ($cat[0]=='pa_') {
 				if (substr_count($key, $val_cat->attribute_name)) {
@@ -62,11 +60,7 @@ foreach ($dop_param_label as $key_cat=>$val_cat) {
 }
 
 
-echo '<br>';
-echo '<br>';
-print_r($current_filter);
 $current_cat=get_queried_object();
-//echo '<br>exemple <br> Array ( [one] => Array ( [types_of_transport] => Array ( [cars] => Array ( [param] => Array ( [value] => cars [slug] => 15cars ) ) [filter_id] => Array ( [0] => 8 ) ) ) [priceFrom] => [priceTo] => )<br>';
 if (!$current_filter)
 {
 	$current_filter['one']['types_of_transport'][$current_cat->slug]['param']['value'] = $current_cat->slug;
@@ -75,24 +69,6 @@ if (!$current_filter)
 	$current_filter['priceFrom']=null;
 	$current_filter['priceTo']=null;
 }
-//print_r($current_filter);
-//print_r($wo_filter);
-//echo '<br><br>';
-
-
-/*$filter_array=array(
-	'orderby'      => 'id',
-	'order'        => 'ASC',
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'product_cat',
-			'field'    => 'id',
-			'terms'    => $current_filter['filter_id'],
-			'operator' => 'in',
-		)
-	)
-);*/
-
 $filter_array=array(
 	'orderby'      => 'menu_order',
 	'order'        => 'DESC',
@@ -131,26 +107,12 @@ if ($count==0){
 	);
 }
 
-//echo  '<br>';
-//echo  '<br>';
-//print_r($filter_array);
 $post_count=round(count(query_posts( $filter_array ))/$page);
 $filter_array['posts_per_page'] = $page;
 $filter_array['offset'] = $_GET['page']*$page;
-//print_r($filter_array);
-//print_r($post_count);
-//echo  '<br>';
-//print_r($dop_param);
-//echo  '<br>';
-//print_r($dop_param_label);
-//echo  '<br>';
-
-
-//print_r($dop_param);
 
 // Подмена запроса на свой !!!
 $temp_post=query_posts( $filter_array );
-//print_r($temp_post[0]->ID);
 
 
 
@@ -206,9 +168,6 @@ function collapse ($level,$filter){
  }
 	return false;
 }
-
-print_r($current_filter['second']);
-
 ?>
 
 
@@ -353,7 +312,6 @@ print_r($current_filter['second']);
 								break;
 
 						}
-
 						$dop_display=array();
 						foreach ($current_filter['second'] as $key=>$value){
 							foreach ($value as $val)
@@ -370,52 +328,17 @@ print_r($current_filter['second']);
 								}
 							}
 						}
-						print_r($dop_display);
-						echo '<br>';
-						echo '<br>';
 						$dop_display_b=true;
 						foreach ($dop_display as $value)
 						{
-//							print_r($value);
 							$dop_display_b1=false;
 							foreach ($value as $val) {
 								$dop_display_b1 += $val;
 							}
 							$dop_display_b*=$dop_display_b1;
-//							print_r($dop_display_b);
 						}
-						/*if (isset($current_filter['priceFrom']) && $current_filter['priceFrom']!=''&& isset($current_filter['priceTo']) && $current_filter['priceTo']!='')
-						{
-							if ((int)$price >= (int)$current_filter['priceFrom']&& (int)$price <= (int)$current_filter['priceTo']) {
-							$display=true;
-							}
-							else {
-								$display = false;
-							}
-						}
-						else {
-							if (isset($current_filter['priceFrom']) && $current_filter['priceFrom'] != '') {
-								if ($price >= $current_filter['priceFrom']) {
-									$display = true;
-								} else {
-									$display = false;
-								}
-							} else {
-								$display = true;
-								if (isset($current_filter['priceTo']) && $current_filter['priceTo'] != '') {
-									if ($price <= $current_filter['priceTo']) {
-										$display = true;
-									} else {
-										$display = false;
-									}
-								} else {
-									$display = true;
-								}
-
-							}
-						}*/
+						
 						if ($display&&$dop_display_b) {
-//							print_r($dop_display);
 							$count_product++;
 							wc_get_template_part('content', 'product');
 						}
