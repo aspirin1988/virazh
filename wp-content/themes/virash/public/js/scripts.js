@@ -1,5 +1,9 @@
 $(document).ready(function () {
-
+  var el = $('.products-list');
+  if (screen.width<1024){
+    el.toggleClass('col-sm-9');
+    el.toggleClass('col-sm-12');
+  }
   /* НАЧАЛО код для реализации sticky-навбара */
   var menu = $('.navbar');
   var origOffsetY = menu.offset().top;

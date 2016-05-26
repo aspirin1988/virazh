@@ -95,14 +95,32 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 
 	function filter_open() {
 		var e=$('.filter');
-		console.info(e.css('display'));
-		if(e.css('display')=='none')
-		{
-			e.css('display','block !important;');
-		}
-		else {
-			e.css('display','none !important;');
-		}
+		var attr=e.attr('style');
+		if (!attr) {attr='display: '+e.css('display');}
+			attr = attr.split(';');
+			console.log(attr);
+			$.each(attr, function (key, val) {
+				val = val.split(': ');
+
+				if (val[0] == 'display') {
+					console.log(val);
+					var el = $('.products-list');
+					if (val[1]!='none') {
+						el.removeClass('col-sm-9');
+						el.addClass('col-sm-12');
+					}
+					else
+					{
+						el.addClass('col-sm-9');
+						el.removeClass('col-sm-12');
+					}
+
+				}
+			});
+		e.toggle(200);
+
+
+
 	}
 
 </script>
