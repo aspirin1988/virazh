@@ -208,13 +208,6 @@ function collapse ($level,$filter)
 				</div>
 			</div>
 			<?php  $col++; endif;  endif;  endforeach; ?>
-			<!--<h3>Опции</h3>
-			<input type="checkbox" id="option1"> <label for="option1">Опция 1</label><br>
-			<input type="checkbox" id="option2"> <label for="option2">Опция 2</label><br>
-			<input type="checkbox" id="option3"> <label for="option3">Опция 3</label><br>
-			<input type="checkbox" id="option4"> <label for="option4">Опция 4</label><br>
-			<input type="checkbox" id="option5"> <label for="option5">Опция 5</label><br>
-			<input type="checkbox" id="option6"> <label for="option6">Опция 6</label><br>-->
 
 			<h3>Цена</h3>
 			<label for="priceFrom">Цена от:</label>
@@ -227,7 +220,7 @@ function collapse ($level,$filter)
 		<br>
 		<div class="col-sm-9 products-list" style="position: relative;">
 			<div class="row">
-<!--				<div class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>-->
+				<div style="display: flex" class="preloader"><h2>Фильтрация данных</h2><img src="http://virazh.blink.kz/wp-content/themes/virash/public/img/preloader.gif" alt="Loading"></div>
 				<?php $count_product=0; if ( have_posts() ) : ?>
 
 					<?php woocommerce_product_loop_start(); ?>

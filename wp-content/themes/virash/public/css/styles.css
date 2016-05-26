@@ -108,7 +108,8 @@ form button.padding {
   top: 40%;
   width: 100%;
   display: none;
-  padding-bottom: 50px; }
+  padding-bottom: 50px;
+  z-index: 100; }
   .preloader img {
     max-width: 100%; }
   .preloader h2 {
