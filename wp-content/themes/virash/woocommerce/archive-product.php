@@ -5,18 +5,19 @@ $page=(int)get_field('display_count',4);
 $dop_param=wc_get_attribute_taxonomy_names();
 $dop_param_label=wc_get_attribute_taxonomies();
 $current_filter=array();
+print_r($_GET);
 foreach ($wo_filter as $key_cat=>$val_cat) {
-	foreach ($_GET as $key => $value) {
+	foreach ($_GET['one'] as $key => $value) {
 		if ($value == 'on') {
-			$cat = explode($val_cat->term_id, $key);
+			$cat = explode($val_cat->term_id.'@', $key);
 			if (substr_count($key, $val_cat->term_id)) {
 				$current_filter['one'][$val_cat->slug][$cat[1]]['param']['value'] = $cat[1];
 				$current_filter['one'][$val_cat->slug][$cat[1]]['param']['slug'] = $key;
 				$current_filter['one'][$val_cat->slug]['filter_id'][] = get_id_products_cat_by_slug_parent($cat[1]);
 			}
-			else
-			{
-				foreach ($dop_param_label as $key1=>$val1)  {
+			/*else
+			{*/
+				/*foreach ($dop_param_label as $key1=>$val1)  {
 					if (substr_count($key, 'pa_'.$val1->attribute_name)) {
 						$cat = explode('pa_'.$val1->attribute_name, $key);
 						$current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['value'] = str_replace('_','.',$cat[1]);
@@ -24,7 +25,7 @@ foreach ($wo_filter as $key_cat=>$val_cat) {
 					}
 				}
 
-			}
+			}*/
 		} else {
 
 			if (substr_count($key, 'price')) {
@@ -33,7 +34,37 @@ foreach ($wo_filter as $key_cat=>$val_cat) {
 		}
 	}
 }
-//print_r($current_filter);
+
+foreach ($dop_param_label as $key_cat=>$val_cat) {
+	foreach ($_GET['second'] as $key => $value) {
+		if ($value == 'on') {
+//			print_r($val_cat);
+			$cat = explode($val_cat->attribute_name.'@', $key);
+			if ($cat[0]=='pa_') {
+				if (substr_count($key, $val_cat->attribute_name)) {
+					$current_filter['second'][$val_cat->attribute_name][] = $cat[1];
+//				$current_filter['second'][$val_cat->attribute_name][$cat[1]]['param']['slug'] = $key;
+				}
+			}
+			/*else
+			{*/
+			/*foreach ($dop_param_label as $key1=>$val1)  {
+                if (substr_count($key, 'pa_'.$val1->attribute_name)) {
+                    $cat = explode('pa_'.$val1->attribute_name, $key);
+                    $current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['value'] = str_replace('_','.',$cat[1]);
+                    $current_filter['second']['pa_'.$val1->attribute_name][$cat[1]]['param']['slug'] = 'pa_'.$val1->attribute_name;
+                }
+            }
+
+        }*/
+		}
+	}
+}
+
+
+echo '<br>';
+echo '<br>';
+print_r($current_filter);
 $current_cat=get_queried_object();
 //echo '<br>exemple <br> Array ( [one] => Array ( [types_of_transport] => Array ( [cars] => Array ( [param] => Array ( [value] => cars [slug] => 15cars ) ) [filter_id] => Array ( [0] => 8 ) ) ) [priceFrom] => [priceTo] => )<br>';
 if (!$current_filter)
@@ -125,18 +156,17 @@ $temp_post=query_posts( $filter_array );
 
 $meta=array();
 foreach ($temp_post as $value) {
-	$col=0;
-	foreach ($dop_param_label as $value1) { if ($col<1):
-		$attr = wp_get_post_terms($value->ID, 'pa_' . $value1->attribute_name);
-		print_r($attr);
-		foreach ($attr as $val) {
-			$meta['pa_' . $value1->attribute_name]['lable'] = $value1->attribute_label;
-			$meta['pa_' . $value1->attribute_name]['value'][$val->name] = $val->name;
+	$col = 0;
+	foreach ($dop_param_label as $value1) {
+			$attr = wp_get_post_terms($value->ID, 'pa_' . $value1->attribute_name);
+			if ($attr) {
+				foreach ($attr as $val) {
+					$meta['pa_' . $value1->attribute_name]['lable'] = $value1->attribute_label;
+					$meta['pa_' . $value1->attribute_name]['value'][$val->name] = $val->name;
+				}
 		}
-		endif;
 	}
 }
-//print_r($meta);
 
 function check($filter, $patern, $true='checked="checked"', $false='')
 {
@@ -147,6 +177,18 @@ function check($filter, $patern, $true='checked="checked"', $false='')
 				}
 			}
 		}
+	return $false;
+}
+
+function check_second($filter, $patern, $true='checked="checked"', $false='')
+{
+	foreach ($filter as $keys => $values) {
+		foreach ($values as $keys1 => $values1) {
+			if (($patern == $values1)) {
+				return $true;
+			}
+		}
+	}
 	return $false;
 }
 
@@ -164,6 +206,8 @@ function collapse ($level,$filter){
  }
 	return false;
 }
+
+print_r($current_filter['second']);
 
 ?>
 
@@ -198,16 +242,16 @@ function collapse ($level,$filter){
 				<div class="collapse in" id="<?=$val->slug?>">
 					<?php foreach (get_products_cat_by_slug_parent($val->slug) as $key1=> $val1): ?>
 						<?php $collapse=false; $level2=get_products_cat_by_slug_parent($val1->slug); $collapse=collapse($level2,$current_filter['one']); if (!$level2): ?>
-						<input type="checkbox" onclick="submitform()"  name="<?=$val->cat_ID?><?=$val1->slug?>" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val1->slug); ?> > <label for="<?=$val1->slug?>"><?=$val1->name?></label><br>
+						<input type="checkbox" onclick="submitform()"  name="one[<?=$val->cat_ID?>@<?=$val1->slug?>]" id="<?=$val1->slug?>" <?=check($current_filter['one'],$val1->slug); ?> > <label for="<?=$val1->slug?>"><?=$val1->name?></label><br>
 						<?php else: ?>
 							<button type="button" data-toggle="collapse" class="padding" data-target="#<?=$val1->slug?>" aria-expanded="false"
 									aria-controls="<?=$val1->slug?>">
 								<span class="glyphicon glyphicon-<?php if ($collapse){echo'minus';}else{echo'plus';} ?>"></span> 
-								<input name="<?=$val->cat_ID?><?=$val1->slug?>" type="checkbox" <?=check($current_filter['one'],$val1->slug); ?>><?=$val1->name?>
+								<input name="one[<?=$val->cat_ID?>@<?=$val1->slug?>]" type="checkbox" <?=check($current_filter['one'],$val1->slug); ?>><?=$val1->name?>
 							</button>
 							<div class="collapse <?php if($collapse){echo 'in';}; ?>" id="<?=$val1->slug?>">
 							<?php foreach (get_products_cat_by_slug_parent($val1->slug) as $key2=> $val2): ?>
-								<input name="<?=$val->cat_ID?><?=$val2->slug?>" onclick="submitform()" type="checkbox" id="<?=$val2->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="<?=$val2->slug?>"><?=$val2->name?></label><br>
+								<input name="one[<?=$val->cat_ID?>@<?=$val1->slug?>]" onclick="submitform()" type="checkbox" id="<?=$val2->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="<?=$val2->slug?>"><?=$val2->name?></label><br>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>
@@ -219,19 +263,19 @@ function collapse ($level,$filter){
 			<?php endforeach; ?>
 
 			<h3>Опции</h3>
-			<?php foreach ($meta as $key => $val): if ($key!=''): ?>
+			<?php $col=0; foreach ($meta as $key => $val): if ($key!=''): if ($col < 10) :  ?>
 			<div>
 				<button type="button" data-toggle="collapse" data-target="#<?=$key?>" aria-expanded="false"
 						aria-controls="<?=$key?>">
 					<?=$val['lable']?>
 				</button>
 				<div class="collapse in" id="<?=$key?>">
-					<?php foreach ($val['value'] as $key1 => $val1): if ($key1!=''&&$val1!=''):  ?>
-					<input type="checkbox" name="<?=$key?><?=$val1?>" onclick="submitform()" <?=check($current_filter['second'],$val1); ?> id="<?=$val1?>"> <label for="<?=$val1?>"><?=$val1?></label><br>
-					<?php endif; endforeach; ?>
+					<?php   foreach ($val['value'] as $key1 => $val1):  if ($key1!=''&&$val1!=''):  ?>
+					<input type="checkbox" name="second[<?=$key?>@<?=$val1?>]" onclick="submitform()" <?=check_second($current_filter['second'],$val1); ?> id="<?=$key?><?=$val1?>"> <label for="<?=$key?><?=$val1?>"><?=$val1?></label><br>
+					<?php endif;   endforeach; ?>
 				</div>
 			</div>
-			<?php endif;  endforeach; ?>
+			<?php  $col++; endif;  endif;  endforeach; ?>
 			<!--<h3>Опции</h3>
 			<input type="checkbox" id="option1"> <label for="option1">Опция 1</label><br>
 			<input type="checkbox" id="option2"> <label for="option2">Опция 2</label><br>
@@ -311,24 +355,24 @@ function collapse ($level,$filter){
 						}
 
 						$dop_display=array();
-						foreach ($current_filter['second'] as $value){
+						foreach ($current_filter['second'] as $key=>$value){
 							foreach ($value as $val)
 							{
 								global $product;
-								$attr_dop=explode(',',$product->get_attribute($val['param']['slug']));
-
+								$attr_dop=explode(',',$product->get_attribute($key));
 								foreach ($attr_dop as $value) {
-									if ($value == $val['param']['value']) {
-										$dop_display[$val['param']['slug']][] = true;
-										$display = true;
+									if ($value == $val) {
+										$dop_display[$key][] = true;
 										break;
 									} else {
-										$dop_display[$val['param']['slug']][] = false;
-										$display = false;
+										$dop_display[$key][] = false;
 									}
 								}
 							}
 						}
+						print_r($dop_display);
+						echo '<br>';
+						echo '<br>';
 						$dop_display_b=true;
 						foreach ($dop_display as $value)
 						{
