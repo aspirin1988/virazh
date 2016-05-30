@@ -67,7 +67,7 @@
 				<li><a data-toggle="tab" href="#menu3"><?=get_field('tab-2-name')?></a></li>
 			<?php endif; ?>
 			<?php if (get_field('tab-3')): ?>
-				<li><a data-toggle="tab" href="#menu3"><?=get_field('tab-3-name')?></a></li>
+				<li><a data-toggle="tab" href="#menu4"><?=get_field('tab-3-name')?></a></li>
 			<?php endif; ?>
 		</ul>
 		<div class="tab-content">
@@ -104,6 +104,7 @@
 			<div id="menu3" class="tab-pane fade">
 				<?= get_field('tab-2');
 				endif; ?>
+			</div>
 				<?php if (get_field('tab-3')): ?>
 			<div id="menu4" class="tab-pane fade">
 				<?= get_field('tab-3');
