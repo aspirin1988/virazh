@@ -48,6 +48,7 @@ if (!$current_filter) {
 }
 
 $filter_array=array(
+	'posts_per_page'=>'-1',
 	'orderby'      => 'menu_order',
 	'order'        => 'DESC',
 	'tax_query' => array(
