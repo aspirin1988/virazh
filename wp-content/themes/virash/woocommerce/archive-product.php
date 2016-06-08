@@ -83,7 +83,7 @@ if ($count==0){
 	);
 }
 
-$post_count=round(count(query_posts( $filter_array ))/$page);
+$post_count=ceil(count(query_posts( $filter_array ))/$page);
 $filter_array['posts_per_page'] = $page;
 $filter_array['offset'] = $_GET['page']*$page;
 
@@ -142,6 +142,9 @@ function collapse ($level,$filter)
 	}
 	return false;
 }
+
+/*print_r($current_filter);*/
+
 ?>
 
 
