@@ -143,7 +143,7 @@ function collapse ($level,$filter)
 	return false;
 }
 
-/*print_r($current_filter);*/
+//print_r($current_filter);
 
 ?>
 
@@ -183,11 +183,12 @@ function collapse ($level,$filter)
 							<button type="button" data-toggle="collapse" class="padding" data-target="#<?=$val1->slug?>" aria-expanded="false"
 									aria-controls="<?=$val1->slug?>">
 								<span class="glyphicon glyphicon-<?php if ($collapse){echo'minus';}else{echo'plus';} ?>"></span> 
-								<input name="one[<?=$val->cat_ID?>@<?=$val1->slug?>]" type="checkbox" <?=check($current_filter['one'],$val1->slug); ?>><?=$val1->name?>
+								<input name="one[<?=$val->cat_ID?>@<?=$val1->slug?>]" type="checkbox" onclick="submitform()" <?=check($current_filter['one'],$val1->slug); ?>><?=$val1->name?>
 							</button>
 							<div class="collapse <?php if($collapse){echo 'in';}; ?>" id="<?=$val1->slug?>">
-							<?php foreach (get_products_cat_by_slug_parent($val1->slug) as $key2=> $val2): ?>
-								<input name="one[<?=$val->cat_ID?>@<?=$val1->slug?>]" onclick="submitform()" type="checkbox" id="<?=$val2->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="<?=$val2->slug?>"><?=$val2->name?></label><br>
+
+							<?php /*print_r(get_products_cat_by_slug_parent($val1->slug)); */foreach (get_products_cat_by_slug_parent($val1->slug) as $key2=> $val2): ?>
+								<input name="one[<?=$val->cat_ID?>@<?=$val2->slug?>]" onclick="submitform()" type="checkbox" id="<?=$val2->slug?>" <?=check($current_filter['one'],$val2->slug); ?> > <label for="<?=$val2->slug?>"><?=$val2->name?></label><br>
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>
