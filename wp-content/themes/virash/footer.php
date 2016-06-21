@@ -128,7 +128,11 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 
 </script>
 <script type="text/javascript" src="//callback.blink.kz/client/script/GET/"></script>
-
+<script src="https://callback.blink.kz/resources/callback/js/mailer.js" ></script>
+<script>
+	var submitSMG = new BMModule();
+	submitSMG.submitForm(function(success) { $('.blink-mailer input[type=submit]').val('Отправить'); $('.success-mail-text').html(success); $('.blink-mailer').hide(500);  $('.success-mail-text').show(500);  }, function(error) {});
+</script>
 <?=get_field('google',4)?>
 <?=get_field('yandex',4)?>
 <?php wp_footer() ?>

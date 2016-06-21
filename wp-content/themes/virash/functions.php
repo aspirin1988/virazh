@@ -182,28 +182,35 @@ class CallBack_Widget extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract( $args );
+		$cc_mail = $instance['cc_mail'];
+		echo
+		'<form action="" class="feedback-form blink-mailer">
+		<h3>Форма обратной связи</h3>
+		<input type="hidden" name="URL" value="'.$_SERVER['REDIRECT_SCRIPT_URI'].'">
+		<input type="hidden" name="cc_mail" value="'.$cc_mail.'">
+		<div class="label-inputs">
+			<div class="label-input">
+				<label for="name">Ваше имя:</label>
+				<input type="text" name="name" id="name" placeholder="Иван Иванов">
+			</div>
 
-		//Our variables from the widget settings.
-		$title = apply_filters('widget_title', $instance['title'] );
-		$name = $instance['name'];
-		$show_info = isset( $instance['show_info'] ) ? $instance['show_info'] : false;
+			<div class="label-input">
+				<label for="email">Электронная почта:</label>
+				<input type="email" name="email" id="email" placeholder="example@mail.com">
+			</div>
 
-		echo $before_widget;
+			<div class="label-input">
+				<label for="phoneNumber">Номер телефона:</label>
+				<input type="tel" name="phoneNumber" id="phoneNumber" placeholder="+707-xxx-xx-xx">
+			</div>
 
-		// Display the widget title 
-		if ( $title )
-			echo $before_title . $title . $after_title;
+			<div class="label-input submit">
+				<input type="submit" value="Отправить">
+			</div>
+		</div>
 
-		//Display the name 
-		if ( $name )
-			printf( '<p>' . __('1Hey their Sailor! My name is %1$s.', 'callback-widget') . '</p>', $name );
-
-
-		if ( $show_info )
-			printf( $name );
-
-
-		echo $after_widget;
+	</form>
+		';
 	}
 
 	//Update the widget 
@@ -212,10 +219,7 @@ class CallBack_Widget extends WP_Widget {
 		$instance = $old_instance;
 
 		//Strip tags from title and name to remove HTML 
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['name'] = strip_tags( $new_instance['name'] );
-		$instance['show_info'] = $new_instance['show_info'];
-
+		$instance['cc_mail'] = strip_tags( $new_instance['cc_mail'] );
 		return $instance;
 	}
 
@@ -223,26 +227,13 @@ class CallBack_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		//Set up some default widget settings.
-		$defaults = array( 'title' => __('callback-widget', 'callback-widget'), 'name' => __('Bilal Shaheen', 'callback-widget'), 'show_info' => true );
+		$defaults = array( 'cc_mail' => __('callback-widget', 'callback-widget'));
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
-		//Widget Title: Text Input.
+		//Email для отпраки.
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'callback-widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-		</p>
-
-		//Text Input.
-		<p>
-			<label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php _e('Your Name:', 'callback-widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'name' ); ?>" name="<?php echo $this->get_field_name( 'name' ); ?>" value="<?php echo $instance['name']; ?>" style="width:100%;" />
-		</p>
-
-
-		//Checkbox.
-		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $instance['show_info'], true ); ?> id="<?php echo $this->get_field_id( 'show_info' ); ?>" name="<?php echo $this->get_field_name( 'show_info' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'show_info' ); ?>"><?php _e('Display info publicly?', 'callback-widget'); ?></label>
+			<label for="<?php echo $this->get_field_id( 'cc_mail' ); ?>"><?php _e('CC_mail:', 'callback-widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'cc_mail' ); ?>" name="<?php echo $this->get_field_name( 'cc_mail' ); ?>" value="<?php echo $instance['cc_mail']; ?>" style="width:100%;" />
 		</p>
 
 		<?php
@@ -258,7 +249,6 @@ class CallBack_Button_Widget extends WP_Widget {
 
 		$this->WP_Widget( 'callback_button_widget', __('Callback Button', 'callback_button_widget'), $widget_ops, $control_ops );
 	}
-
 	function widget( $args, $instance ) {
 		extract( $args );
 		$color = $instance['color_font'];
@@ -267,15 +257,12 @@ class CallBack_Button_Widget extends WP_Widget {
 			<div class="blink-cb-module-btns-container">
 				<div class="blink-cb-module-main-btn-container animated bounceInRight" style="background: transparent">
 					<div class="blink-cb-open-popup blink-cb-module-main-btn">
-						<a href="#recall" style=" font-size: '.font_size.';  color: '.$color.'; " class="feedback">Связатся</a>
+						<a href="#recall" style=" font-size: '.$font_size.';  color: '.$color.'; " class="feedback">Связатся</a>
 					</div>
 				</div>
 			</div>
 		</div>';
 	}
-
-	//Update the widget
-
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
@@ -285,8 +272,6 @@ class CallBack_Button_Widget extends WP_Widget {
 
 		return $instance;
 	}
-
-
 	function form( $instance ) {
 
 		//Set up some default widget settings.
@@ -298,6 +283,7 @@ class CallBack_Button_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'color_font' ); ?>"><?php _e('Color_font:', 'callback_button_widget'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'color_font' ); ?>" name="<?php echo $this->get_field_name( 'color_font' ); ?>" value="<?php echo $instance['color_font']; ?>" style="width:100%;" />
 		</p>
+		//Свет размер шрифта
 		<p>
 			<label for="<?php echo $this->get_field_id( 'font_size' ); ?>"><?php _e('Font_size:', 'callback_button_widget'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'font_size' ); ?>" name="<?php echo $this->get_field_name( 'font_size' ); ?>" value="<?php echo $instance['font_size']; ?>" style="width:100%;" />
