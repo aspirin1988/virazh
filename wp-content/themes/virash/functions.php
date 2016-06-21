@@ -79,7 +79,7 @@ function virash_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'virash_setup' );
-remove_action( 'wp_head', 'wlwmanifest_link' ); // Удаляет ссылку Windows для Live Writer
+/*remove_action( 'wp_head', 'wlwmanifest_link' ); // Удаляет ссылку Windows для Live Writer
 
 remove_action( 'wp_head', 'wp_shortlink_wp_head'); // Удаляет короткую ссылку
 remove_action( 'wp_head', 'wp_generator' ); // Удаляет информацию о версии WordPress
@@ -91,7 +91,7 @@ remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 remove_action( 'wp_head', 'menu-image' );
 remove_action( 'wp_head', 'admin_head-nav-menus.php' );
 remove_action( 'wp_head', 'admin_head-nav-menus.php' );
-remove_action( 'template_redirect', 'rest_output_link_header');
+remove_action( 'template_redirect', 'rest_output_link_header');*/
 // устаревшие функции
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -163,6 +163,148 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+add_action( 'widgets_init', 'my_widget' );
+function my_widget() {
+	register_widget( 'CallBack_Widget' );
+	register_widget( 'CallBack_Button_Widget' );
+}
+
+class CallBack_Widget extends WP_Widget {
+
+	function CallBack_Widget() {
+		$widget_ops = array( 'classname' => 'callback-widget', 'description' => __('A widget that displays the authors name ', 'callback-widget') );
+
+		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'callback-widget' );
+
+		$this->WP_Widget( 'callback-widget', __('Callback form', 'callback-widget'), $widget_ops, $control_ops );
+	}
+
+	function widget( $args, $instance ) {
+		extract( $args );
+
+		//Our variables from the widget settings.
+		$title = apply_filters('widget_title', $instance['title'] );
+		$name = $instance['name'];
+		$show_info = isset( $instance['show_info'] ) ? $instance['show_info'] : false;
+
+		echo $before_widget;
+
+		// Display the widget title 
+		if ( $title )
+			echo $before_title . $title . $after_title;
+
+		//Display the name 
+		if ( $name )
+			printf( '<p>' . __('1Hey their Sailor! My name is %1$s.', 'callback-widget') . '</p>', $name );
+
+
+		if ( $show_info )
+			printf( $name );
+
+
+		echo $after_widget;
+	}
+
+	//Update the widget 
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+
+		//Strip tags from title and name to remove HTML 
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['name'] = strip_tags( $new_instance['name'] );
+		$instance['show_info'] = $new_instance['show_info'];
+
+		return $instance;
+	}
+
+
+	function form( $instance ) {
+
+		//Set up some default widget settings.
+		$defaults = array( 'title' => __('callback-widget', 'callback-widget'), 'name' => __('Bilal Shaheen', 'callback-widget'), 'show_info' => true );
+		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+
+		//Widget Title: Text Input.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'callback-widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+		</p>
+
+		//Text Input.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php _e('Your Name:', 'callback-widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'name' ); ?>" name="<?php echo $this->get_field_name( 'name' ); ?>" value="<?php echo $instance['name']; ?>" style="width:100%;" />
+		</p>
+
+
+		//Checkbox.
+		<p>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['show_info'], true ); ?> id="<?php echo $this->get_field_id( 'show_info' ); ?>" name="<?php echo $this->get_field_name( 'show_info' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'show_info' ); ?>"><?php _e('Display info publicly?', 'callback-widget'); ?></label>
+		</p>
+
+		<?php
+	}
+}
+
+class CallBack_Button_Widget extends WP_Widget {
+
+	function CallBack_Button_Widget() {
+		$widget_ops = array( 'classname' => 'callback_button_widget', 'description' => __('A widget that displays the authors name ', 'callback_button_widget') );
+
+		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'callback_button_widget' );
+
+		$this->WP_Widget( 'callback_button_widget', __('Callback Button', 'callback_button_widget'), $widget_ops, $control_ops );
+	}
+
+	function widget( $args, $instance ) {
+		extract( $args );
+		$color = $instance['color_font'];
+		$font_size = $instance['font_size'];
+		echo '<div class="blink-cb-module-main-btns active search-blink-cb-module-btn" style="position: relative;  right: auto;  bottom: auto;  width: auto;  height: auto;  z-index: 99999;     display: block;">
+			<div class="blink-cb-module-btns-container">
+				<div class="blink-cb-module-main-btn-container animated bounceInRight" style="background: transparent">
+					<div class="blink-cb-open-popup blink-cb-module-main-btn">
+						<a href="#recall" style=" font-size: '.font_size.';  color: '.$color.'; " class="feedback">Связатся</a>
+					</div>
+				</div>
+			</div>
+		</div>';
+	}
+
+	//Update the widget
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+
+		//Strip tags from title and name to remove HTML
+		$instance['color_font'] = strip_tags( $new_instance['color_font'] );
+		$instance['font_size'] = strip_tags( $new_instance['font_size'] );
+
+		return $instance;
+	}
+
+
+	function form( $instance ) {
+
+		//Set up some default widget settings.
+		$defaults = array( 'color_font' => __('callback_button_widget', 'callback_button_widget'), 'font_size' => __('Bilal Shaheen', 'callback_button_widget'), 'show_info' => true );
+		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+
+		//Свет шрифта
+		<p>
+			<label for="<?php echo $this->get_field_id( 'color_font' ); ?>"><?php _e('Color_font:', 'callback_button_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'color_font' ); ?>" name="<?php echo $this->get_field_name( 'color_font' ); ?>" value="<?php echo $instance['color_font']; ?>" style="width:100%;" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'font_size' ); ?>"><?php _e('Font_size:', 'callback_button_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'font_size' ); ?>" name="<?php echo $this->get_field_name( 'font_size' ); ?>" value="<?php echo $instance['font_size']; ?>" style="width:100%;" />
+		</p>
+		<?php
+	}
+}
 
 
 

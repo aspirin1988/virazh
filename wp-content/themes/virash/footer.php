@@ -127,6 +127,8 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 	}
 
 </script>
+<script type="text/javascript" src="//callback.blink.kz/client/script/GET/"></script>
+
 <?=get_field('google',4)?>
 <?=get_field('yandex',4)?>
 <?php wp_footer() ?>
