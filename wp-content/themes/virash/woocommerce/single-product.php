@@ -72,7 +72,7 @@
 		</ul>
 		<div class="tab-content">
 			<div id="menu0" class="tab-pane fade in active">
-				<?=get_the_content()?>
+				<?php the_content()?>
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table class="table table-striped">
@@ -170,4 +170,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 		do_action( 'woocommerce_sidebar' );
 	?>
 */
+get_sidebar();
 get_footer(); ?>
