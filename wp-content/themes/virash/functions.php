@@ -183,9 +183,22 @@ class CallBack_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 		$cc_mail = $instance['cc_mail'];
+		$title = $instance['title'];
+		$response_color = $instance['response_color'];
+		$response_font_size = $instance['response_font_size'];
+		$header_title = $instance['header_title'];
 		echo
-		'<form action="" class="feedback-form blink-mailer">
-		<h3>Форма обратной связи</h3>
+		'
+		<style>
+			.success-mail-text{
+			color: '.$response_color.';
+			font-size: '.$response_font_size.';
+			text-align: center;
+			}
+		</style>
+		<form action="" class="feedback-form blink-mailer">
+		<h3>'.$header_title.'</h3>
+		<input type="hidden" name="title" value="'.$title.'">
 		<input type="hidden" name="URL" value="'.$_SERVER['REDIRECT_SCRIPT_URI'].'">
 		<input type="hidden" name="cc_mail" value="'.$cc_mail.'">
 		<div class="label-inputs">
@@ -208,8 +221,10 @@ class CallBack_Widget extends WP_Widget {
 				<input type="submit" value="Отправить">
 			</div>
 		</div>
-
 	</form>
+	<div class="success-mail-text">
+			
+		</div>
 		';
 	}
 
@@ -218,8 +233,11 @@ class CallBack_Widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		//Strip tags from title and name to remove HTML 
 		$instance['cc_mail'] = strip_tags( $new_instance['cc_mail'] );
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['header_title'] = strip_tags( $new_instance['header_title'] );
+		$instance['response_font_size'] = strip_tags( $new_instance['response_font_size'] );
+		$instance['response_color'] = strip_tags( $new_instance['response_color'] );
 		return $instance;
 	}
 
@@ -230,10 +248,31 @@ class CallBack_Widget extends WP_Widget {
 		$defaults = array( 'cc_mail' => __('callback-widget', 'callback-widget'));
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
+		//Title формы.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'header_title' ); ?>"><?php _e('header_title:', 'example'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'header_title' ); ?>" name="<?php echo $this->get_field_name( 'header_title' ); ?>" value="<?php echo $instance['header_title']; ?>" style="width:100%;" />
+		</p>
+		//Название формы.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'example'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+		</p>
+
 		//Email для отпраки.
 		<p>
 			<label for="<?php echo $this->get_field_id( 'cc_mail' ); ?>"><?php _e('CC_mail:', 'callback-widget'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'cc_mail' ); ?>" name="<?php echo $this->get_field_name( 'cc_mail' ); ?>" value="<?php echo $instance['cc_mail']; ?>" style="width:100%;" />
+		</p>
+		//Цвет шрифта ответа.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'response_color' ); ?>"><?php _e('Response_color:', 'callback-widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'response_color' ); ?>" name="<?php echo $this->get_field_name( 'response_color' ); ?>" value="<?php echo $instance['response_color']; ?>" style="width:100%;" />
+		</p>
+		//Размер шрифта ответа.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'response_font_size' ); ?>"><?php _e('Response_font_size:', 'callback-widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'response_font_size' ); ?>" name="<?php echo $this->get_field_name( 'response_font_size' ); ?>" value="<?php echo $instance['response_font_size']; ?>" style="width:100%;" />
 		</p>
 
 		<?php
