@@ -258,7 +258,7 @@
 
 <div class="container">
 
-	<form action="" class="feedback-form">
+	<form action="" class="feedback-form blink-mailer">
 		<h3>Форма обратной связи</h3>
 
 		<div class="label-inputs">
