@@ -204,7 +204,7 @@ class CallBack_Widget extends WP_Widget {
 		<div class="label-inputs">
 			<div class="label-input">
 				<label for="name">Ваше имя:</label>
-				<input type="text" name="name" id="name" placeholder="Иван Иванов">
+				<input type="text" name="Имя" id="name" placeholder="Иван Иванов">
 			</div>
 
 			<div class="label-input">
@@ -214,7 +214,7 @@ class CallBack_Widget extends WP_Widget {
 
 			<div class="label-input">
 				<label for="phoneNumber">Номер телефона:</label>
-				<input type="tel" name="phoneNumber" id="phoneNumber" placeholder="+707-xxx-xx-xx">
+				<input type="tel" name="Номер телефона" id="phoneNumber" placeholder="+707-xxx-xx-xx">
 			</div>
 
 			<div class="label-input submit">
