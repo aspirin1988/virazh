@@ -145,14 +145,15 @@ form button.padding {
       display: block;
       min-width: 1px;
       width: 100%;
-      padding: 6px 0; }
+      padding: 6px 10px;
+      border: 1px solid #0f4182; }
     .feedback-form .label-inputs .label-input input[type=submit] {
       flex: 1 0 auto;
       padding: 6px;
-      margin-top: auto; }
-      @media (min-width: 768px) {
-        .feedback-form .label-inputs .label-input input[type=submit] {
-          margin-left: 15px; } }
+      margin-top: auto;
+      background: #0f4182;
+      border: 1px solid #0f4182;
+      color: white; }
 
 /* КОНЕЦ стиль формы обратной связи */
 /* КОНЕЦ общие стили */

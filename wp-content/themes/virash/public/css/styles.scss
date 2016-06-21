@@ -179,7 +179,7 @@ form button.padding{
         }
       }
 
-      &.submit {
+      &.submit { //контейнер кнопки input-submit
         display: flex;
       }
 
@@ -191,16 +191,17 @@ form button.padding{
         display: block;
         min-width: 1px;
         width: 100%;
-        padding: 6px 0;
+        padding: 6px 10px;
+        border: 1px solid $company-color;
       }
 
       input[type=submit] {
         flex: 1 0 auto;
         padding: 6px;
         margin-top: auto;
-        @media (min-width: 768px) {
-          margin-left: 15px;
-        }
+        background: $company-color;
+        border: 1px solid $company-color;
+        color: white;
       }
     }
   }
