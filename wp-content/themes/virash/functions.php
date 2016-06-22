@@ -168,6 +168,7 @@ add_action( 'widgets_init', 'my_widget' );
 function my_widget() {
 	register_widget( 'CallBack_Widget' );
 	register_widget( 'CallBack_Button_Widget' );
+	register_widget( 'Dropdown_Widget' );
 }
 
 class CallBack_Widget extends WP_Widget {
@@ -272,6 +273,90 @@ class CallBack_Widget extends WP_Widget {
 		//Размер шрифта ответа.
 		<p>
 			<label for="<?php echo $this->get_field_id( 'response_font_size' ); ?>"><?php _e('Response_font_size:', 'callback-widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'response_font_size' ); ?>" name="<?php echo $this->get_field_name( 'response_font_size' ); ?>" value="<?php echo $instance['response_font_size']; ?>" style="width:100%;" />
+		</p>
+
+		<?php
+	}
+}
+
+class Dropdown_Widget extends WP_Widget {
+
+	function Dropdown_Widget() {
+		$widget_ops = array( 'classname' => 'dropdown_widget', 'description' => __('A widget that displays the authors name ', 'dropdown_widget') );
+
+		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'dropdown_widget' );
+
+		$this->WP_Widget( 'dropdown_widget', __('DropDown Widget', 'dropdown_widget'), $widget_ops, $control_ops );
+	}
+
+	function widget( $args, $instance ) {
+		extract( $args );
+		$content = $instance['content'];
+		$title = $instance['title'];
+		$response_color = $instance['response_color'];
+		$response_font_size = $instance['response_font_size'];
+		$header_title = $instance['header_title'];
+		echo
+			'
+		<div class="btn-group">
+		  <a style="text-decoration: underline; cursor: pointer" class=" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			'.$header_title.' 
+			<span class="caret">
+			
+			</span>
+		  </a>
+		  <div class="dropdown-menu" style="min-width: 20em;">
+			'.$content.'
+		  </div>
+		</div>
+		';
+	}
+
+	//Update the widget
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+
+		$instance['content'] =  $new_instance['content'];
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['header_title'] = strip_tags( $new_instance['header_title'] );
+		$instance['response_font_size'] = strip_tags( $new_instance['response_font_size'] );
+		$instance['response_color'] = strip_tags( $new_instance['response_color'] );
+		return $instance;
+	}
+
+
+	function form( $instance ) {
+
+		//Set up some default widget settings.
+		$defaults = array( 'content' => __('dropdown_widget', 'dropdown_widget'));
+		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+
+		//Title формы.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'header_title' ); ?>"><?php _e('header_title:', 'dropdown_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'header_title' ); ?>" name="<?php echo $this->get_field_name( 'header_title' ); ?>" value="<?php echo $instance['header_title']; ?>" style="width:100%;" />
+		</p>
+		//Название формы.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'dropdown_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+		</p>
+
+		//Content.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'content' ); ?>"><?php _e('Content:', 'dropdown_widget'); ?></label>
+			<textarea id="<?php echo $this->get_field_id( 'content' ); ?>" name="<?php echo $this->get_field_name( 'content' ); ?>"  style="width:100%;" ><?php echo $instance['content']; ?></textarea>
+		</p>
+		//Цвет шрифта ответа.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'response_color' ); ?>"><?php _e('Response_color:', 'dropdown_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'response_color' ); ?>" name="<?php echo $this->get_field_name( 'response_color' ); ?>" value="<?php echo $instance['response_color']; ?>" style="width:100%;" />
+		</p>
+		//Размер шрифта ответа.
+		<p>
+			<label for="<?php echo $this->get_field_id( 'response_font_size' ); ?>"><?php _e('Response_font_size:', 'dropdown_widget'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'response_font_size' ); ?>" name="<?php echo $this->get_field_name( 'response_font_size' ); ?>" value="<?php echo $instance['response_font_size']; ?>" style="width:100%;" />
 		</p>
 
