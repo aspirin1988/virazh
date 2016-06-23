@@ -256,34 +256,5 @@
 
 
 
-<div class="container">
 
-	<form action="" class="feedback-form blink-mailer">
-		<h3>Форма обратной связи</h3>
-
-		<div class="label-inputs">
-			<div class="label-input">
-				<label for="name">Ваше имя:</label>
-				<input type="text" name="name" id="name" placeholder="Иван Иванов">
-			</div>
-
-			<div class="label-input">
-				<label for="email">Электронная почта:</label>
-				<input type="email" name="email" id="email" placeholder="example@mail.com">
-			</div>
-
-			<div class="label-input">
-				<label for="phoneNumber">Номер телефона:</label>
-				<input type="tel" name="phoneNumber" id="phoneNumber" placeholder="+707-xxx-xx-xx">
-			</div>
-
-			<div class="label-input submit">
-				<input type="submit" value="Отправить">
-			</div>
-		</div>
-
-	</form>
-
-
-</div>
 
