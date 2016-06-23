@@ -55,6 +55,7 @@
 <!-- КОНЕЦ одиночный товар-->
 
 <!--НАЧАЛО табы и содержимое-->
+
 <div class="container single-product-tabs">
 	<div class="row">
 		<ul class="nav tabs">
@@ -72,7 +73,9 @@
 		</ul>
 		<div class="tab-content">
 			<div id="menu0" class="tab-pane fade in active">
+				<article>
 				<?php the_content()?>
+				</article>
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<table class="table table-striped">
@@ -97,22 +100,29 @@
 			</div>
 			<?php if (get_field('tab-1')): ?>
 			<div id="menu2" class="tab-pane fade">
-				<?= get_field('tab-1');
-				endif; ?>
+				<article>
+				<?= get_field('tab-1');?>
+				</article>
+				<?php endif; ?>
 			</div>
 			<?php if (get_field('tab-2')): ?>
 			<div id="menu3" class="tab-pane fade">
-				<?= get_field('tab-2');
-				endif; ?>
+				<article>
+				<?= get_field('tab-2');?>
+				</article>
+				<?php endif; ?>
 			</div>
 				<?php if (get_field('tab-3')): ?>
 			<div id="menu4" class="tab-pane fade">
-				<?= get_field('tab-3');
-				endif; ?>
+				<article>
+				<?= get_field('tab-3');?>
+				</article>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
 </div>
+
 <!--КОНЕЦ табы и содержимое-->
 <?php endwhile; // end of the loop. ?>
 

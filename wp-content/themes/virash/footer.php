@@ -59,7 +59,7 @@
 	</div>
 </div>
 <!-- КОНЕЦ Modal для карт яндекса -->
-
+<div class="bubble_info"></div>
 <?php
 $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/public/img/preloader.gif" alt="Loading"></div>';
 ?>
@@ -133,6 +133,55 @@ $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/pu
 	var submitSMG = new BMModule();
 	submitSMG.submitForm(function(success) { $('.blink-mailer input[type=submit]').val('Отправить'); $('.success-mail-text').html(success); $('.blink-mailer').hide(500);  $('.success-mail-text').show(500);  }, function(error) {});
 </script>
+<style>
+
+	div.bubble_info
+	{
+		left: 200px;
+		display: none;
+		position: absolute;
+		width: auto;
+		max-width: 33%;
+		height: auto;
+		z-index: 99999;
+		padding: 3px;
+		background: #FFFFFF;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		border: rgba(0,0,0,.5) solid 1px;
+		box-shadow: 0 15px 24px rgba(0,0,0,0.5);
+	}
+
+	div.bubble_info:after
+	{
+
+		content: '';
+		position: absolute;
+		border-style: solid;
+		border-width: 15px 15px 0;
+		border-color: #ffffff transparent;
+		display: none;
+		width: 0;
+		z-index: 0;
+		bottom: -14px;
+		left: 25px;
+	}
+
+	div.bubble_info:before
+	{
+		content: '';
+		position: absolute;
+		border-style: solid;
+		border-width: 15px 15px 0;
+		border-color: white transparent;
+		display:  block;
+		width: 0;
+		z-index: 0;
+		bottom: -14px;
+		left: 25px;
+	}
+</style>
 <?=get_field('google',4)?>
 <?=get_field('yandex',4)?>
 <?php wp_footer() ?>
