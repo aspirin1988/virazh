@@ -24,11 +24,11 @@ $(document).ready(function () {
 
   });
 
-  /*$('a[data-html="1"]').blur(function () {
+  $('a[data-html="1"]').blur(function () {
     var bubble = $('div.bubble_info');
     bubble.hide();
     console.info(bubble);
-  });*/
+  });
 
     var el = $('.products-list');
   if (screen.width<1024){
