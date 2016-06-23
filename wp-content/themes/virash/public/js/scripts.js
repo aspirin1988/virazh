@@ -46,11 +46,9 @@ $(document).ready(function () {
   /* НАЧАЛО вывод карты и соотв. инфы в модалку */
   $("[data-map]").click(function () {
     var ThisElement = $(this);
-    console.log(ThisElement.data('map'));
     $('#' + ThisElement.data('map')).on('shown.bs.modal', function () {
       $("#map").empty();
       var position = ThisElement.data('position').split(',');
-      console.log(position);
       var myMap = new ymaps.Map("map", {
           center: [position[1], position[0]],
           zoom: 16
@@ -154,7 +152,6 @@ $(document).ready(function () {
   {
     count = Math.round((screen.width / 200));
   }
-  console.info(count);
   $(".owl-carousel-brands").owlCarousel({
     items: count,
     margin: 30,
