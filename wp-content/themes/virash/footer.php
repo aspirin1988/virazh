@@ -59,13 +59,19 @@
 	</div>
 </div>
 <!-- КОНЕЦ Modal для карт яндекса -->
-<div class="bubble_info"></div>
+<div class="bubble_info">
+	<a href="" style="position: absolute; right: 6px;" onclick="$('.bubble_info').hide()" >
+		<i class="glyphicon glyphicon-remove-circle"></i>
+	</a>
+	<br>
+	<p></p>
+</div>
 <?php
 $pre='<div class="preloader"><img src="'.get_bloginfo('template_directory').'/public/img/preloader.gif" alt="Loading"></div>';
 ?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="<?php bloginfo('template_directory') ?>/public/js/jquery-2.2.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?php bloginfo('template_directory') ?>/public/js/bootstrap.min.js"></script>
 <script src="<?php bloginfo('template_directory') ?>/public/js/owl.carousel.min.js"></script>

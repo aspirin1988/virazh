@@ -98,6 +98,7 @@
 					</tbody>
 				</table>
 			</div>
+			<a href="" onclick="return false;"></a>
 			<?php if (get_field('tab-1')): ?>
 			<div id="menu2" class="tab-pane fade">
 				<article>

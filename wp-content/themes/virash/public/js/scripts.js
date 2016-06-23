@@ -1,27 +1,36 @@
 $(document).ready(function () {
   var this_bubble;
+
   $('a[data-html="1"]').click(function () {
-    event.preventDefault();
-    var content = $(this).data('content');
-    var pos= $(this).position();
-    var bubble = $('div.bubble_info');
-    bubble.html(content);
-    bubble.position(pos);
-    bubble.css({top: pos.top-(bubble.height()+20), left: pos.left});
-    if (this_bubble==this)
-    {
-      this_bubble='';
-      bubble.hide(300);
-    }
-    else
-    {
-      bubble.show(300);
-      this_bubble=this;
-    }
     return false;
   });
+  $('a[data-html="1"]').focus(function () {
+    //event.preventDefault();
+    var content = $(this).data('content');
+    var bubble = $('div.bubble_info');
+    var pos= $(this).position();
+    bubble.find('p').html(content);
+    console.log(bubble.height());
+    setTimeout(function () {
+      console.log(bubble.height());
+      bubble.position(pos);
+      bubble.css({top: pos.top-(bubble.height()+20), left: pos.left});
+      bubble.show(200);
+      this_bubble=this;
+    },100);
 
-  var el = $('.products-list');
+
+    return false;
+
+  });
+
+  /*$('a[data-html="1"]').blur(function () {
+    var bubble = $('div.bubble_info');
+    bubble.hide();
+    console.info(bubble);
+  });*/
+
+    var el = $('.products-list');
   if (screen.width<1024){
     el.toggleClass('col-sm-9');
     el.toggleClass('col-sm-12');
