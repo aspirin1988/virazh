@@ -2,6 +2,7 @@
 $query=explode('&page', $_SERVER["QUERY_STRING"]); $query=$query[0];
 $wo_filter=get_products_cat_by_slug_parent('products');
 $page=(int)get_field('display_count',4);
+
 $dop_param=wc_get_attribute_taxonomy_names();
 $dop_param_label=wc_get_attribute_taxonomies();
 $current_filter=array();
@@ -91,25 +92,19 @@ $filter_array['offset'] = $_GET['page']*$page;
 $temp_post=query_posts( $filter_array );
 
 
-$approve = array(
-'dvigatel-obyem',
-'dvigatel-tip',
-'kolesnaya-formula',
-'kolichestvo-mest',
-'tip-kuzova',
-'gruzopodemnost');
 $meta=array();
 foreach ($temp_post as $value) {
 	$col = 0;
 	foreach ($dop_param_label as $value1) {
-		$attr = wp_get_post_terms($value->ID, 'pa_' . $value1->attribute_name);
-		if ($attr) {
-			if (in_array($value1->attribute_name, $approve)) {
+		if ($value1->attribute_public) {
+			$attr = wp_get_post_terms($value->ID, 'pa_' . $value1->attribute_name);
+			if ($attr) {
 				foreach ($attr as $val) {
 					$meta['pa_' . $value1->attribute_name]['lable'] = $value1->attribute_label;
 					$meta['pa_' . $value1->attribute_name]['value'][$val->name] = $val->name;
 				}
 			}
+
 		}
 	}
 }
