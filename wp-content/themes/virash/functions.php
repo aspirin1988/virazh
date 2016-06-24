@@ -215,7 +215,7 @@ class CallBack_Widget extends WP_Widget {
 
 			<div class="label-input">
 				<label for="phoneNumber">Номер телефона:</label>
-				<input type="tel" name="Номер телефона" id="phoneNumber" placeholder="+707-xxx-xx-xx">
+				<input type="tel" name="Телефон" id="phoneNumber" placeholder="+707-xxx-xx-xx">
 			</div>
 
 			<div class="label-input submit">
