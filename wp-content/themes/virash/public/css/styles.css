@@ -156,6 +156,9 @@ form button.padding {
       color: white; }
 
 /* КОНЕЦ стиль формы обратной связи */
+.table > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(4, 4, 102, 0.1); }
+
 /* КОНЕЦ общие стили */
 /* НАЧАЛО header */
 header {
@@ -894,7 +897,8 @@ footer {
         max-width: none;
         width: 100%; } }
     .single-article .article img.width-stretched {
-      width: 100%; }
+      width: 100%;
+      max-width: none; }
   .single-article .article li {
     text-indent: 15px; }
 .single-article h2 {
@@ -1171,8 +1175,6 @@ footer {
       text-indent: 15px; }
   .single-product-tabs .tab-content img.img-responsive {
     margin: 0 auto; }
-.single-product-tabs .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: rgba(4, 4, 102, 0.1); }
 
 /* КОНЕЦ табы и содержимое */
 /* -------------------------------
