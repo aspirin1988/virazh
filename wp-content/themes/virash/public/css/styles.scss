@@ -206,9 +206,12 @@ form button.padding{
     }
   }
 }
-
-
 /* КОНЕЦ стиль формы обратной связи */
+
+
+.table>tbody>tr:nth-of-type(odd) {
+  background-color: rgba(4, 4, 102, 0.1);
+}
 
 /* КОНЕЦ общие стили */
 
@@ -1246,6 +1249,7 @@ footer {
       }
       &.width-stretched {
         width: 100%;
+        max-width: none;
       }
     }
 
@@ -1657,10 +1661,6 @@ footer {
     img.img-responsive {
       margin: 0 auto;
     }
-  }
-
-  .table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: rgba(4, 4, 102, 0.1);
   }
 }
 /* КОНЕЦ табы и содержимое */

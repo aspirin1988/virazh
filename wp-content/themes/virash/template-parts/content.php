@@ -15,8 +15,9 @@
 		<div class="col-sm-8 article" id="articleContent">
 			<h2><?=get_the_title()?></h2>
 			<p class="article-date"><?=get_the_date()?></p>
-			<img class="img-responsive" src="<?=get_the_post_thumbnail_url()?>">
+			<img class="img-responsive width-stretched" src="<?=get_the_post_thumbnail_url()?>">
 			<?=get_the_content();?>
+
 		</div>
 		<div class="col-sm-4 other-articles" id="otherArticles">
 			<h2 class="text-center other-news">Читайте так же</h2>
