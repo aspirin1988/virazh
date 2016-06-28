@@ -46,7 +46,7 @@
 			</p>
 			<p>
 
-				<?=get_the_excerpt()?>
+				<?=do_shortcode(get_the_excerpt(),false)?>
 
 			</p>
 		</div>
@@ -102,21 +102,21 @@
 			<?php if (get_field('tab-1')): ?>
 			<div id="menu2" class="tab-pane fade">
 				<article>
-				<?= get_field('tab-1');?>
+				<?=do_shortcode(get_field('tab-1'),false);?>
 				</article>
 				<?php endif; ?>
 			</div>
 			<?php if (get_field('tab-2')): ?>
 			<div id="menu3" class="tab-pane fade">
 				<article>
-				<?= get_field('tab-2');?>
+				<?=do_shortcode(get_field('tab-2'),false);?>
 				</article>
 				<?php endif; ?>
 			</div>
 				<?php if (get_field('tab-3')): ?>
 			<div id="menu4" class="tab-pane fade">
 				<article>
-				<?= get_field('tab-3');?>
+				<?=do_shortcode(get_field('tab-3'),false);?>
 				</article>
 				<?php endif; ?>
 			</div>
