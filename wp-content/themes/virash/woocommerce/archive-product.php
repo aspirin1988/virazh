@@ -50,8 +50,8 @@ if (!$current_filter) {
 
 $filter_array=array(
 	'posts_per_page'=>'-1',
-	'orderby'      => 'menu_order',
-	'order'        => 'DESC',
+	'orderby'      => 'DESC',
+	'order'        => 'menu_order',
 	'tax_query' => array(
 
 	)
@@ -90,7 +90,7 @@ $filter_array['offset'] = $_GET['page']*$page;
 
 // Подмена запроса на свой !!!
 $temp_post=query_posts( $filter_array );
-
+//print_r($filter_array);
 
 $meta=array();
 foreach ($temp_post as $value) {

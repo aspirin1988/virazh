@@ -375,13 +375,30 @@ class CallBack_Button_Widget extends WP_Widget {
 	}
 	function widget( $args, $instance ) {
 		extract( $args );
+		$title = $instance['title'];
+		$width = $instance['width'];
+		$height = $instance['height'];
 		$color = $instance['color_font'];
+		$color_hover = $instance['color_font_hover'];
 		$font_size = $instance['font_size'];
-		echo '<div class="blink-cb-module-main-btns active search-blink-cb-module-btn" style="position: relative;  right: auto;  bottom: auto;  width: auto;  height: auto;  z-index: 99999;     display: block;">
-			<div class="blink-cb-module-btns-container">
-				<div class="blink-cb-module-main-btn-container animated bounceInRight" style="background: transparent">
+		if (!(int)$width) $width='auto';
+		if (!(int)$height) $height='auto';
+
+			echo '
+		<style>
+		.blink-cb-module-main-btns a{
+		font-size: '.$font_size.' !important;
+		color: '.$color.' !important;
+		}
+		.blink-cb-module-main-btns a:hover{
+		color: '.$color_hover.' !important;
+		}
+		</style>
+		<div class="blink-cb-module-main-btns active search-blink-cb-module-btn" style="position: relative;  right: auto;  bottom: auto;  width: auto;  height: auto;  z-index: 99999;     display: block;">
+			<div class="blink-cb-module-btns-container" style="width:'.$width.'; height:'.$height.'; " >
+				<div class="blink-cb-module-main-btn-container animated bounceInRight" style="width:'.$width.'; height:'.$height.'; background: transparent">
 					<div class="blink-cb-open-popup blink-cb-module-main-btn">
-						<a href="#recall" style=" font-size: '.$font_size.';  color: '.$color.'; " class="feedback">Связатся</a>
+						<a href="#recall" class="feedback">'.$title.'</a>
 					</div>
 				</div>
 			</div>
@@ -391,7 +408,11 @@ class CallBack_Button_Widget extends WP_Widget {
 		$instance = $old_instance;
 
 		//Strip tags from title and name to remove HTML
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['width'] = strip_tags( $new_instance['width'] );
+		$instance['height'] = strip_tags( $new_instance['height'] );
 		$instance['color_font'] = strip_tags( $new_instance['color_font'] );
+		$instance['color_font_hover'] = strip_tags( $new_instance['color_font_hover'] );
 		$instance['font_size'] = strip_tags( $new_instance['font_size'] );
 
 		return $instance;
@@ -402,15 +423,35 @@ class CallBack_Button_Widget extends WP_Widget {
 		$defaults = array( 'color_font' => __('callback_button_widget', 'callback_button_widget'), 'font_size' => __('Bilal Shaheen', 'callback_button_widget'), 'show_info' => true );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
-		//Свет шрифта
+		// Title кнопки
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'callback_button_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+		</p>
+		//Цвет шрифта
 		<p>
 			<label for="<?php echo $this->get_field_id( 'color_font' ); ?>"><?php _e('Color_font:', 'callback_button_widget'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'color_font' ); ?>" name="<?php echo $this->get_field_name( 'color_font' ); ?>" value="<?php echo $instance['color_font']; ?>" style="width:100%;" />
 		</p>
-		//Свет размер шрифта
+		//Цвет шрифта при наведении
+		<p>
+			<label for="<?php echo $this->get_field_id( 'color_font_hover' ); ?>"><?php _e('Color_font_hover:', 'callback_button_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'color_font_hover' ); ?>" name="<?php echo $this->get_field_name( 'color_font_hover' ); ?>" value="<?php echo $instance['color_font_hover']; ?>" style="width:100%;" />
+		</p>
+		//Размер шрифта
 		<p>
 			<label for="<?php echo $this->get_field_id( 'font_size' ); ?>"><?php _e('Font_size:', 'callback_button_widget'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'font_size' ); ?>" name="<?php echo $this->get_field_name( 'font_size' ); ?>" value="<?php echo $instance['font_size']; ?>" style="width:100%;" />
+		</p>
+		//Ширина виджета
+		<p>
+			<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e('Width:', 'callback_button_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" value="<?php echo $instance['width']; ?>" style="width:100%;" />
+		</p>
+		//Высота виджета
+		<p>
+			<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e('Height:', 'callback_button_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" value="<?php echo $instance['height']; ?>" style="width:100%;" />
 		</p>
 		<?php
 	}
