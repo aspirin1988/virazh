@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+  $('table').addClass('table table-bordered table-striped');
+
   var this_bubble;
 
   $('a[data-html="1"]').click(function () {
@@ -29,6 +32,8 @@ $(document).ready(function () {
     bubble.hide();
     console.info(bubble);
   });
+
+
 
     var el = $('.products-list');
   if (screen.width<1024){
