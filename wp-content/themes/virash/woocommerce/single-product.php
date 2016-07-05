@@ -114,12 +114,13 @@
 				<?php endif; ?>
 			</div>
 				<?php if (get_field('tab-3')): ?>
+			<article>
 			<div id="menu4" class="tab-pane fade">
-				<article>
 				<?=do_shortcode(get_field('tab-3'),false);?>
-				</article>
 				<?php endif; ?>
 			</div>
+			</article>
+
 		</div>
 	</div>
 </div>
