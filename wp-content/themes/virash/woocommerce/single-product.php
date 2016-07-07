@@ -104,23 +104,22 @@
 				<article>
 				<?=do_shortcode(get_field('tab-1'),false);?>
 				</article>
-				<?php endif; ?>
 			</div>
+			<?php endif; ?>
 			<?php if (get_field('tab-2')): ?>
 			<div id="menu3" class="tab-pane fade">
 				<article>
 				<?=do_shortcode(get_field('tab-2'),false);?>
 				</article>
-				<?php endif; ?>
 			</div>
+				<?php endif; ?>
 				<?php if (get_field('tab-3')): ?>
-			<article>
 			<div id="menu4" class="tab-pane fade">
+				<article>
 				<?=do_shortcode(get_field('tab-3'),false);?>
-				<?php endif; ?>
+				</article>
 			</div>
-			</article>
-
+				<?php endif; ?>
 		</div>
 	</div>
 </div>
